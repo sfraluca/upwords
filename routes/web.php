@@ -32,7 +32,7 @@ Route::group(['prefix'=>'admin'], function(){
 });
 
 
-Route::get('/','PostController@index');
+Route::get('/','PostController@index')->name('home');
 
 Route::get('/posts','PostController@index')->name('list_posts');
 

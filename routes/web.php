@@ -29,6 +29,31 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/password/reset','Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
     Route::post('/password/reset','Auth\AdminResetPasswordController@reset');
     Route::get('/password/reset/{token}','Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
+
+    //User
+
+    Route::get('/users/list', 'UserController@index')
+    ->name('list_all_users')
+    ->middleware('auth:admin');
+
+    Route::get('/users/create', 'UserController@create')
+    ->name('create_user');
+
+    Route::post('/users/create', 'UserController@store')
+    ->name('store_user');
+
+    Route::get('/users/show/{id}', 'UserController@show')
+    ->name('show_user');
+
+    Route::get('/users/edit/{id}', 'UserController@edit')
+    ->name('edit_user');
+
+    Route::post('/users/edit/{id}', 'UserController@update')
+    ->name('update_user');
+
+    Route::delete('/users/destroy/{id}', 'UserController@destroy')
+    ->name('delete_user');
+
 });
 
 

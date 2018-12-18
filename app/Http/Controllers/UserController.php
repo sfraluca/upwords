@@ -8,19 +8,18 @@ use App\Role;
 use Illuminate\Support\Facades\Hash;
 use App\Entities\RegisterUser;
 use Validator;
-use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
-    protected $users;
+   protected $users;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(RegisterUser $users)
     {
         $this->middleware('auth:admin');
-       
+        $this->users = $users;
     }
 
     /**
@@ -46,12 +45,12 @@ class UserController extends Controller
     public function store(Request $request)
     {
         
-        $request->validate($request->all(),[
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required',
+            'password' => 'required',
             'role' => 'required'
             ]);
-            
             $user = $this->users->register($request->all());
             
         return redirect()->route('show_user', $user->id);
@@ -68,12 +67,11 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $this->authorize('update-admin');
 
         $roles = Role::orderBy('name')->pluck('name','id');
-        $admins = Admin::find($id);
+        $users = User::find($id);
 
-        return view('auth.register-admin.edit',compact('admins', 'roles'));   
+        return view('register-user.edit', compact('users', 'roles'));   
     }
 
     public function update(Request $request, $id)
@@ -82,32 +80,28 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
-            'job_title' => 'required',
             'role' => 'required'
             ]); 
 
-        $admin = Admin::find($id);
+        $user = User::find($id);
         
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
 
-        $admin->name = $request->input('name');
-        $admin->email = $request->input('email');
-        $admin->password = Hash::make($request->input('password'));
-        $admin->job_title = $request->input('job_title');
+        $user->save();
 
-        $admin->save();
-
-        return redirect()->route('show_admin', $admin->id);
+        return redirect()->route('show_user', $user->id);
     }
 
     public function destroy($id)
     {
-        $this->authorize('delete-admin');
 
-        $admin = Admin::find($id);
-        $admin->delete();
+        $user = User::find($id);
+        $user->delete();
 
-        return redirect()->route('list_all_admins');
+        return redirect()->route('list_all_users');
     }
 
-    
 }
+

@@ -58,7 +58,7 @@
                                     {{csrf_field()}}
                                         <div class="form-group">
                                             <label for="inputUserName">User Name</label>
-                                            <input id="inputUserName" type="text" name="name" data-parsley-trigger="change" required="" placeholder="Enter user name" autocomplete="off" class="form-control">
+                                            <input value="{{ $users->name }}"  id="inputUserName" type="text" name="name" data-parsley-trigger="change" required="" placeholder="Enter user name" autocomplete="off" class="form-control">
                                             @if ($errors->has('name'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('name') }}</strong>
@@ -67,7 +67,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="inputEmail">Email address</label>
-                                            <input id="inputEmail" type="email" name="email" data-parsley-trigger="change" required="" placeholder="Enter email" autocomplete="off" class="form-control">
+                                            <input value="{{ $users->email }}" id="inputEmail" type="email" name="email" data-parsley-trigger="change" required="" placeholder="Enter email" autocomplete="off" class="form-control">
                                             @if ($errors->has('email'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('email') }}</strong>
@@ -90,7 +90,7 @@
                                         <div class="form-group">
                                         <label for="selectUser">Select type of user</label>
                                             
-                                        <select name="role" class="form-control">
+                                        <select name="role" value="{{ $users->role }}" class="form-control">
                                         @foreach($roles as $id=>$role)
 
                                             <option value="{{$id}}">{{$role}}</option>

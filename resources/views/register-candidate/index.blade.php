@@ -30,13 +30,12 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h2 class="pageheader-title">User Profile</h2>
+                                <h2 class="pageheader-title">Candidate Index Dashboard</h2>
                                  <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">User</a></li>
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Add</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Show</li>
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Candidate</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Index</li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -52,7 +51,7 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header">Current user</h5>
+                            <h5 class="card-header">All Candidates</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered first">
@@ -60,32 +59,47 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Name</th>
-                                                <th>Email</th>
+                                                <th>Slug</th>
+                                                <th>Employment</th>
+                                                <th>Description</th>
+                                                <th>Price</th>
+                                                <th>Skill</th>
+                                                <th>Profession</th>
                                                 <th>Show</th>    
                                                <th>Edit</th>     
-                                               <th>Delete</th>    
-                                            </tr>
+                                               <th>Delete</th>     
+                                             </tr>
                                         </thead>
                                         <tbody>
+                                        @foreach ($candidates as $candidate)
                                             <tr>
-                                                <td>{{$user->id}}</td>
-                                                <td>{{$user->name}}</td>
-                                                <td>{{$user->email}}</td>
+                                                <td>{{$candidate->id}}</td>
+                                                <td>{{$candidate->name}}</td>
+                                                <td>{{$candidate->slug}}</td>
+                                                <td>{{$candidate->emplyment_type}}</td>
+                                                <td>{{$candidate->description}}</td>
+                                                <td>{{$candidate->price}}</td>
+                                                <td>@foreach ($skills as $s)
+                                                {{$s->skill}}
+                                                @endforeach</td>
+                                                <td>@foreach ($pas as $p)
+                                                {{$p->profession}}
+                                                @endforeach</td>
                                                 <td>
-                                                    <form action ="{{ route('show_user', $user->id)}}">
+                                                    <form action ="{{ route('show_candidate', $candidate->id)}}">
                                                         <input type="hidden"/>
                                                         <button type="submit" class="btn btn-gradient-primary btn-icon-text btn-sm">Show</button>
                                                     </form>
                                                 </td>
                                                 <td>
-                                                    <form action ="{{ route('edit_user', $user->id)}}">
+                                                    <form action ="{{ route('edit_candidate', $candidate->id)}}">
                                                         <input type="hidden"/>
                                                         <button type="submit" class="btn btn-gradient-dark btn-icon-text btn-sm">Edit</button>
                                                     </form>
                                                     
                                                 </td>
                                                 <td>
-                                                    <form method="POST" class="delete_form" action ="{{ route('delete_user', $user->id)}}">
+                                                    <form method="POST" class="delete_form" action ="{{ route('delete_candidate', $candidate->id)}}">
                                                         {{csrf_field()}}
                                                         <input type="hidden" name="_method" value="DELETE"/>
                                                         <button type="submit" class="btn btn-gradient-danger btn-icon-text btn-sm">Delete</button>
@@ -93,15 +107,21 @@
                                                    
                                                 </td>
                                             </tr>
+                                           @endforeach
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                             <th>#</th>
                                                 <th>Name</th>
-                                                <th>Email</th>
+                                                <th>Slug</th>
+                                                <th>Employment</th>
+                                                <th>Description</th>
+                                                <th>Price</th>
+                                                <th>Skill</th>
+                                                <th>Profession</th>
                                                 <th>Show</th>    
                                                <th>Edit</th>     
-                                               <th>Delete</th>   
+                                               <th>Delete</th>    
                                             </tr>
                                         </tfoot>
                                     </table>

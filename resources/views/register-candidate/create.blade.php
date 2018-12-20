@@ -30,11 +30,11 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h2 class="pageheader-title">Create new user</h2>
+                                <h2 class="pageheader-title">Create new candidate</h2>
                                  <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">User</a></li>
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Candidate</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">Add</li>
                                         </ol>
                                     </nav>
@@ -54,11 +54,11 @@
                             <div class="card">
                                 <h5 class="card-header">Basic Form</h5>
                                 <div class="card-body">
-                                    <form action="{{ route('update_user', $users->id) }}" method="POST" id="basicform" data-parsley-validate="">
+                                    <form action="{{ route('store_candidate') }}" method="POST" id="basicform" data-parsley-validate="">
                                     {{csrf_field()}}
                                         <div class="form-group">
-                                            <label for="inputUserName">User Name</label>
-                                            <input value="{{ $users->name }}"  id="inputUserName" type="text" name="name" data-parsley-trigger="change" required="" placeholder="Enter user name" autocomplete="off" class="form-control">
+                                            <label for="inputCandidateName">Candidate Name</label>
+                                            <input id="inputCandidateName" type="text" name="name" data-parsley-trigger="change" required="" placeholder="Enter user name" autocomplete="off" class="form-control">
                                             @if ($errors->has('name'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('name') }}</strong>
@@ -66,34 +66,59 @@
                                             @endif    
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail">Email address</label>
-                                            <input value="{{ $users->email }}" id="inputEmail" type="email" name="email" data-parsley-trigger="change" required="" placeholder="Enter email" autocomplete="off" class="form-control">
-                                            @if ($errors->has('email'))
+                                            <label for="inputSlug">Title for job wanted</label>
+                                            <input id="inputSlug" type="text" name="slug" data-parsley-trigger="change" required="" placeholder="Enter user name" autocomplete="off" class="form-control">
+                                            @if ($errors->has('slug'))
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('email') }}</strong>
+                                                    <strong>{{ $errors->first('slug') }}</strong>
                                                 </span>
-                                            @endif
+                                            @endif    
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputPassword">Password</label>
-                                            <input id="inputPassword" type="password" name="password" placeholder="Password" required="" class="form-control">
-                                            @if ($errors->has('password'))
+                                            <label for="inputEmply">Employ type</label>
+                                            <input id="inputEmply" type="text" name="emplyment_type" data-parsley-trigger="change" required="" placeholder="Enter user name" autocomplete="off" class="form-control">
+                                            @if ($errors->has('emplyment_type'))
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('password') }}</strong>
+                                                    <strong>{{ $errors->first('emplyment_type') }}</strong>
                                                 </span>
-                                            @endif  
+                                            @endif    
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputRepeatPassword">Repeat Password</label>
-                                            <input id="inputRepeatPassword" data-parsley-equalto="#inputPassword" type="password" required="" placeholder="Password" class="form-control">
+                                            <label for="inputDdesc">Description</label>
+                                            <input id="inputDesc" type="text" name="description" data-parsley-trigger="change" required="" placeholder="Enter user name" autocomplete="off" class="form-control">
+                                            @if ($errors->has('description'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('description') }}</strong>
+                                                </span>
+                                            @endif    
                                         </div>
                                         <div class="form-group">
-                                        <label for="selectUser">Select type of user</label>
+                                            <label for="inputPrice">Price</label>
+                                            <input id="inputPrice" type="text" name="price" data-parsley-trigger="change" required="" placeholder="Enter user name" autocomplete="off" class="form-control">
+                                            @if ($errors->has('price'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('price') }}</strong>
+                                                </span>
+                                            @endif    
+                                        </div>
+                                       
+                                        <div class="form-group">
+                                        <label for="selectSkill">Skill</label>
                                             
-                                        <select name="role" value="{{ $users->role }}" class="form-control">
-                                        @foreach($roles as $id=>$role)
+                                        <select name="skill_id" class="form-control">
+                                        @foreach($skills as $id=>$skill)
 
-                                            <option value="{{$id}}">{{$role}}</option>
+                                            <option value="{{$id}}">{{$skill}}</option>
+                                        @endforeach
+                                        </select>
+                                        </div>
+                                        <div class="form-group">
+                                        <label for="selectProfession">Profession</label>
+                                            
+                                        <select name="profession_id" class="form-control">
+                                        @foreach($pas as $id=>$profession)
+
+                                            <option value="{{$id}}">{{$profession}}</option>
                                         @endforeach
                                         </select>
                                         </div>

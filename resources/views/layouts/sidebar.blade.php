@@ -8,25 +8,20 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav flex-column">
                             <li class="nav-divider">
-                                Menu
+                                Types of users
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span></a>
+                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>Admin staff <span class="badge badge-success">6</span></a>
                                 <div id="submenu-1" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-2" aria-controls="submenu-1-2">E-Commerce</a>
-                                            <div id="submenu-1-2" class="collapse submenu" style="">
-                                                <ul class="nav flex-column">
                                                     <li class="nav-item">
                                                         <a class="nav-link" href="index.html">Admin profile</a>
                                                     </li>
                                                     <li class="nav-item">
                                                         <a class="nav-link" href="ecommerce-product.html">Admin tasks</a>
                                                     </li>
-                                                   
-                                                </ul>
-                                            </div>
+                                                
                                         </li>
                                         
                                     </ul>
@@ -46,15 +41,19 @@
                                     </ul>
                                 </div>
                             </li>
+                            
+                            <li class="nav-divider">
+                                Candidates&Vacancy
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-fw fa-chart-pie"></i>Jobs</a>
                                 <div id="submenu-3" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/chart-c3.html">List</a>
+                                            <a class="nav-link" href="{{route('list_all_jobs')}}">List</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/chart-chartist.html">Add</a>
+                                            <a class="nav-link" href="{{route('create_job')}}">Add</a>
                                         </li>
                                        
                                     </ul>
@@ -65,10 +64,41 @@
                                 <div id="submenu-4" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/form-elements.html">List</a>
+                                            <a class="nav-link" href="{{route('list_all_candidates')}}">List</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/form-validation.html">Add</a>
+                                            <a class="nav-link" href="{{route('create_candidate')}}">Add</a>
+                                        </li>
+                                       
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-divider">
+                                Profession&Skill
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5"><i class="fas fa-fw fa-chart-pie"></i>Profession</a>
+                                <div id="submenu-5" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{route('list_all_professions')}}">List</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{route('create_profession')}}">Add</a>
+                                        </li>
+                                       
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6"><i class="fab fa-fw fa-wpforms"></i>Skill</a>
+                                <div id="submenu-6" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{route('list_all_skills')}}">List</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{route('create_skill')}}">Add</a>
                                         </li>
                                        
                                     </ul>

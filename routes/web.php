@@ -15,7 +15,7 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
 Route::group(['prefix'=>'admin'], function(){
@@ -155,7 +155,17 @@ Route::delete('/candidate/destroy/{id}', 'CandidateController@destroy')
 
 });
 
-Route::get('/','PostController@index')->name('home');
+Route::get('/','WebController@web')->name('website');
+Route::get('/about','WebController@about')->name('about');
+Route::get('/contact','WebController@contact')->name('contact');
+
+Route::get('/job', 'HomeController@job')->name('job');
+Route::get('/freelancer', 'HomeController@freelancer')->name('freelancer');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/registration', 'HomeController@registration');
+
+Route::get('/compare', 'HomeController@compare')->name('compare');
+
 
 Route::get('/posts','PostController@index')->name('list_posts');
 

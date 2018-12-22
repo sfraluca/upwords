@@ -25,4 +25,24 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function registration()
+    {
+        return view('registration');
+    }
+    public function store()
+    {
+        return redirect()->route('home');
+    }
+    public function job()
+    {
+        return view('job');
+    }
+    public function freelancer()
+    {
+        return view('freelancer');
+    }
+    public function compare()
+    {
+        return view('compare');
+    }
 }

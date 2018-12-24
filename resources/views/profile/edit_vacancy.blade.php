@@ -31,35 +31,41 @@
 									<div class="container ">
 									<div class="row justify-content-center">
 									<div class="col-lg-8">
-									<form class="form-area " action="{{ route('store_freelancer') }}" method="post" class="contact-form text-right">
+									<form class="form-area " action="{{ route('update_vacancy', $jobs->id) }}" method="post" class="contact-form text-right">
 									{{csrf_field()}}
 									<div class="row">	
 									<div class="col-lg-12 form-group">
-									<input name="name" placeholder="Enter your name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" class="common-input mb-20 form-control" required="" type="text">
-									@if ($errors->has('name'))
+									<input value="{{ $jobs->title }}" name="title" placeholder="Enter title" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter title'" class="common-input mb-20 form-control" required="" type="text">
+									@if ($errors->has('title'))
 										<span class="invalid-feedback" role="alert">
-											<strong>{{ $errors->first('name') }}</strong>
+											<strong>{{ $errors->first('title') }}</strong>
 										</span>
 									@endif    
-									<input name="slug" placeholder="Enter title job" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter title job'" class="common-input mb-20 form-control" required="" type="text">
+									<input  value="{{ $jobs->slug }}" name="slug" placeholder="Enter title job" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter title job'" class="common-input mb-20 form-control" required="" type="text">
 									@if ($errors->has('slug'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('slug') }}</strong>
                                                 </span>
                                             @endif    
-											<input name="emplyment_type" placeholder="Enter employment type" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter employment type'" class="common-input mb-20 form-control" required="" type="text">
-											@if ($errors->has('emplyment_type'))
+                                            <input  value="{{ $jobs->name }}" name="name" placeholder="Enter name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter name'" class="common-input mb-20 form-control" required="" type="text">
+									@if ($errors->has('name'))
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $errors->first('name') }}</strong>
+										</span>
+									@endif    
+											<input  value="{{ $jobs->employment_type }}" name="employment_type" placeholder="Enter employment type" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter employment type'" class="common-input mb-20 form-control" required="" type="text">
+											@if ($errors->has('employment_type'))
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('emplyment_type') }}</strong>
+                                                    <strong>{{ $errors->first('employment_type') }}</strong>
                                                 </span>
                                             @endif  
-											<input name="description" placeholder="Enter description" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter description'" class="common-input mb-20 form-control" required="" type="text">
+											<input  value="{{ $jobs->description }}" name="description" placeholder="Enter description" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter description'" class="common-input mb-20 form-control" required="" type="text">
 											@if ($errors->has('description'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('description') }}</strong>
                                                 </span>
                                             @endif  
-											<input name="price" placeholder="Enter price" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter price'" class="common-input mb-20 form-control" required="" type="text">
+											<input value="{{ $jobs->price }}" name="price" placeholder="Enter price" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter price'" class="common-input mb-20 form-control" required="" type="text">
 											@if ($errors->has('price'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('price') }}</strong>
@@ -68,7 +74,7 @@
 											<div class="form-group">
                                         <label for="selectSkill">Skill</label>
                                             
-                                        <select name="skill_id" class="form-control">
+                                        <select  value="{{ $jobs->skill_id }}" name="skill_id" class="form-control">
                                         @foreach($skills as $id=>$skill)
 
                                             <option value="{{$id}}">{{$skill}}</option>
@@ -78,7 +84,7 @@
                                         <div class="form-group">
                                         <label for="selectProfession">Profession</label>
                                             
-                                        <select name="profession_id" class="form-control">
+                                        <select  value="{{ $jobs->profession_id }}" name="profession_id" class="form-control">
                                         @foreach($pas as $id=>$profession)
 
                                             <option value="{{$id}}">{{$profession}}</option>
@@ -92,9 +98,7 @@
 </form>	
 </div>
                         </div></div>
-						</div>
-</section>
-					
+						</div></section>
 		@include('platform.footer')
             
 @endsection

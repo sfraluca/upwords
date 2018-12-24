@@ -27,18 +27,19 @@
 				</div>
 			</section>
 			<!-- End banner Area -->
-            <section class="contact-page-area section-gap">
+
+						<section class="contact-page-area section-gap">
 									<div class="container ">
 									<div class="row justify-content-center">
 									<div class="col-lg-8">
-									<form class="form-area " action="{{ route('store_freelancer') }}" method="post" class="contact-form text-right">
+									<form class="form-area " action="{{ route('store_vacancy') }}" method="post" class="contact-form text-right">
 									{{csrf_field()}}
 									<div class="row">	
 									<div class="col-lg-12 form-group">
-									<input name="name" placeholder="Enter your name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" class="common-input mb-20 form-control" required="" type="text">
-									@if ($errors->has('name'))
+									<input name="title" placeholder="Enter title" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter title'" class="common-input mb-20 form-control" required="" type="text">
+									@if ($errors->has('title'))
 										<span class="invalid-feedback" role="alert">
-											<strong>{{ $errors->first('name') }}</strong>
+											<strong>{{ $errors->first('title') }}</strong>
 										</span>
 									@endif    
 									<input name="slug" placeholder="Enter title job" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter title job'" class="common-input mb-20 form-control" required="" type="text">
@@ -47,10 +48,16 @@
                                                     <strong>{{ $errors->first('slug') }}</strong>
                                                 </span>
                                             @endif    
-											<input name="emplyment_type" placeholder="Enter employment type" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter employment type'" class="common-input mb-20 form-control" required="" type="text">
-											@if ($errors->has('emplyment_type'))
+                                            <input name="name" placeholder="Enter name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter name'" class="common-input mb-20 form-control" required="" type="text">
+									@if ($errors->has('name'))
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $errors->first('name') }}</strong>
+										</span>
+									@endif    
+											<input name="employment_type" placeholder="Enter employment type" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter employment type'" class="common-input mb-20 form-control" required="" type="text">
+											@if ($errors->has('employment_type'))
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('emplyment_type') }}</strong>
+                                                    <strong>{{ $errors->first('employment_type') }}</strong>
                                                 </span>
                                             @endif  
 											<input name="description" placeholder="Enter description" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter description'" class="common-input mb-20 form-control" required="" type="text">
@@ -92,9 +99,7 @@
 </form>	
 </div>
                         </div></div>
-						</div>
-</section>
-					
+						</div></section>
 		@include('platform.footer')
             
 @endsection

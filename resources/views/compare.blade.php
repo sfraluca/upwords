@@ -33,141 +33,78 @@
 							<div class="single-post d-flex flex-row">
 								<div class="thumb">
 									<img src="img/post.png" alt="">
-									<ul class="tags">
-										<li>
-											<a href="#">Art</a>
-										</li>
-										<li>
-											<a href="#">Media</a>
-										</li>
-										<li>
-											<a href="#">Design</a>					
-										</li>
-									</ul>
+									Skill
+									<ul class="tags">@foreach ($skills as $s)
+											<li>
+												<a href="#">
+													{{$s->skill}}
+												</a>
+											</li> @endforeach
+											
+										</ul>
+										Profession
+										<ul class="tags">@foreach ($skills as $s)
+											<li>
+												<a href="#">
+													{{$s->skill}}
+												</a>
+											</li> @endforeach
+											
+										</ul>
 								</div>
 								<div class="details">
 									<div class="title d-flex flex-row justify-content-between">
 										<div class="titles">
-											<a href="#"><h4>Creative Art Designer</h4></a>
-											<h6>Premium Labels Limited</h6>					
+											<a href="#"><h4>{{$candidates->name}}</h4></a>
+											<h6>{{$candidates->slug}}</h6>					
 										</div>
 										<ul class="btns">
 											<li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-											<li><a href="#">Apply</a></li>
+											<li><a href="#">Contact</a></li>
 										</ul>
 									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
+									<p> 
 									</p>
-									<h5>Job Nature: Full time</h5>
-									<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-									<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
+									<h5>Job Nature: {{$candidates->emplyment_type}}</h5>
+									
+									<p class="address"><span class="lnr lnr-database"></span> {{$candidates->price}}</p>
 								</div>
-							</div>	
+							</div>		
 
 							<div class="single-post job-details">
-								<h4 class="single-title">Whom we are looking for</h4>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur.
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-								</p>
+								<h4 class="single-title">{{$candidates->description}}</h4>
+								
 							</div>
 
-							<div class="single-post job-experience">
-								<h4 class="single-title">Experience Requirements</h4>
-								<ul>
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>	
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>																											
-								</ul>
-							</div>
-
-							<div class="single-post job-experience">
-								<h4 class="single-title">Job Features & Overviews</h4>
-								<ul>
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>	
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>													
-								</ul>
-							</div>	
-                            
-							<div class="single-post job-experience">
-								<h4 class="single-title">Education Requirements</h4>
-								<ul>
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>																										
-								</ul>
-							</div>														
-						</div>
-                        
-						<div class="col-lg-6 post-list">
+								<div class="col-lg-6 post-list">
 
 							<div class="single-post d-flex flex-row">
 								<div class="thumb">
 									<img src="img/post.png" alt="">
-									<ul class="tags">
-										<li>
-											<a href="#">Art</a>
-										</li>
-										<li>
-											<a href="#">Media</a>
-										</li>
-										<li>
-											<a href="#">Design</a>					
-										</li>
-									</ul>
+									Skill
+									<ul class="tags">@foreach ($skills as $s)
+											<li>
+												<a href="#">
+													{{$s->skill}}
+												</a>
+											</li> @endforeach
+											
+										</ul>
+										Profession
+										<ul class="tags">@foreach ($skills as $s)
+											<li>
+												<a href="#">
+													{{$s->skill}}
+												</a>
+											</li> @endforeach
+											
+										</ul>
 								</div>
 								<div class="details">
 									<div class="title d-flex flex-row justify-content-between">
 										<div class="titles">
-											<a href="#"><h4>Creative Art Designer</h4></a>
-											<h6>Premium Labels Limited</h6>					
+											<a href="#"><h4>{{$job->title}}</h4></a>
+											<h6>{{$job->slug}}</h6>					
 										</div>
 										<ul class="btns">
 											<li><a href="#"><span class="lnr lnr-heart"></span></a></li>
@@ -177,88 +114,17 @@
 									<p>
 										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
 									</p>
-									<h5>Job Nature: Full time</h5>
-									<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-									<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-								</div>
+									<h5>Job Nature: {{$job->employment_type}}</h5>
+									<p class="address"><span class="lnr lnr-map"></span> {{$job->name}}</p>
+									<p class="address"><span class="lnr lnr-database"></span> {{$job->price}}</p></div>
 							</div>	
 							<div class="single-post job-details">
-								<h4 class="single-title">Whom we are looking for</h4>
+								<h4 class="single-title">Description</h4>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur.
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-								</p>
+								{{$job->description}}</p>
+								
 							</div>
-							<div class="single-post job-experience">
-								<h4 class="single-title">Experience Requirements</h4>
-								<ul>
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>	
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>																											
-								</ul>
-							</div>
-							<div class="single-post job-experience">
-								<h4 class="single-title">Job Features & Overviews</h4>
-								<ul>
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>	
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>													
-								</ul>
-							</div>	
-							<div class="single-post job-experience">
-								<h4 class="single-title">Education Requirements</h4>
-								<ul>
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>
-									<li>
-										<img src="img/pages/list.jpg" alt="">
-										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-									</li>																										
-								</ul>
-							</div>
-
+							
 
 
 					

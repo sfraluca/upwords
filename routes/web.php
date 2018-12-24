@@ -158,13 +158,27 @@ Route::delete('/candidate/destroy/{id}', 'CandidateController@destroy')
 Route::get('/','WebController@web')->name('website');
 Route::get('/about','WebController@about')->name('about');
 Route::get('/contact','WebController@contact')->name('contact');
-
-Route::get('/job', 'HomeController@job')->name('job');
-Route::get('/freelancer', 'HomeController@freelancer')->name('freelancer');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/registration', 'HomeController@registration');
+Route::get('/profile/choose', 'HomeController@choose')->name('profile_choose');
+Route::get('/compare/{id}', 'HomeController@compare')->name('compare');
 
-Route::get('/compare', 'HomeController@compare')->name('compare');
+
+//JOB
+Route::get('/job', 'HomeController@job')->name('job');
+Route::get('/registration/job', 'HomeController@registrationJob')->name('registration_job');
+Route::get('/profile/job/show/{id}', 'HomeController@profileJob')->name('profile_job');
+Route::post('/registration/job', 'HomeController@storeJob')->name('store_vacancy');
+Route::get('/edit/job/{id}', 'HomeController@editJob')->name('edit_vacancy');
+Route::post('/edit/job/{id}', 'HomeController@updateJob')->name('update_vacancy');
+
+//Freelancer
+Route::get('/freelancer', 'HomeController@freelancer')->name('freelancer');
+Route::get('/registration/candidate', 'HomeController@registration')->name('registration_candidate');
+Route::post('/registration', 'HomeController@store')->name('store_freelancer');
+Route::get('/profile/candidate/show/{id}', 'HomeController@profileCandidate')->name('profile_candidate');
+Route::get('/profile/candidate/edit/{id}', 'HomeController@editCandidate')->name('edit_candidate');
+Route::post('/profile/candidate/update/{id}', 'HomeController@updateCandidate')->name('update_candidate');
+Route::delete('/profile/candidate/destroy/{id}', 'HomeController@destroyCandidate')->name('deletecandidate');
 
 
 Route::get('/posts','PostController@index')->name('list_posts');

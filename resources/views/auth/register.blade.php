@@ -4,16 +4,16 @@
 <div class="limiter">
 		<div class="container-login100" style="background-image: url('css/images/bg-01.jpg');">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" role="form" method="POST" action="{{  route('register') }}">
+					{{ csrf_field() }}
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>
 
 					<span class="login100-form-title p-b-34 p-t-27">
-						Log in
+						Register
 					</span>
-                    <form role="form" method="POST" action="{{ url('/register') }}">
-                        {{ csrf_field() }}
+                        
 
                         <div class="wrap-input100 validate-input" data-validate = "Enter name">
 						<input class="input100" type="text" name="name" placeholder="Name">
@@ -26,7 +26,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="passward" placeholder="Password">
+						<input class="input100" type="password" name="password" placeholder="Password">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
                        
 					</div>
@@ -36,16 +36,31 @@
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
                        
 					</div>
+					<div class="form-group">
+                            <label for="exampleSelectGender">User type</label>
+                                <select class="form-control" id="exampleSelectGender" name="role" value="{{ old('role') }}">
+                                @foreach($roles as $id=>$role)
+                                <option value="{{$id}}">{{$role}}</option>
+
+                                @endforeach
+                                
+                                </select>
+                                @if ($errors->has('role'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('role') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" type="submit">
 							Register
 						</button>
 					</div>
 
 					<div class="text-center p-t-90">
 						<a class="txt1" href="{{ url('/login') }}">
-							Have an account
+							Have an account?
 						</a>
 					</div>
 				</form>

@@ -4,32 +4,40 @@
 <div class="limiter">
 		<div class="container-login100" style="background-image: url('css/images/bg-01.jpg');">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
-					<span class="login100-form-logo">
+				<form class="login100-form validate-form" role="form" method="POST" action="{{  route('login') }}">
+					 {{ csrf_field() }}
+					 <span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>
 
 					<span class="login100-form-title p-b-34 p-t-27">
 						Log in
 					</span>
-                    <form role="form" method="POST" action="{{ url('/login') }}">
-                        {{ csrf_field() }}
-					<div class="wrap-input100 validate-input" data-validate = "Enter email">
-						<input class="input100" type="email" name="email" placeholder="Email">
-						<span class="focus-input100" data-placeholder="&#xf207;"></span>
                        
+					<div class="wrap-input100 validate-input" data-validate = "Enter email">
+						<input class="input100" type="email" name="email" value="{{ old('email') }}" placeholder="Email" id="email" required autofocus>
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+                        @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="passward" placeholder="Password">
+						<input class="input100" type="password" name="password" placeholder="Password">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
-                       
+						@if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
 					</div>
 
 					
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" type="submit">
 							Login
 						</button>
 					</div>

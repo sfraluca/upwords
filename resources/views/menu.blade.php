@@ -8,6 +8,7 @@
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
 				          <li class="menu-active"><a href="{{ route('website') }}">Home</a></li>
+					
 				          <li><a href="{{ route('job') }}">job</a></li>
                           <li><a href="{{ route('freelancer') }}">Freelancer</a></li>
 				          <li><a href="{{ route('contact') }}">Contact</a></li>

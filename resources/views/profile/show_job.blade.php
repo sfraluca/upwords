@@ -25,8 +25,8 @@
 					<div class="row justify-content-center d-flex">
 						<div class="col-lg-8 post-list">
 							<ul class="cat-list">
-							<li><a href="{{route('edit_candidate', $jobs->id)}}">Edit profile</a></li>
-								<li><form method="POST" class="delete_form" action ="{{ route('deletecandidate', $jobs->id)}}">
+							<li><a href="{{route('edit_vacancy', $jobs->id)}}">Edit profile</a></li>
+								<li><form method="POST" class="delete_form" action ="{{ route('delete_vacancy', $jobs->id)}}">
 									{{csrf_field()}}
 									<input type="hidden" name="_method" value="DELETE"/>
 									<button type="submit" class="btn btn-gradient-danger btn-icon-text btn-sm">Delete profile</button>

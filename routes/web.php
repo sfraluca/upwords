@@ -170,6 +170,7 @@ Route::get('/profile/job/show/{id}', 'HomeController@profileJob')->name('profile
 Route::post('/registration/job', 'HomeController@storeJob')->name('store_vacancy');
 Route::get('/edit/job/{id}', 'HomeController@editJob')->name('edit_vacancy');
 Route::post('/edit/job/{id}', 'HomeController@updateJob')->name('update_vacancy');
+Route::delete('/profile/vacancy/destroy/{id}', 'HomeController@destroyJob')->name('delete_vacancy');
 
 //Freelancer
 Route::get('/freelancer', 'HomeController@freelancer')->name('freelancer');

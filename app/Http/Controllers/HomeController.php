@@ -186,7 +186,15 @@ class HomeController extends Controller
 
     $jobs->save();
       
-       return redirect()->route('profile.show_job', $jobs->id);
+       return redirect()->route('profile_job', $jobs->id);
+   }
+   //delete profile
+   public function destroyJob($id)
+   {
+       $jobs = Job::find($id);
+       $jobs->delete();
+
+       return redirect()->route('home');
    }
   //list all jobs
     public function job()

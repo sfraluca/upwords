@@ -25,7 +25,10 @@ class CreateJobTable extends Migration
             $table->foreign('skill_id')->references('id')->on('skills');
             $table->integer('profession_id')->unsigned();
             $table->foreign('profession_id')->references('id')->on('professions');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

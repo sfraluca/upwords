@@ -26,7 +26,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
+    public function vacancy()
+    {
+         return $this->hasMany(Job::class); 
+    }
+    public function candidate()
+    {
+         return $this->hasOne(Candidate::class); 
+    }
     public function roles()
     {
         return $this->belongsToMany(Role::class,'role_users');

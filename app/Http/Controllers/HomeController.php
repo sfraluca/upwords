@@ -30,7 +30,6 @@ class HomeController extends Controller
      //index the vanacies to frontpage
     public function index()
     {
-        $this->authorize('create-car');
         $skills = DB::table('skills')
         ->leftJoin('jobs', 'skills.id', '=', 'jobs.skill_id')
         ->select('skill')

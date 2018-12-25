@@ -7,7 +7,7 @@
 				      </div>
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
-				          <li class="menu-active"><a href="{{ route('website') }}">Home</a></li>
+				          <li class="menu-active"><a href="{{ route('home') }}">Home</a></li>
 									@can('create-vacancy') 
 									<li class="menu-active"><a href="{{ route('registration_job') }}">Post a job</a></li>
 									@endcan
@@ -17,7 +17,6 @@
 									@can('index-candidate') 
                           <li><a href="{{ route('freelancer') }}">Freelancers</a></li>
 													@endcan
-				          <li><a href="{{ route('contact') }}">Contact</a></li>
 
 
 

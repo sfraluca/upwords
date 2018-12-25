@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Job extends Model
 {
     protected $fillable = [
-       'title', 'slug','employment_type','description','price','name','profession_id','skill_id'
+       'title', 'slug','employment_type','description','price','name','profession_id','skill_id','user_id'
     ];
     public function skills()
     {
@@ -17,5 +17,9 @@ class Job extends Model
     public function professions()
     {
          return $this->belongsTo(ProfessionCategory::class);
+    }
+    public function users()
+    {
+         return $this->belongsTo(User::class);
     }
 }

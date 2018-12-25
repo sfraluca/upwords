@@ -30,6 +30,7 @@ class HomeController extends Controller
      //index the vanacies to frontpage
     public function index()
     {
+        $this->authorize('create-car');
         $skills = DB::table('skills')
         ->leftJoin('jobs', 'skills.id', '=', 'jobs.skill_id')
         ->select('skill')
@@ -49,6 +50,7 @@ class HomeController extends Controller
     //register an user to freelancer
     public function registration()
     {
+        $this->authorize('create-candidate');
         $pas = Profession::orderBy('profession')->pluck('profession','id');
         $skills = Skill::orderBy('skill')->pluck('skill','id');
 
@@ -57,6 +59,7 @@ class HomeController extends Controller
     //register an user to job
     public function registrationJob()
     {
+        $this->authorize('create-vacancy');
         $pas = Profession::orderBy('profession')->pluck('profession','id');
         $skills = Skill::orderBy('skill')->pluck('skill','id');
 
@@ -65,8 +68,10 @@ class HomeController extends Controller
     //save the data for candidate
     public function store(Request $request)
     {
-        $data = $request->only('title', 'slug','employment_type','description','price','name','profession_id','skill_id');
-        $jobs = Job::create($data);
+        $data = $request->only('name','emplyment_type','description','price','slug','profession_id','skill_id');
+        $data['user_id'] = auth()->user()->id;
+
+        $candidates = Candidate::create($data);
 
         return redirect()->route('profile_candidate', $candidates->id);
     }
@@ -74,6 +79,7 @@ class HomeController extends Controller
     //show the profile of candidate
     public function profileCandidate($id)
     {
+        $this->authorize('show-candidate');
         $skills = DB::table('skills')
         ->leftJoin('jobs', 'skills.id', '=', 'jobs.skill_id')
         ->select('skill')
@@ -89,6 +95,7 @@ class HomeController extends Controller
     //edit candidate
     public function editCandidate($id)
     {
+        $this->authorize('update-candidate');
         $pas = Profession::orderBy('profession')->pluck('profession','id');
         $skills = Skill::orderBy('skill')->pluck('skill','id');
         $candidates = Candidate::find($id);
@@ -124,6 +131,7 @@ class HomeController extends Controller
     //delete profile
     public function destroyCandidate($id)
     {
+        $this->authorize('delete-candidate');
         $candidates = Candidate::find($id);
         $candidates->delete();
 
@@ -133,6 +141,8 @@ class HomeController extends Controller
     public function storeJob(Request $request)
     {
         $data = $request->only('title', 'slug','employment_type','description','price','name','profession_id','skill_id');
+        $data['user_id'] = auth()->user()->id;
+
         $jobs = Job::create($data);
 
         return redirect()->route('profile_job', $jobs->id);
@@ -140,6 +150,7 @@ class HomeController extends Controller
     //show vacancy
     public function profileJob($id)
     {
+        $this->authorize('show-vacancy');
         $skills = DB::table('skills')
         ->leftJoin('jobs', 'skills.id', '=', 'jobs.skill_id')
         ->select('skill')
@@ -151,15 +162,16 @@ class HomeController extends Controller
         $jobs = Job::find($id);
         return view('profile.show_job',compact('jobs','skills','pas'));
     }
-   //edit candidate
+   //edit job
    public function editJob($id)
    {
+    $this->authorize('update-vacancy');
        $pas = Profession::orderBy('profession')->pluck('profession','id');
        $skills = Skill::orderBy('skill')->pluck('skill','id');
        $jobs = Job::find($id);
        return view('profile.edit_vacancy',compact('jobs','skills','pas'));
    }
-   //update candidate
+   //update job
    public function updateJob(Request $request, $id)
    {
     $validator = Validator::make($request->all(), [
@@ -191,6 +203,7 @@ class HomeController extends Controller
    //delete profile
    public function destroyJob($id)
    {
+    $this->authorize('delete-vacancy');
        $jobs = Job::find($id);
        $jobs->delete();
 
@@ -199,6 +212,7 @@ class HomeController extends Controller
   //list all jobs
     public function job()
     {
+        $this->authorize('index-vacancy');
         $skills = DB::table('skills')
         ->leftJoin('jobs', 'skills.id', '=', 'jobs.skill_id')
         ->select('skill')
@@ -216,6 +230,7 @@ class HomeController extends Controller
     //list all freelancers
     public function freelancer()
     {
+        $this->authorize('index-candidate');
         $skills = DB::table('skills')
         ->leftJoin('jobs', 'skills.id', '=', 'jobs.skill_id')
         ->select('skill')

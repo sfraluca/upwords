@@ -8,9 +8,15 @@
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
 				          <li class="menu-active"><a href="{{ route('website') }}">Home</a></li>
-					
-				          <li><a href="{{ route('job') }}">job</a></li>
-                          <li><a href="{{ route('freelancer') }}">Freelancer</a></li>
+									@can('create-vacancy') 
+									<li class="menu-active"><a href="{{ route('registration_job') }}">Post a job</a></li>
+									@endcan
+									@can('index-vacancy') 
+				          <li><a href="{{ route('job') }}">jobs</a></li>
+									@endcan
+									@can('index-candidate') 
+                          <li><a href="{{ route('freelancer') }}">Freelancers</a></li>
+													@endcan
 				          <li><a href="{{ route('contact') }}">Contact</a></li>
 
 

@@ -24,9 +24,13 @@
 				<div class="container">
 					<div class="row justify-content-center d-flex">
 						<div class="col-lg-8 post-list">
-							<ul class="cat-list">
+							<ul class="cat-list"> 
+							@can('update-candidate') 
 							<li><a href="{{route('edit_candidate', $candidates->id)}}">Edit profile</a></li>
+							@endcan 
+							@can('delete-candidate')
 								<li><form method="POST" class="delete_form" action ="{{ route('deletecandidate', $candidates->id)}}">
+								 @endcan
 									{{csrf_field()}}
 									<input type="hidden" name="_method" value="DELETE"/>
 									<button type="submit" class="btn btn-gradient-danger btn-icon-text btn-sm">Delete profile</button>

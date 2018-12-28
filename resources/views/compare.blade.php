@@ -103,8 +103,8 @@
 								<div class="details">
 									<div class="title d-flex flex-row justify-content-between">
 										<div class="titles">
-											<a href="#"><h4>{{$job->title}}</h4></a>
-											<h6>{{$job->slug}}</h6>					
+											<a href="#"><h4>{{$jobs->title}}</h4></a>
+											<h6>{{$jobs->slug}}</h6>					
 										</div>
 										<ul class="btns">
 											<li><a href="#"><span class="lnr lnr-heart"></span></a></li>
@@ -114,14 +114,14 @@
 									<p>
 										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
 									</p>
-									<h5>Job Nature: {{$job->employment_type}}</h5>
-									<p class="address"><span class="lnr lnr-map"></span> {{$job->name}}</p>
-									<p class="address"><span class="lnr lnr-database"></span> {{$job->price}}</p></div>
+									<h5>Job Nature: {{$jobs->employment_type}}</h5>
+									<p class="address"><span class="lnr lnr-map"></span> {{$jobs->name}}</p>
+									<p class="address"><span class="lnr lnr-database"></span> {{$jobs->price}}</p></div>
 							</div>	
 							<div class="single-post job-details">
 								<h4 class="single-title">Description</h4>
 								<p>
-								{{$job->description}}</p>
+								{{$jobs->description}}</p>
 								
 							</div>
 							

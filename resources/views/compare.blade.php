@@ -25,7 +25,7 @@
 			<!-- Start post Area -->
 			<section class="post-area section-gap">
 				<div class="container">
-                <h1 class="text-center">- 99,99% -</h1>
+                <h1 class="text-center">- {{$procentaj}}%-</h1>
                 <br>
 					<div class="row justify-content-center d-flex">
 						<div class="col-lg-6 post-list">
@@ -43,10 +43,10 @@
 											
 										</ul>
 										Profession
-										<ul class="tags">@foreach ($skills as $s)
+										<ul class="tags">@foreach ($pas as $p)
 											<li>
 												<a href="#">
-													{{$s->skill}}
+													{{$p->profession}}
 												</a>
 											</li> @endforeach
 											
@@ -91,10 +91,10 @@
 											
 										</ul>
 										Profession
-										<ul class="tags">@foreach ($skills as $s)
+										<ul class="tags">@foreach ($pas as $p)
 											<li>
 												<a href="#">
-													{{$s->skill}}
+													{{$p->profession}}
 												</a>
 											</li> @endforeach
 											

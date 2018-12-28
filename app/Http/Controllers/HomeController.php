@@ -244,6 +244,7 @@ class HomeController extends Controller
     //compare
     public function compare($id)
     {
+       
         $skills = DB::table('skills')
         ->leftJoin('jobs', 'skills.id', '=', 'jobs.skill_id')
         ->select('skill')
@@ -251,10 +252,20 @@ class HomeController extends Controller
         $pas = DB::table('professions')
         ->leftJoin('jobs', 'professions.id', '=', 'jobs.profession_id')
         ->select('profession')
-        ->get();
+        ->get(); 
+
+
+        
+        require('C:\Users/Sferle Raluca/Documents/work/myprojects/upwords/vendor/paralleldots/apis/autoload.php');
+        $sim = similarity($skills, $skills);
+        $responseArray = json_decode($sim, true);
+        $responseResultArray = $responseArray["actual_score"];
+        $procentaj = $responseResultArray*100;
+
+
         $candidates = Candidate::find($id);
         $jobs = Job::find($id);
-        return view('compare',compact('candidates','jobs','skills','pas'));
+        return view('compare',compact('candidates','jobs','skills','pas','procentaj'));
     }
    
 

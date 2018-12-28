@@ -25,7 +25,7 @@
 			<!-- Start post Area -->
 			<section class="post-area section-gap">
 				<div class="container">
-                <h1 class="text-center">- 99,99% -</h1>
+                <h1 class="text-center">- {{$procentaj}}%-</h1>
                 <br>
 					<div class="row justify-content-center d-flex">
 						<div class="col-lg-6 post-list">
@@ -43,10 +43,10 @@
 											
 										</ul>
 										Profession
-										<ul class="tags">@foreach ($skills as $s)
+										<ul class="tags">@foreach ($pas as $p)
 											<li>
 												<a href="#">
-													{{$s->skill}}
+													{{$p->profession}}
 												</a>
 											</li> @endforeach
 											
@@ -91,10 +91,10 @@
 											
 										</ul>
 										Profession
-										<ul class="tags">@foreach ($skills as $s)
+										<ul class="tags">@foreach ($pas as $p)
 											<li>
 												<a href="#">
-													{{$s->skill}}
+													{{$p->profession}}
 												</a>
 											</li> @endforeach
 											
@@ -103,8 +103,8 @@
 								<div class="details">
 									<div class="title d-flex flex-row justify-content-between">
 										<div class="titles">
-											<a href="#"><h4>{{$job->title}}</h4></a>
-											<h6>{{$job->slug}}</h6>					
+											<a href="#"><h4>{{$jobs->title}}</h4></a>
+											<h6>{{$jobs->slug}}</h6>					
 										</div>
 										<ul class="btns">
 											<li><a href="#"><span class="lnr lnr-heart"></span></a></li>
@@ -114,14 +114,14 @@
 									<p>
 										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
 									</p>
-									<h5>Job Nature: {{$job->employment_type}}</h5>
-									<p class="address"><span class="lnr lnr-map"></span> {{$job->name}}</p>
-									<p class="address"><span class="lnr lnr-database"></span> {{$job->price}}</p></div>
+									<h5>Job Nature: {{$jobs->employment_type}}</h5>
+									<p class="address"><span class="lnr lnr-map"></span> {{$jobs->name}}</p>
+									<p class="address"><span class="lnr lnr-database"></span> {{$jobs->price}}</p></div>
 							</div>	
 							<div class="single-post job-details">
 								<h4 class="single-title">Description</h4>
 								<p>
-								{{$job->description}}</p>
+								{{$jobs->description}}</p>
 								
 							</div>
 							

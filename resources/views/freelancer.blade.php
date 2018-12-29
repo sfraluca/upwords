@@ -55,7 +55,7 @@
 												<h6>{{$candidate->slug}}</h6>					
 											</div>
 											<ul class="btns">
-												<li><a href="#"><span class="lnr lnr-heart"></span></a></li>
+												<li><a href="{{route('contact')}}">Contact</a></li>
 												<li><a href="{{route('compare', $candidate->id)}}">See</a></li>
 											</ul>
 										</div>

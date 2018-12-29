@@ -76,7 +76,8 @@
 									<p class="address"><span class="lnr lnr-database"></span> {{$job->price}}</p>
 								</div>
 							</div>
-									@endforeach	<div class="text-center" style="float: right;">{{ $jobs->links() }}</div>
+									@endforeach	
+									<div class="text-center" style="float: right;">{{ $jobs->links('vendor.pagination.bootstrap-4') }}</div>
 	
 																		
 						</div>

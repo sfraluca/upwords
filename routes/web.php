@@ -180,6 +180,10 @@ Route::delete('/profile/vacancy/destroy/{id}', 'HomeController@destroyJob')->nam
 
 //Freelancer
 Route::get('/freelancer', 'HomeController@freelancer')->name('freelancer');
+Route::get('/freelancer/recent/week', 'HomeController@weekFr')->name('freelancer_week');
+Route::get('/freelancer/recent/day', 'HomeController@dayFr')->name('freelancer_day');
+Route::get('/freelancer/recent/month', 'HomeController@monthFr')->name('freelancer_month');
+
 Route::get('/registration/candidate', 'HomeController@registration')->name('registration_candidate');
 Route::post('/registration', 'HomeController@store')->name('store_freelancer');
 Route::get('/profile/candidate/show/{id}', 'HomeController@profileCandidate')->name('profile_candidate');

@@ -7,6 +7,9 @@
 				      </div>
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
+								<li><a  href="{{ url('/') }}">
+                                    Website
+                                </a>
 				          <li class="menu-active"><a href="{{ route('home') }}">Home</a></li>
 									@can('create-vacancy') 
 									<li class="menu-active"><a href="{{ route('registration_job') }}">Post a job</a></li>

@@ -158,6 +158,8 @@ Route::delete('/candidate/destroy/{id}', 'CandidateController@destroy')
 Route::get('/','WebController@web')->name('website');
 Route::get('/about','WebController@about')->name('about');
 Route::get('/contact','WebController@contact')->name('contact');
+Route::post('/contact','WebController@storeContact')->name('store_contact');
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile/choose', 'HomeController@choose')->name('profile_choose');
 Route::get('/compare/{id}', 'HomeController@compare')->name('compare');
@@ -165,6 +167,10 @@ Route::get('/compare/{id}', 'HomeController@compare')->name('compare');
 
 //JOB
 Route::get('/job', 'HomeController@job')->name('job');
+Route::get('/job/recent/week', 'HomeController@week')->name('week');
+Route::get('/job/recent/day', 'HomeController@day')->name('day');
+Route::get('/job/recent/month', 'HomeController@month')->name('month');
+
 Route::get('/registration/job', 'HomeController@registrationJob')->name('registration_job');
 Route::get('/profile/job/show/{id}', 'HomeController@profileJob')->name('profile_job');
 Route::post('/registration/job', 'HomeController@storeJob')->name('store_vacancy');

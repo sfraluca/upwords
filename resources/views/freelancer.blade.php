@@ -7,29 +7,64 @@
 
 
 @include('menu')
+<!-- start banner Area -->
 <section class="banner-area relative" id="home">	
 				<div class="overlay overlay-bg"></div>
 				<div class="container">
-					<div class="row d-flex align-items-center justify-content-center">
-						<div class="about-content col-lg-12">
+					<div class="row fullscreen d-flex align-items-center justify-content-center">
+						<div class="banner-content col-lg-12">
+                        <br>
+                        
 							<h1 class="text-white">
-								Freelancer				
+								Search for a job				
 							</h1>	
-							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="category.html"> Job category</a></p>
-						</div>											
-					</div>
+							
+							<p class="text-white"> <span>Search by tags:</span> Tecnology, Business, Consulting, IT Company, Design, Development and many other profession area. Navigate and see what we offer.</p>
+						
+						<form action="search.html" class="serach-form-area">
+								<div class="row justify-content-center form-wrap">
+									<div class="col-lg-4 form-cols">
+										<input type="text" class="form-control" name="search" placeholder="what are you looging for?">
+									</div>
+									<div class="col-lg-3 form-cols">
+										<div class="default-select" id="default-selects"">
+											<select>
+												<option value="1">Select area</option>
+												<option value="2">Dhaka</option>
+												<option value="3">Rajshahi</option>
+												<option value="4">Barishal</option>
+												<option value="5">Noakhali</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-lg-3 form-cols">
+										<div class="default-select" id="default-selects2">
+											<select>
+												<option value="1">All Category</option>
+												<option value="2">Medical</option>
+												<option value="3">Technology</option>
+												<option value="4">Goverment</option>
+												<option value="5">Development</option>
+											</select>
+										</div>										
+									</div>
+									<div class="col-lg-2 form-cols">
+									    <button type="button" class="btn btn-info">
+									      <span class="lnr lnr-magnifier"></span> Search
+									    </button>
+									</div>								
+								</div>
+							</form>										
+					</div>		</div>
 				</div>
 			</section>
-			<!-- End banner Area -->	
 			
 			<!-- Start post Area -->
 			<section class="post-area section-gap">
 				<div class="container">
 					<div class="row justify-content-center d-flex">
 						<div class="col-lg-8 post-list">
-							<ul class="cat-list">
-								<li><a href="#">Recent</a></li>
-							</ul>
+							
 
 
 							@foreach ($candidates as $candidate)

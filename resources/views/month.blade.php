@@ -34,7 +34,7 @@
 					
 						<div class="col-lg-8 post-list">
 						<ul class="cat-list">
-								<li><a href="{{route('month')}}">31 days</a></li>
+						<li><a href="{{route('month')}}">31 days</a></li>
 								<li><a href="{{route('week')}}">7 days</a></li>
 								<li><a href="{{route('day')}}">1 days</a></li>
 								<li><a href="{{route('job')}}">All jobs</a></li>
@@ -76,9 +76,7 @@
 									<p class="address"><span class="lnr lnr-database"></span> {{$job->price}}</p>
 								</div>
 							</div>
-									@endforeach	<div class="text-center" style="float: right;">{{ $jobs->links() }}</div>
-	
-																		
+									@endforeach			<div class="text-center">{{$jobs->links()}}</div>								
 						</div>
 						
 						

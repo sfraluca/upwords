@@ -14,43 +14,10 @@
                         <br>
                         
 							<h1 class="text-white">
-								<span>1500+</span> Freelancers				
+								<span>{{$freelancers}}+</span> Freelancers				
 							</h1>	
-							<form action="search.html" class="serach-form-area">
-								<div class="row justify-content-center form-wrap">
-									<div class="col-lg-4 form-cols">
-										<input type="text" class="form-control" name="search" placeholder="what are you looging for?">
-									</div>
-									<div class="col-lg-3 form-cols">
-										<div class="default-select" id="default-selects"">
-											<select>
-												<option value="1">Select area</option>
-												<option value="2">Dhaka</option>
-												<option value="3">Rajshahi</option>
-												<option value="4">Barishal</option>
-												<option value="5">Noakhali</option>
-											</select>
-										</div>
-									</div>
-									<div class="col-lg-3 form-cols">
-										<div class="default-select" id="default-selects2">
-											<select>
-												<option value="1">All Category</option>
-												<option value="2">Medical</option>
-												<option value="3">Technology</option>
-												<option value="4">Goverment</option>
-												<option value="5">Development</option>
-											</select>
-										</div>										
-									</div>
-									<div class="col-lg-2 form-cols">
-									    <button type="button" class="btn btn-info">
-									      <span class="lnr lnr-magnifier"></span> Search
-									    </button>
-									</div>								
-								</div>
-							</form>	
-							<p class="text-white"> <span>Search by tags:</span> Tecnology, Business, Consulting, IT Company, Design, Development</p>
+							
+							<p class="text-white"> <span>Search by tags:</span> Tecnology, Business, Consulting, IT Company, Design, Development and many other profession area. Navigate and see what we offer.</p>
 						</div>											
 					</div>
 				</div>
@@ -65,31 +32,31 @@
 							<div class="single-feature">
 								<h4>Searching</h4>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing.
+									You can find many types of freelancers and jobs. With search bar you can fnd them very quickly.
 								</p>
 							</div>
 						</div>
 						<div class="col-lg-3 col-md-6">
 							<div class="single-feature">
-								<h4>Applying</h4>
+								<h4>Profession</h4>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing.
+									There are many profession area where you can choose from as you want.
 								</p>
 							</div>
 						</div>
 						<div class="col-lg-3 col-md-6">
 							<div class="single-feature">
-								<h4>Security</h4>
+								<h4>Skills</h4>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing.
+									You know a freelancer or a job is good by his skills.
 								</p>
 							</div>
 						</div>
 						<div class="col-lg-3 col-md-6">
 							<div class="single-feature">
-								<h4>Notifications</h4>
+								<h4>Contact</h4>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing.
+									After you choose a freelancer or a job you can contact them.
 								</p>
 							</div>
 						</div>																		
@@ -104,84 +71,22 @@
                 <h1>Best freelancers</h1>
 					<div class="row align-items-center">
 						<div class="active-popular-post-carusel">
+						@foreach ($candidates as $candidate)
 							<div class="single-popular-post d-flex flex-row">
-								<div class="thumb">
-									<img class="img-fluid" src="img/p1.png" alt="">
-									<a class="btns text-uppercase" href="#">view freelancer</a>
-								</div>
+								
 								<div class="details">
-									<a href="#"><h4>Creative Designer</h4></a>
-									<h6>Los Angeles</h6>
+									<a href="#"><h4>{{$candidate->name}}</h4></a>
+									<h6>{{$candidate->slug}}</h6>
 									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.
-									</p>
+									Employment type: {{$candidate->emplyment_type}}</p>
+									<p>
+									Price: {{$candidate->price}}$/h</p>
+								
+									<a class=" text-uppercase text-right" href="{{route('login')}}">View freelancer</a>
 								</div>
 							</div>	
-							<div class="single-popular-post d-flex flex-row">
-								<div class="thumb">
-									<img src="img/p2.png" alt="">
-									<a class="btns text-uppercase" href="#">view freelancer</a>
-								</div>
-								<div class="details">
-									<a href="#"><h4>Creative Designer</h4></a>
-									<h6>Los Angeles</h6>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.
-									</p>
-								</div>
-							</div>
-							<div class="single-popular-post d-flex flex-row">
-								<div class="thumb">
-									<img src="img/p1.png" alt="">
-									<a class="btns text-uppercase" href="#">view job post</a>
-								</div>
-								<div class="details">
-									<a href="#"><h4>Creative Designer</h4></a>
-									<h6>Los Angeles</h6>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.
-									</p>
-								</div>
-							</div>	
-							<div class="single-popular-post d-flex flex-row">
-								<div class="thumb">
-									<img src="img/p2.png" alt="">
-									<a class="btns text-uppercase" href="#">view job post</a>
-								</div>
-								<div class="details">
-									<a href="#"><h4>Creative Designer</h4></a>
-									<h6>Los Angeles</h6>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.
-									</p>
-								</div>
-							</div>	
-							<div class="single-popular-post d-flex flex-row">
-								<div class="thumb">
-									<img src="img/p1.png" alt="">
-									<a class="btns text-uppercase" href="#">view job post</a>
-								</div>
-								<div class="details">
-									<a href="#"><h4>Creative Designer</h4></a>
-									<h6>Los Angeles</h6>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.
-									</p>
-								</div>
-							</div>	
-							<div class="single-popular-post d-flex flex-row">
-								<div class="thumb">
-									<img src="img/p2.png" alt="">
-									<a class="btns text-uppercase" href="#">view job post</a>
-								</div>
-								<div class="details">
-									<a href="#"><h4>Creative Designer</h4></a>
-									<h6>Los Angeles</h6>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.
-									</p>
-								</div>
-							</div>																																							
+							@endforeach
+																																												
 						</div>
 					</div>
 				</div>	
@@ -195,57 +100,57 @@
 						<div class="menu-content pb-60 col-lg-10">
 							<div class="title text-center">
 								<h1 class="mb-10">Profession Area</h1>
-								<p>Who are in extremely love with eco friendly system.</p>
+								<p>By your profession is smarter and faster to find the best candidate.</p>
 							</div>
 						</div>
 					</div>						
 					<div class="row">
 						<div class="col-lg-2 col-md-4 col-sm-6">
 							<div class="single-fcat">
-								<a href="category.html">
+								
 									<img src="img/o1.png" alt="">
-								</a>
-								<p>Accounting</p>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-4 col-sm-6">
-							<div class="single-fcat">
-								<a href="category.html">
-									<img src="img/o2.png" alt="">
-								</a>
+								
 								<p>Development</p>
 							</div>
 						</div>
 						<div class="col-lg-2 col-md-4 col-sm-6">
 							<div class="single-fcat">
-								<a href="category.html">
-									<img src="img/o3.png" alt="">
-								</a>
-								<p>Technology</p>
+								
+									<img src="img/o2.png" alt="">
+								
+								<p>Writing</p>
 							</div>
 						</div>
 						<div class="col-lg-2 col-md-4 col-sm-6">
 							<div class="single-fcat">
-								<a href="category.html">
+								
+									<img src="img/o3.png" alt="">
+								
+								<p>Data science, IT</p>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-4 col-sm-6">
+							<div class="single-fcat">
+								
 									<img src="img/o4.png" alt="">
-								</a>
+								
 								<p>Media & News</p>
 							</div>
 						</div>
 						<div class="col-lg-2 col-md-4 col-sm-6">
 							<div class="single-fcat">
-								<a href="category.html">
+								
 									<img src="img/o5.png" alt="">
-								</a>
-								<p>Medical</p>
+								
+								<p>Legal</p>
 							</div>
 						</div>
 						<div class="col-lg-2 col-md-4 col-sm-6">
 							<div class="single-fcat">
-								<a href="category.html">
+								
 									<img src="img/o6.png" alt="">
-								</a>
-								<p>Goverment</p>
+								
+								<p>Design</p>
 							</div>			
 						</div>																											
 					</div>
@@ -261,46 +166,42 @@
 							<ul class="cat-list">
 								<li><a href="#">Recent</a></li>
 							</ul>
+							@foreach ($jobs as $job)
 							<div class="single-post d-flex flex-row">
 								<div class="thumb">
 									<img src="img/post.png" alt="">
-									<ul class="tags">
+									<ul class="tags">@foreach ($skills as $s)
 										<li>
-											<a href="#">Art</a>
-										</li>
-										<li>
-											<a href="#">Media</a>
-										</li>
-										<li>
-											<a href="#">Design</a>					
-										</li>
+											<a href="#">
+                                                {{$s->skill}}
+                                               </a>
+										</li> @endforeach
 									</ul>
 								</div>
 								<div class="details">
 									<div class="title d-flex flex-row justify-content-between">
 										<div class="titles">
-											<a href="single.html"><h4>Creative Art Designer</h4></a>
-											<h6>Premium Labels Limited</h6>					
+											<a href="single.html"><h4>{{$job->title}}</h4></a>
+											<h6>{{$job->slug}}</h6>					
 										</div>
 										<ul class="btns">
-											<li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-											<li><a href="#">Apply</a></li>
+											<li><a href="{{route('login')}}">See</a></li>
 										</ul>
 									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-									</p>
-									<h5>Job Nature: Full time</h5>
-									<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-									<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
+									<h5>Job Nature: {{$job->employment_type}}</h5>
+									<h5>Profession: @foreach ($pas as $p)
+                                                {{$p->profession}}
+												@endforeach</h5>
+									<p class="address"><span class="lnr lnr-map"></span>User Name: {{$job->name}}</p>
+									<p class="address"><span class="lnr lnr-database"></span>Price: {{$job->price}}$/h</p>
 								</div>
 							</div>
-																				
+							@endforeach													
 							
-							<a class="text-uppercase loadmore-btn mx-auto d-block" href="category.html">View more freelancers</a>
-                            <p>Register/login first</p>
+							<a class="text-uppercase loadmore-btn mx-auto d-block" href="{{route('login')}}">View more freelancers</a>
+                           
 						</div>
-						
+						 <p><span>If you are for the first time here, you have to register to see all candidates available.</span></p>
 					</div>
 				</div>	
 			</section>
@@ -314,9 +215,9 @@
 						<div class="menu-content col-lg-9">
 							<div class="title text-center">
 								<h1 class="mb-10 text-white">Join us today without any hesitation</h1>
-								<p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-								<a class="primary-btn" href="#">Search for job</a>
-								<a class="primary-btn" href="#">Search for freelancer</a>
+								<p class="text-white">If you want to post a job to find a freelancer you have to login as a job, but if you are a freelancer and you want to find a job you have to lgin as freelancer. These have different roles and you have to pay attention to what you want.</p>
+								<a class="primary-btn" href="{{route('register')}}">Search for job</a>
+								<a class="primary-btn" href="{{route('register')}}">Search for freelancer</a>
 							</div>
 						</div>
 					</div>	

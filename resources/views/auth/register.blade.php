@@ -37,7 +37,7 @@
                        
 					</div>
 					<div class="form-group">
-                            <label for="exampleSelectGender">User type</label>
+                            <label for="exampleSelectGender" class='text-white'>User type</label>
                                 <select class="form-control" id="exampleSelectGender" name="role" value="{{ old('role') }}">
                                 @foreach($roles as $id=>$role)
                                 <option value="{{$id}}">{{$role}}</option>

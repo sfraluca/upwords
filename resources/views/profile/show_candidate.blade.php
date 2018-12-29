@@ -11,9 +11,9 @@
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
-								Freelancer				
+								Your CV				
 							</h1>	
-							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="category.html"> Job category</a></p>
+							<p class="text-white link-nav"><a href="{{route('home')}}">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="{{route('job')}}"> Go to Jobs</a></p>
 						</div>											
 					</div>
 				</div>
@@ -24,24 +24,28 @@
 				<div class="container">
 					<div class="row justify-content-center d-flex">
 						<div class="col-lg-8 post-list">
-							<ul class="cat-list"> 
-							@can('update-candidate') 
-							<li><a href="{{route('edit_candidate', $candidates->id)}}">Edit profile</a></li>
-							@endcan 
+							<ul> 
+							
 							@can('delete-candidate')
 								<li><form method="POST" class="delete_form" action ="{{ route('deletecandidate', $candidates->id)}}">
-								 @endcan
+								 
 									{{csrf_field()}}
 									<input type="hidden" name="_method" value="DELETE"/>
-									<button type="submit" class="btn btn-gradient-danger btn-icon-text btn-sm">Delete profile</button>
-								</form></li>
+									<button type="submit" style="float: right;" class="genric-btn danger">Delete profile</button>
+								</form></li>@endcan
+								@can('update-candidate') 
+								<li><a class="genric-btn primary" style="float: right;" href="{{route('edit_candidate', $candidates->id)}}">Edit profile</a></li>
+								@endcan 
 							</ul>
 
-
+							<br><br><br>
                                            
-							<div class="single-post d-flex flex-row">
-									<div class="thumb">
-										<img src="img/post.png" alt="">
+							<div class="col-lg-13 post-list">
+
+                            <div class="single-post d-flex flex-row">
+                                <div class="thumb">
+                                    <img src="img/post.png" alt=""> 
+									Skill
 										<ul class="tags">@foreach ($skills as $s)
 											<li>
 												<a href="#">
@@ -50,6 +54,15 @@
 											</li> @endforeach
 											
 										</ul>
+										Profession
+                                        <ul class="tags">@foreach ($pas as $p)
+                                            <li>
+                                                <a href="#">
+                                                    {{$p->profession}}
+                                                </a>
+                                            </li> @endforeach
+                                            
+                                        </ul>
 									</div>
 
 									<div class="details">
@@ -60,23 +73,23 @@
 											</div>
 											
 										</div>
-										
+										<p>
+                                        _____________________________________________________________
+                                    </p>
 										<h5>Job Nature: {{$candidates->emplyment_type}}</h5>
-										<h5>@foreach ($pas as $p)
-													{{$p->profession}}
-													@endforeach</h5>
+										
 										<p class="address"><span class="lnr lnr-database"></span> {{$candidates->price}}</p>
 									</div>
-							</div>
-																
-						</div>
-						
-						
 
 									
-
-					</div>
-				</div>	
+							
+									</div>
+				</div>	<div class="single-post job-details">
+                                <h4 class="single-title">Description</h4>
+                                <p>
+                                {{$candidates->description}}</p>
+                                
+                                </div>	
 			</section>
 			<!-- End calto-action Area -->	
             

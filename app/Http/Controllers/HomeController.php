@@ -9,6 +9,7 @@ use App\Profession;
 use DB;
 use App\Candidate;
 use App\Job;
+use Carbon;
 class HomeController extends Controller
 {
     /**
@@ -38,8 +39,12 @@ class HomeController extends Controller
         ->leftJoin('jobs', 'professions.id', '=', 'jobs.profession_id')
         ->select('profession')
         ->get();
-        $jobs = Job::all();
-        return view('home',compact('jobs','skills','pas'));
+        $profession =Profession::all();
+        $jobs_recent = DB::table('jobs')->select("*")->whereBetween('created_at', [
+            Carbon\Carbon::now()->startOfWeek(),
+            Carbon\Carbon::now()->endOfWeek(),
+        ])->paginate(6);
+        return view('home',compact('jobs','skills','pas','profession','jobs_recent'));
     }
     //choose 
     public function choose()
@@ -221,11 +226,75 @@ class HomeController extends Controller
         ->select('profession')
         ->get();
 
-        $jobs = Job::all();
+        $jobs = Job::paginate(2);
 
 
         return view('job',compact('jobs','skills','pas'));
     }
+    //list all jobs
+    public function week()
+    {
+        $this->authorize('index-vacancy');
+        $skills = DB::table('skills')
+        ->leftJoin('jobs', 'skills.id', '=', 'jobs.skill_id')
+        ->select('skill')
+        ->get();
+        $pas = DB::table('professions')
+        ->leftJoin('jobs', 'professions.id', '=', 'jobs.profession_id')
+        ->select('profession')
+        ->get();
+
+        $jobs = DB::table('jobs')->select("*")->whereBetween('created_at', [
+            Carbon\Carbon::now()->startOfWeek(),
+            Carbon\Carbon::now()->endOfWeek(),
+        ])->paginate(6);
+
+
+        return view('week',compact('jobs','skills','pas'));
+    }
+    //list all jobs
+    public function month()
+    {
+        $this->authorize('index-vacancy');
+        $skills = DB::table('skills')
+        ->leftJoin('jobs', 'skills.id', '=', 'jobs.skill_id')
+        ->select('skill')
+        ->get();
+        $pas = DB::table('professions')
+        ->leftJoin('jobs', 'professions.id', '=', 'jobs.profession_id')
+        ->select('profession')
+        ->get();
+
+        $jobs = DB::table('jobs')->select("*")->whereBetween('created_at', [
+            Carbon\Carbon::now()->startOfMonth(),
+            Carbon\Carbon::now()->endOfMonth(),
+        ])->paginate(6);
+
+
+        return view('month',compact('jobs','skills','pas'));
+    }
+    //list all jobs
+    public function day()
+    {
+        $this->authorize('index-vacancy');
+        $skills = DB::table('skills')
+        ->leftJoin('jobs', 'skills.id', '=', 'jobs.skill_id')
+        ->select('skill')
+        ->get();
+        $pas = DB::table('professions')
+        ->leftJoin('jobs', 'professions.id', '=', 'jobs.profession_id')
+        ->select('profession')
+        ->get();
+
+        $jobs = DB::table('jobs')->select("*")->whereBetween('created_at', [
+            Carbon\Carbon::now()->startOfDay(),
+            Carbon\Carbon::now()->endOf(),
+        ])->paginate(6);
+
+
+        return view('day',compact('jobs','skills','pas'));
+    }
+    
     //list all freelancers
     public function freelancer()
     {
@@ -266,6 +335,7 @@ class HomeController extends Controller
         $candidates = Candidate::find($id);
         $jobs = Job::find($id);
         return view('compare',compact('candidates','jobs','skills','pas','procentaj'));
+
     }
    
 

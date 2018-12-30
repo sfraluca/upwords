@@ -11,6 +11,7 @@ class RegisterJob
     {
         $job = Job::create([
             'title' => $params['title'],
+            'contact' => $params['contact'],
             'slug' => $params['slug'],
             'employment_type' => $params['employment_type'],
             'description' => $params['description'],

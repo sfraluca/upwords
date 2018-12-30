@@ -61,7 +61,7 @@
 											<h6>{{$job->slug}}</h6>					
 										</div>
 										<ul class="btns">
-											<li><a href="{{route('contact')}}"><span class="lnr lnr-heart"></span></a></li>
+											<li><a href="{{route('contact_vacancy', $job->id)}}">Contact</a></li>
 											<li><a href="{{route('compare', $job->id)}}">See</a></li>
 										</ul>
 									</div>

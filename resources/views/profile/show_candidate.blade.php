@@ -77,7 +77,7 @@
                                         _____________________________________________________________
                                     </p>
 										<h5>Job Nature: {{$candidates->emplyment_type}}</h5>
-										
+										<h5>Contact: {{$candidates->contact}}</h5>
 										<p class="address"><span class="lnr lnr-database"></span> {{$candidates->price}}</p>
 									</div>
 

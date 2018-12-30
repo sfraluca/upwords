@@ -53,6 +53,13 @@
                                                     <strong>{{ $errors->first('emplyment_type') }}</strong>
                                                 </span>
                                             @endif  
+											<label for="Contact">Contact email</label> 
+                                            <input  value="{{ $candidates->contact }}" name="contact" placeholder="Enter contact" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter contact'" class="common-input mb-20 form-control" required="" type="text">
+									@if ($errors->has('contact'))
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $errors->first('contact') }}</strong>
+										</span>
+									@endif    
 											<label for="Description">Description</label>
 											<textarea  class="common-textarea mt-10 form-control" name="description" 
 												placeholder="Description" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter description'" 

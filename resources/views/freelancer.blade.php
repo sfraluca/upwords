@@ -68,6 +68,7 @@
 										</div>
 										
 										<h5>Job Nature: {{$candidate->emplyment_type}}</h5>
+										<h5>Contact: {{$candidate->contact}}</h5>
 										<h5>@foreach ($pas as $p)
 													{{$p->profession}}
 													@endforeach</h5>

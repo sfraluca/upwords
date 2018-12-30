@@ -83,6 +83,13 @@
                                                 </span>
                                             @endif    
                                         </div>
+                                        <label for="Contact">Contact email</label> 
+                                            <input  value="{{ $jobs->contact }}" name="contact" placeholder="Enter contact" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter contact'" class="common-input mb-20 form-control" required="" type="text">
+                                            @if ($errors->has('contact'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('contact') }}</strong>
+                                                </span>
+                                            @endif    
                                         <div class="form-group">
                                             <label for="inputDesc">Description</label>
                                             <input value="{{ $jobs->description }}" id="inputDesc" type="text" name="description" data-parsley-trigger="change" required="" placeholder="Enter user name" autocomplete="off" class="form-control">

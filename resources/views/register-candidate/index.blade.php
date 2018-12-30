@@ -59,6 +59,7 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Name</th>
+                                                <th>Contact</th>
                                                 <th>Slug</th>
                                                 <th>Employment</th>
                                                 <th>Description</th>
@@ -75,6 +76,7 @@
                                             <tr>
                                                 <td>{{$candidate->id}}</td>
                                                 <td>{{$candidate->name}}</td>
+                                                <td>{{$candidate->contact}}</td>
                                                 <td>{{$candidate->slug}}</td>
                                                 <td>{{$candidate->emplyment_type}}</td>
                                                 <td>{{$candidate->description}}</td>
@@ -113,6 +115,7 @@
                                             <tr>
                                             <th>#</th>
                                                 <th>Name</th>
+                                                <th>Contact</th>
                                                 <th>Slug</th>
                                                 <th>Employment</th>
                                                 <th>Description</th>

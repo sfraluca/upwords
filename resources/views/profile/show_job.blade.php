@@ -75,8 +75,9 @@
                                         _____________________________________________________________
                                     </p>
                                     <h5>Job Nature: {{$jobs->employment_type}}</h5>
-                                    <p class="address"><span class="lnr lnr-map"></span> {{$jobs->name}}</p>
-                                    <p class="address"><span class="lnr lnr-database"></span> {{$jobs->price}}</p></div>
+                                    <p class="address"><span class="lnr lnr-map"></span>Name {{$jobs->name}}</p>
+                                    <p class="address"><span class="lnr lnr-map"></span>Contact: {{$jobs->contact}}</p>
+                                    <p class="address"><span class="lnr lnr-database"></span>Price {{$jobs->price}}</p></div>
                             </div>	
                             <div class="single-post job-details">
                                 <h4 class="single-title">Description</h4>

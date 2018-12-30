@@ -47,10 +47,17 @@
                                                 </span>
                                             @endif    
 											<label for="Name">Name</label> 
-                                            <input  value="{{ $jobs->name }}" name="name" placeholder="Enter name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter name'" class="common-input mb-20 form-control" required="" type="text">
+                                            <input  value="{{ $jobs->name }}" name="name" placeholder="Enter name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter name'" class="common-input mb-20 form-control" required="" type="email">
 									@if ($errors->has('name'))
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $errors->first('name') }}</strong>
+										</span>
+									@endif    
+									<label for="Contact">Contact email</label> 
+                                            <input  value="{{ $jobs->contact }}" name="contact" placeholder="Enter contact" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter contact'" class="common-input mb-20 form-control" required="" type="text">
+									@if ($errors->has('contact'))
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $errors->first('contact') }}</strong>
 										</span>
 									@endif    
 									<label for="Employment">Employment type</label> 

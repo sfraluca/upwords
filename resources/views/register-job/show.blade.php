@@ -60,6 +60,7 @@
                                             <tr>
                                             <th>#</th>
                                             <th>Title</th>
+                                            <th>Contact</th>
                                                 <th>Slug</th>
                                                 <th>Employment_type</th>
                                                 <th>Skill</th>
@@ -76,6 +77,7 @@
                                             <tr>
                                             <td>{{$jobs->id}}</td>
                                                 <td>{{$jobs->title}}</td>
+                                                <td>{{$job->contact}}</td>
                                                 <td>{{$jobs->slug}}</td>
                                                 <td>{{$jobs->employment_type}}</td>
                                                 <td>@foreach ($skills as $s)
@@ -114,6 +116,7 @@
                                             <tr>
                                             <th>#</th>
                                             <th>Title</th>
+                                            <th>Contact</th>
                                                 <th>Slug</th>
                                                 <th>Employment_type</th>
                                                 <th>Skill</th>

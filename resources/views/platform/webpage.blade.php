@@ -193,6 +193,7 @@
                                                 {{$p->profession}}
 												@endforeach</h5>
 									<p class="address"><span class="lnr lnr-map"></span>User Name: {{$job->name}}</p>
+									<p class="address"><span class="lnr lnr-map"></span>Contact: {{$job->contact}}</p>
 									<p class="address"><span class="lnr lnr-database"></span>Price: {{$job->price}}$/h</p>
 								</div>
 							</div>

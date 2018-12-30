@@ -59,6 +59,7 @@
                                         <thead>
                                             <tr>  <th>#</th>
                                             <th>Name</th>
+                                            <th>Contact</th>
                                                 <th>Slug</th>
                                                 <th>Employment</th>
                                                 <th>Description</th>
@@ -74,6 +75,7 @@
                                             <tr>
                                             <td>{{$candidates->id}}</td>
                                                 <td>{{$candidates->name}}</td>
+                                                <td>{{$candidate->contact}}</td>
                                                 <td>{{$candidates->slug}}</td>
                                                 <td>{{$candidates->emplyment_type}}</td>
                                                 <td>{{$candidates->description}}</td>
@@ -110,6 +112,7 @@
                                         <tfoot>
                                             <tr>  <th>#</th>
                                             <th>Name</th>
+                                            <th>Contact</th>
                                                 <th>Slug</th>
                                                 <th>Employment</th>
                                                 <th>Description</th>

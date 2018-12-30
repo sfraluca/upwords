@@ -45,21 +45,21 @@
                                 <div class="thumb">
                                     <img src="img/post.png" alt="">
                                     Skill
-                                    <ul class="tags">@foreach ($skills as $s)
+                                    <ul class="tags">
                                             <li>
                                                 <a href="#">
-                                                    {{$s->skill}}
+                                                    {{$sjobs->skill}}
                                                 </a>
-                                            </li> @endforeach
+                                            </li>
                                             
                                         </ul>
                                         Profession
-                                        <ul class="tags">@foreach ($pas as $p)
+                                        <ul class="tags">
                                             <li>
                                                 <a href="#">
-                                                    {{$p->profession}}
+                                                    {{$jobs->profession}}
                                                 </a>
-                                            </li> @endforeach
+                                            </li> 
                                             
                                         </ul>
                                 </div>
@@ -75,8 +75,9 @@
                                         _____________________________________________________________
                                     </p>
                                     <h5>Job Nature: {{$jobs->employment_type}}</h5>
-                                    <p class="address"><span class="lnr lnr-map"></span> {{$jobs->name}}</p>
-                                    <p class="address"><span class="lnr lnr-database"></span> {{$jobs->price}}</p></div>
+                                    <p class="address"><span class="lnr lnr-map"></span>Name {{$jobs->name}}</p>
+                                    <p class="address"><span class="lnr lnr-map"></span>Contact: {{$jobs->contact}}</p>
+                                    <p class="address"><span class="lnr lnr-database"></span>Price {{$jobs->price}}</p></div>
                             </div>	
                             <div class="single-post job-details">
                                 <h4 class="single-title">Description</h4>

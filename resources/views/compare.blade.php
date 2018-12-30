@@ -25,7 +25,7 @@
 			<!-- Start post Area -->
 			<section class="post-area section-gap">
 				<div class="container">
-                <h1 class="text-center">- {{procentaj}}%-</h1>
+                <h1 class="text-center">- {{$procentaj}}%-</h1>
                 <br>
 					<div class="row justify-content-center d-flex">
 						<div class="col-lg-6 post-list">
@@ -34,42 +34,42 @@
 										<div class="details col-lg-5">
 											<div class="title d-flex flex-row justify-content-between">
 												<div class="titles">
-													<a href="#"><h4>{{$candidates->name}}</h4></a>
-													<h6>{{$candidates->slug}}</h6>					
+													<a href="#"><h4>{{$cand->name}}</h4></a>
+													<h6>{{$cand->slug}}</h6>					
 												</div>
 												
 											</div>
 											
-											<h5>Job Nature: {{$candidates->emplyment_type}}</h5>
-											
-											<p class="address"><span class="lnr lnr-database"></span> {{$candidates->price}}</p>
+											<h5>Job Nature: {{$cand->emplyment_type}}</h5>
+											<h5>Contact: {{$cand->contact}}</h5>
+											<p class="address"><span class="lnr lnr-database"></span> {{$cand->price}}</p>
 										</div>
 
 										<div class="thumb">
 											<img src="img/post.png" alt="">
 											Skill
-											<ul class="tags">@foreach ($skills as $s)
+											<ul class="tags">
 													<li>
 														<a href="#">
-															{{$s->skill}}
+															{{$cand->skill}}
 														</a>
-													</li> @endforeach
+													</li> 
 													
 												</ul>
 												Profession
-												<ul class="tags">@foreach ($pas as $p)
+												<ul class="tags">
 													<li>
 														<a href="#">
-															{{$p->profession}}
+															{{$cand->profession}}
 														</a>
-													</li> @endforeach
+													</li> 
 													
 												</ul>
 										</div>
 								</div>		
 								
 							<div class="single-post job-details">
-								<h4 class="single-title">Description</h4>	<p>{{$candidates->description}}</p>
+								<h4 class="single-title">Description</h4>	<p>{{$cand->description}}</p>
 							</div>
 							</div>
 								<div class="col-lg-6 post-list">
@@ -79,34 +79,35 @@
 								<div class="details col-lg-5">
 									<div class="title d-flex flex-row justify-content-between">
 										<div class="titles">
-											<a href="#"><h4>{{$jobs->title}}</h4></a>
-											<h6>{{$jobs->slug}}</h6>					
+											<a href="#"><h4>{{$vacancy->title}}</h4></a>
+											<h6>{{$vacancy->slug}}</h6>					
 										</div>
 										
 									</div>
 									
-									<h5>Job Nature: {{$jobs->employment_type}}</h5>
-									<p class="address"><span class="lnr lnr-map"></span> {{$jobs->name}}</p>
-									<p class="address"><span class="lnr lnr-database"></span> {{$jobs->price}}</p>
+									<h5>Job Nature: {{$vacancy->employment_type}}</h5>
+									<p class="address"><span class="lnr lnr-map"></span> {{$vacancy->name}}</p>
+									<p class="address"><span class="lnr lnr-map"></span> {{$vacancy->contact}}</p>
+									<p class="address"><span class="lnr lnr-database"></span> {{$vacancy->price}}</p>
 								</div>	
 								<div class="thumb">
 									<img src="img/post.png" alt="">
 									Skill
-									<ul class="tags">@foreach ($skills as $s)
+									<ul class="tags">
 											<li>
 												<a href="#">
-													{{$s->skill}}
+													{{$vacancy->skill}}
 												</a>
-											</li> @endforeach
+											</li> 
 											
 										</ul>
 										Profession
-										<ul class="tags">@foreach ($pas as $p)
+										<ul class="tags">
 											<li>
 												<a href="#">
-													{{$p->profession}}
+													{{$vacancy->profession}}
 												</a>
-											</li> @endforeach
+											</li>
 											
 										</ul>
 								</div></div>
@@ -114,7 +115,7 @@
 							<div class="single-post job-details">
 								<h4 class="single-title">Description</h4>
 								<p>
-								{{$jobs->description}}</p>
+								{{$vacancy->description}}</p>
 								
 							</div>
 							

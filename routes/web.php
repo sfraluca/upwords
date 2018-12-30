@@ -145,7 +145,7 @@ Route::get('/candidate/show/{id}', 'CandidateController@show')
 ->name('show_candidate');
 
 Route::get('/candidate/edit/{id}', 'CandidateController@edit')
-->name('edit_candidate');
+->name('edit_candidates');
 
 Route::post('/candidate/edit/{id}', 'CandidateController@update')
 ->name('update_candidate');

@@ -54,11 +54,12 @@
                             <h5 class="card-header">All Jobs</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-bordered first">
+                                    <table id="example" class="table table-striped table-bordered" style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
                                                 <th>Title</th>
+                                                <th>Contact</th>
                                                 <th>Slug</th>
                                                 <th>Employment_type</th>
                                                 <th>Skill</th>
@@ -76,14 +77,11 @@
                                             <tr>
                                                 <td>{{$job->id}}</td>
                                                 <td>{{$job->title}}</td>
+                                                <td>{{$job->contact}}</td>
                                                 <td>{{$job->slug}}</td>
                                                 <td>{{$job->employment_type}}</td>
-                                                <td>@foreach ($skills as $s)
-                                                {{$s->skill}}
-                                                @endforeach</td>
-                                                <td>@foreach ($pas as $p)
-                                                {{$p->profession}}
-                                                @endforeach</td>
+                                                <td>{{$job->skill}}</td>
+                                                <td>{{$job->profession}}</td>
                                                 <td>{{$job->description}}</td>
                                                 <td>{{$job->price}}</td>
                                                 <td>{{$job->name}}</td>
@@ -115,6 +113,7 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Title</th>
+                                                <th>Contact</th>
                                                 <th>Slug</th>
                                                 <th>Employment_type</th>
                                                 <th>Skill</th>

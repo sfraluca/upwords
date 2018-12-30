@@ -31,16 +31,11 @@ class CandidateController extends Controller
      */
     public function index()
     {
-        $skills = DB::table('skills')
-        ->leftJoin('jobs', 'skills.id', '=', 'jobs.skill_id')
-        ->select('skill')
+        $candidates = DB::table('candidates')
+        ->join('skills', 'skills.id', '=', 'candidates.skill_id')
+        ->join('professions', 'professions.id', '=', 'candidates.profession_id')
         ->get();
-        $pas = DB::table('professions')
-        ->leftJoin('jobs', 'professions.id', '=', 'jobs.profession_id')
-        ->select('profession')
-        ->get();
-        $candidates = Candidate::all();
-        return view('register-candidate.index',compact('candidates','skills','pas'));
+        return view('register-candidate.index',compact('candidates'));
     }
 
     
@@ -82,16 +77,15 @@ class CandidateController extends Controller
 
     public function show($id)
     {
-        $skills = DB::table('skills')
-        ->leftJoin('jobs', 'skills.id', '=', 'jobs.skill_id')
-        ->select('skill')
-        ->get();
-        $pas = DB::table('professions')
-        ->leftJoin('jobs', 'professions.id', '=', 'jobs.profession_id')
-        ->select('profession')
-        ->get();
-        $candidates = Candidate::find($id);
-        return view('register-candidate.show',compact('candidates','skills','pas'));
+        $candidates =  DB::table('candidates')
+        ->join('skills', 'skills.id', '=', 'candidates.skill_id')
+        ->join('professions', 'professions.id', '=', 'candidates.profession_id')
+        ->select('*')->where('candidates.id','=',$id)->get();
+        foreach($candidates as $candidate)
+        {
+            $data = $candidate;
+        }
+        return view('register-candidate.show',compact('data'));
     }
 
  

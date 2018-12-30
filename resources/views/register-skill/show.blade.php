@@ -55,25 +55,42 @@
                             <h5 class="card-header">Current skill</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-bordered first">
+                                    <table id="example" class="table table-striped table-bordered" style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
                                                 <th>Name</th>
-                                               
+                                                <th>Edit</th>     
+                                               <th>Delete</th>    
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td>{{$skills->id}}</td>
                                                 <td>{{$skills->skill}}</td>
-                                        
+                                                <td>
+                                                    <form action ="{{ route('edit_skill', $skills->id)}}">
+                                                        <input type="hidden"/>
+                                                        <button type="submit" class="btn btn-gradient-dark btn-icon-text btn-sm">Edit</button>
+                                                    </form>
+                                                    
+                                                </td>
+                                                <td>
+                                                    <form method="POST" class="delete_form" action ="{{ route('delete_skill', $skills->id)}}">
+                                                        {{csrf_field()}}
+                                                        <input type="hidden" name="_method" value="DELETE"/>
+                                                        <button type="submit" class="btn btn-gradient-danger btn-icon-text btn-sm">Delete</button>
+                                                    </form> 
+                                                   
+                                                </td>
                                             </tr>
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                             <th>#</th>
                                                 <th>Name</th>
+                                                <th>Edit</th>     
+                                               <th>Delete</th>    
                                             </tr>
                                         </tfoot>
                                     </table>

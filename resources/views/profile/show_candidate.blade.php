@@ -46,21 +46,21 @@
                                 <div class="thumb">
                                     <img src="img/post.png" alt=""> 
 									Skill
-										<ul class="tags">@foreach ($skills as $s)
+										<ul class="tags">
 											<li>
 												<a href="#">
-													{{$s->skill}}
+													{{$candidates->skill}}
 												</a>
-											</li> @endforeach
+											</li>
 											
 										</ul>
 										Profession
-                                        <ul class="tags">@foreach ($pas as $p)
+                                        <ul class="tags">
                                             <li>
                                                 <a href="#">
-                                                    {{$p->profession}}
+                                                    {{$candidates->profession}}
                                                 </a>
-                                            </li> @endforeach
+                                            </li>
                                             
                                         </ul>
 									</div>

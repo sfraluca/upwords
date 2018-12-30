@@ -55,7 +55,7 @@
                             <h5 class="card-header">Current candidate</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-bordered first">
+                                    <table id="example" class="table table-striped table-bordered" style="width:100%">
                                         <thead>
                                             <tr>  <th>#</th>
                                             <th>Name</th>
@@ -65,42 +65,32 @@
                                                 <th>Description</th>
                                                 <th>Price</th>
                                                 <th>Skill</th>
-                                                <th>Profession</th>
-                                                <th>Show</th>    
+                                                <th>Profession</th>  
                                                <th>Edit</th>     
                                                <th>Delete</th>       
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                            <td>{{$candidates->id}}</td>
-                                                <td>{{$candidates->name}}</td>
-                                                <td>{{$candidate->contact}}</td>
-                                                <td>{{$candidates->slug}}</td>
-                                                <td>{{$candidates->emplyment_type}}</td>
-                                                <td>{{$candidates->description}}</td>
-                                                <td>{{$candidates->price}}</td>
-                                                <td>@foreach ($skills as $s)
-                                                {{$s->skill}}
-                                                @endforeach</td>
-                                                <td>@foreach ($pas as $p)
-                                                {{$p->profession}}
-                                                @endforeach</td>
+                                            <td>{{$data->id}}</td>
+                                                <td>{{$data->name}}</td>
+                                                <td>{{$data->contact}}</td>
+                                                <td>{{$data->slug}}</td>
+                                                <td>{{$data->emplyment_type}}</td>
+                                                <td>{{$data->description}}</td>
+                                                <td>{{$data->price}}</td>
+                                                <td>{{$data->skill}}</td>
+                                                <td>{{$data->profession}}</td>
+                                             
                                                 <td>
-                                                    <form action ="{{ route('show_candidate', $candidates->id)}}">
-                                                        <input type="hidden"/>
-                                                        <button type="submit" class="btn btn-gradient-primary btn-icon-text btn-sm">Show</button>
-                                                    </form>
-                                                </td>
-                                                <td>
-                                                    <form action ="{{ route('edit_candidate', $candidates->id)}}">
+                                                    <form action ="{{ route('edit_candidates', $data->id)}}">
                                                         <input type="hidden"/>
                                                         <button type="submit" class="btn btn-gradient-dark btn-icon-text btn-sm">Edit</button>
                                                     </form>
                                                     
                                                 </td>
                                                 <td>
-                                                    <form method="POST" class="delete_form" action ="{{ route('delete_candidate', $candidates->id)}}">
+                                                    <form method="POST" class="delete_form" action ="{{ route('delete_candidate', $data->id)}}">
                                                         {{csrf_field()}}
                                                         <input type="hidden" name="_method" value="DELETE"/>
                                                         <button type="submit" class="btn btn-gradient-danger btn-icon-text btn-sm">Delete</button>
@@ -118,8 +108,7 @@
                                                 <th>Description</th>
                                                 <th>Price</th>
                                                 <th>Skill</th>
-                                                <th>Profession</th>
-                                                <th>Show</th>    
+                                                <th>Profession</th> 
                                                <th>Edit</th>     
                                                <th>Delete</th>     
                                             </tr>

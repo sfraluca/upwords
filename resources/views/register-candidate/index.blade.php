@@ -54,7 +54,7 @@
                             <h5 class="card-header">All Candidates</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-bordered first">
+                                    <table id="example" class="table table-striped table-bordered" style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -81,12 +81,8 @@
                                                 <td>{{$candidate->emplyment_type}}</td>
                                                 <td>{{$candidate->description}}</td>
                                                 <td>{{$candidate->price}}</td>
-                                                <td>@foreach ($skills as $s)
-                                                {{$s->skill}}
-                                                @endforeach</td>
-                                                <td>@foreach ($pas as $p)
-                                                {{$p->profession}}
-                                                @endforeach</td>
+                                                <td>{{$candidate->skill}}</td>
+                                                <td>{{$candidate->profession}}</td>
                                                 <td>
                                                     <form action ="{{ route('show_candidate', $candidate->id)}}">
                                                         <input type="hidden"/>
@@ -94,7 +90,7 @@
                                                     </form>
                                                 </td>
                                                 <td>
-                                                    <form action ="{{ route('edit_candidate', $candidate->id)}}">
+                                                    <form action ="{{ route('edit_candidates', $candidate->id)}}">
                                                         <input type="hidden"/>
                                                         <button type="submit" class="btn btn-gradient-dark btn-icon-text btn-sm">Edit</button>
                                                     </form>

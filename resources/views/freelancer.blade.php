@@ -45,12 +45,12 @@
 							<div class="single-post d-flex flex-row">
 									<div class="thumb">
 										<img src="img/post.png" alt="">
-										<ul class="tags">@foreach ($skills as $s)
+										<ul class="tags">
 											<li>
 												<a href="#">
-													{{$s->skill}}
+													{{$candidate->skill}}
 												</a>
-											</li> @endforeach
+											</li> 
 											
 										</ul>
 									</div>
@@ -69,9 +69,9 @@
 										
 										<h5>Job Nature: {{$candidate->emplyment_type}}</h5>
 										<h5>Contact: {{$candidate->contact}}</h5>
-										<h5>@foreach ($pas as $p)
-													{{$p->profession}}
-													@endforeach</h5>
+										<h5>
+													{{$candidate->profession}}
+													</h5>
 										<p class="address"><span class="lnr lnr-database"></span> {{$candidate->price}}</p>
 									</div>
 							</div>

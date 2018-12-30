@@ -21,19 +21,16 @@ class WebController extends Controller
             Carbon\Carbon::now()->startOfWeek(),
             Carbon\Carbon::now()->endOfWeek(),
         ])->paginate(6);
-        $jobs = DB::table('jobs')->select("*")->whereBetween('created_at', [
-            Carbon\Carbon::now()->startOfWeek(),
-            Carbon\Carbon::now()->endOfWeek(),
-        ])->paginate(6);
-        $skills = DB::table('skills')
-        ->leftJoin('jobs', 'skills.id', '=', 'jobs.skill_id')
-        ->select('skill')
-        ->get();
-        $pas = DB::table('professions')
-        ->leftJoin('jobs', 'professions.id', '=', 'jobs.profession_id')
-        ->select('profession')
-        ->get();
-        return view('platform.webpage', compact('freelancers','candidates','jobs','skills','pas'));
+        $jobs = DB::table('jobs')
+                ->join('skills', 'skills.id', '=', 'jobs.skill_id')
+                ->join('professions', 'professions.id', '=', 'jobs.profession_id')
+                ->select("*")
+                ->whereBetween('jobs.created_at', [
+                    Carbon\Carbon::now()->startOfWeek(),
+                    Carbon\Carbon::now()->endOfWeek(),
+                ])->paginate(6);
+     
+        return view('platform.webpage', compact('freelancers','candidates','jobs'));
     }
     public function about()
     {

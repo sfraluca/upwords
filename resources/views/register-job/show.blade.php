@@ -55,7 +55,7 @@
                             <h5 class="card-header">Current job</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-bordered first">
+                                    <table id="example" class="table table-striped table-bordered" style="width:100%">
                                         <thead>
                                             <tr>
                                             <th>#</th>
@@ -68,42 +68,32 @@
                                                 <th>Description</th>
                                                 <th>Price</th>
                                                 <th>Name</th>    
-                                                <th>Show</th>    
                                                <th>Edit</th>     
                                                <th>Delete</th>     
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                            <td>{{$jobs->id}}</td>
-                                                <td>{{$jobs->title}}</td>
-                                                <td>{{$job->contact}}</td>
-                                                <td>{{$jobs->slug}}</td>
-                                                <td>{{$jobs->employment_type}}</td>
-                                                <td>@foreach ($skills as $s)
-                                                {{$s->skill}}
-                                                @endforeach</td>
-                                                <td>@foreach ($pas as $p)
-                                                {{$p->profession}}
-                                                @endforeach</td>
-                                                <td>{{$jobs->description}}</td>
-                                                <td>{{$jobs->price}}</td>
-                                                <td>{{$jobs->name}}</td>
+                                            <td>{{$data->id}}</td>
+                                                <td>{{$data->title}}</td>
+                                                <td>{{$data->contact}}</td>
+                                                <td>{{$data->slug}}</td>
+                                                <td>{{$data->employment_type}}</td>
+                                                <td>{{$data->skill}}</td>
+                                                <td>{{$data->profession}}</td>
+                                                <td>{{$data->description}}</td>
+                                                <td>{{$data->price}}</td>
+                                                <td>{{$data->name}}</td>
+                                               
                                                 <td>
-                                                    <form action ="{{ route('show_job', $jobs->id)}}">
-                                                        <input type="hidden"/>
-                                                        <button type="submit" class="btn btn-gradient-primary btn-icon-text btn-sm">Show</button>
-                                                    </form>
-                                                </td>
-                                                <td>
-                                                    <form action ="{{ route('edit_job', $jobs->id)}}">
+                                                    <form action ="{{ route('edit_job', $data->id)}}">
                                                         <input type="hidden"/>
                                                         <button type="submit" class="btn btn-gradient-dark btn-icon-text btn-sm">Edit</button>
                                                     </form>
                                                     
                                                 </td>
                                                 <td>
-                                                    <form method="POST" class="delete_form" action ="{{ route('delete_job', $jobs->id)}}">
+                                                    <form method="POST" class="delete_form" action ="{{ route('delete_job', $data->id)}}">
                                                         {{csrf_field()}}
                                                         <input type="hidden" name="_method" value="DELETE"/>
                                                         <button type="submit" class="btn btn-gradient-danger btn-icon-text btn-sm">Delete</button>
@@ -123,8 +113,7 @@
                                                 <th>Profession</th>
                                                 <th>Description</th>
                                                 <th>Price</th>
-                                                <th>Name</th>    
-                                                <th>Show</th>    
+                                                <th>Name</th>     
                                                <th>Edit</th>     
                                                <th>Delete</th>      
                                             </tr>

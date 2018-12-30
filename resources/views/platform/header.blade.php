@@ -17,6 +17,11 @@
 				          <li><a class="ticker-btn" href="{{ url('/register') }}">Signup</a></li>
 				          <li><a class="ticker-btn" href="{{ url('/login') }}">Login</a></li>		
                             @else
+														<li><a  href="{{ url('/home') }}">
+                                    Home
+                                </a>
+                                
+                               </li>
                                 <li><a  class="ticker-btn" href="{{ url('/logout') }}"
                                     onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
@@ -26,7 +31,7 @@
                                 <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form></li>
-
+																
                                 @endif
 
 				        </ul>

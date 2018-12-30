@@ -158,6 +158,8 @@ Route::delete('/candidate/destroy/{id}', 'CandidateController@destroy')
 Route::get('/','WebController@web')->name('website');
 Route::get('/about','WebController@about')->name('about');
 Route::get('/contact','WebController@contact')->name('contact');
+Route::post('/contact','WebController@storeContact')->name('store_contact');
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile/choose', 'HomeController@choose')->name('profile_choose');
 Route::get('/compare/{id}', 'HomeController@compare')->name('compare');
@@ -165,6 +167,13 @@ Route::get('/compare/{id}', 'HomeController@compare')->name('compare');
 
 //JOB
 Route::get('/job', 'HomeController@job')->name('job');
+Route::get('/job/recent/week', 'HomeController@week')->name('week');
+Route::get('/job/recent/day', 'HomeController@day')->name('day');
+Route::get('/job/recent/month', 'HomeController@month')->name('month');
+
+Route::get('/job/contact/{id}','HomeController@contactCandidate')->name('contact_candidate');
+Route::post('/job/contact/{id}','HomeController@storeContactCandidate')->name('store_contact_candidate');
+
 Route::get('/registration/job', 'HomeController@registrationJob')->name('registration_job');
 Route::get('/profile/job/show/{id}', 'HomeController@profileJob')->name('profile_job');
 Route::post('/registration/job', 'HomeController@storeJob')->name('store_vacancy');
@@ -174,6 +183,13 @@ Route::delete('/profile/vacancy/destroy/{id}', 'HomeController@destroyJob')->nam
 
 //Freelancer
 Route::get('/freelancer', 'HomeController@freelancer')->name('freelancer');
+Route::get('/freelancer/recent/week', 'HomeController@weekFr')->name('freelancer_week');
+Route::get('/freelancer/recent/day', 'HomeController@dayFr')->name('freelancer_day');
+Route::get('/freelancer/recent/month', 'HomeController@monthFr')->name('freelancer_month');
+
+Route::get('/freelancer/contact/{id}','HomeController@contactVacancy')->name('contact_vacancy');
+Route::post('/freelancer/contact/{id}','HomeController@storeContactVacancy')->name('store_contact_vacancy');
+
 Route::get('/registration/candidate', 'HomeController@registration')->name('registration_candidate');
 Route::post('/registration', 'HomeController@store')->name('store_freelancer');
 Route::get('/profile/candidate/show/{id}', 'HomeController@profileCandidate')->name('profile_candidate');

@@ -25,99 +25,92 @@
 			<!-- Start post Area -->
 			<section class="post-area section-gap">
 				<div class="container">
-                <h1 class="text-center">- {{$procentaj}}%-</h1>
+                <h1 class="text-center">- {{procentaj}}%-</h1>
                 <br>
 					<div class="row justify-content-center d-flex">
 						<div class="col-lg-6 post-list">
-
-							<div class="single-post d-flex flex-row">
-								<div class="thumb">
-									<img src="img/post.png" alt="">
-									Skill
-									<ul class="tags">@foreach ($skills as $s)
-											<li>
-												<a href="#">
-													{{$s->skill}}
-												</a>
-											</li> @endforeach
+								<div class="single-post d-flex flex-row">
+										
+										<div class="details col-lg-5">
+											<div class="title d-flex flex-row justify-content-between">
+												<div class="titles">
+													<a href="#"><h4>{{$candidates->name}}</h4></a>
+													<h6>{{$candidates->slug}}</h6>					
+												</div>
+												
+											</div>
 											
-										</ul>
-										Profession
-										<ul class="tags">@foreach ($pas as $p)
-											<li>
-												<a href="#">
-													{{$p->profession}}
-												</a>
-											</li> @endforeach
+											<h5>Job Nature: {{$candidates->emplyment_type}}</h5>
 											
-										</ul>
-								</div>
-								<div class="details">
-									<div class="title d-flex flex-row justify-content-between">
-										<div class="titles">
-											<a href="#"><h4>{{$candidates->name}}</h4></a>
-											<h6>{{$candidates->slug}}</h6>					
+											<p class="address"><span class="lnr lnr-database"></span> {{$candidates->price}}</p>
 										</div>
-										<ul class="btns">
-											<li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-											<li><a href="#">Contact</a></li>
-										</ul>
-									</div>
-									<p> 
-									</p>
-									<h5>Job Nature: {{$candidates->emplyment_type}}</h5>
-									
-									<p class="address"><span class="lnr lnr-database"></span> {{$candidates->price}}</p>
-								</div>
-							</div>		
 
-							<div class="single-post job-details">
-								<h4 class="single-title">{{$candidates->description}}</h4>
+										<div class="thumb">
+											<img src="img/post.png" alt="">
+											Skill
+											<ul class="tags">@foreach ($skills as $s)
+													<li>
+														<a href="#">
+															{{$s->skill}}
+														</a>
+													</li> @endforeach
+													
+												</ul>
+												Profession
+												<ul class="tags">@foreach ($pas as $p)
+													<li>
+														<a href="#">
+															{{$p->profession}}
+														</a>
+													</li> @endforeach
+													
+												</ul>
+										</div>
+								</div>		
 								
+							<div class="single-post job-details">
+								<h4 class="single-title">Description</h4>	<p>{{$candidates->description}}</p>
 							</div>
-
+							</div>
 								<div class="col-lg-6 post-list">
 
 							<div class="single-post d-flex flex-row">
-								<div class="thumb">
-									<img src="img/post.png" alt="">
-									Skill
-									<ul class="tags">@foreach ($skills as $s)
-											<li>
-												<a href="#">
-													{{$s->skill}}
-												</a>
-											</li> @endforeach
-											
-										</ul>
-										Profession
-										<ul class="tags">@foreach ($pas as $p)
-											<li>
-												<a href="#">
-													{{$p->profession}}
-												</a>
-											</li> @endforeach
-											
-										</ul>
-								</div>
-								<div class="details">
+								
+								<div class="details col-lg-5">
 									<div class="title d-flex flex-row justify-content-between">
 										<div class="titles">
 											<a href="#"><h4>{{$jobs->title}}</h4></a>
 											<h6>{{$jobs->slug}}</h6>					
 										</div>
-										<ul class="btns">
-											<li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-											<li><a href="#">Apply</a></li>
-										</ul>
+										
 									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-									</p>
+									
 									<h5>Job Nature: {{$jobs->employment_type}}</h5>
 									<p class="address"><span class="lnr lnr-map"></span> {{$jobs->name}}</p>
-									<p class="address"><span class="lnr lnr-database"></span> {{$jobs->price}}</p></div>
-							</div>	
+									<p class="address"><span class="lnr lnr-database"></span> {{$jobs->price}}</p>
+								</div>	
+								<div class="thumb">
+									<img src="img/post.png" alt="">
+									Skill
+									<ul class="tags">@foreach ($skills as $s)
+											<li>
+												<a href="#">
+													{{$s->skill}}
+												</a>
+											</li> @endforeach
+											
+										</ul>
+										Profession
+										<ul class="tags">@foreach ($pas as $p)
+											<li>
+												<a href="#">
+													{{$p->profession}}
+												</a>
+											</li> @endforeach
+											
+										</ul>
+								</div></div>
+
 							<div class="single-post job-details">
 								<h4 class="single-title">Description</h4>
 								<p>

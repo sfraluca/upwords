@@ -11,6 +11,7 @@ class RegisterCandidate
     {
         $candidate = Candidate::create([
             'name' => $params['name'],
+            'contact' => $params['contact'],
         ]);
 
         return $candidate;

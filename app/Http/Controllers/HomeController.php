@@ -9,6 +9,10 @@ use App\Profession;
 use DB;
 use App\Candidate;
 use App\Job;
+use Carbon;
+use Mail;
+use Session;
+use User;
 class HomeController extends Controller
 {
     /**
@@ -38,8 +42,12 @@ class HomeController extends Controller
         ->leftJoin('jobs', 'professions.id', '=', 'jobs.profession_id')
         ->select('profession')
         ->get();
-        $jobs = Job::all();
-        return view('home',compact('jobs','skills','pas'));
+        $profession =Profession::all();
+        $jobs_recent = DB::table('jobs')->select("*")->whereBetween('created_at', [
+            Carbon\Carbon::now()->startOfWeek(),
+            Carbon\Carbon::now()->endOfWeek(),
+        ])->paginate(6);
+        return view('home',compact('jobs','skills','pas','profession','jobs_recent'));
     }
     //choose 
     public function choose()
@@ -67,7 +75,7 @@ class HomeController extends Controller
     //save the data for candidate
     public function store(Request $request)
     {
-        $data = $request->only('name','emplyment_type','description','price','slug','profession_id','skill_id');
+        $data = $request->only('name','contact','emplyment_type','description','price','slug','profession_id','skill_id');
         $data['user_id'] = auth()->user()->id;
 
         $candidates = Candidate::create($data);
@@ -105,6 +113,7 @@ class HomeController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
+            'contact' => 'required',
             'slug' => 'required',
             'emplyment_type' => 'required',
             'description' => 'required',
@@ -116,6 +125,7 @@ class HomeController extends Controller
         $candidates = Candidate::find($id);
         
         $candidates->name = $request->input('name');
+        $candidates->contact = $request->input('contact');
         $candidates->slug = $request->input('slug');
         $candidates->emplyment_type = $request->input('emplyment_type');
         $candidates->description = $request->input('description');
@@ -139,7 +149,7 @@ class HomeController extends Controller
     //save the data for job
     public function storeJob(Request $request)
     {
-        $data = $request->only('title', 'slug','employment_type','description','price','name','profession_id','skill_id');
+        $data = $request->only('title','contact', 'slug','employment_type','description','price','name','profession_id','skill_id');
         $data['user_id'] = auth()->user()->id;
 
         $jobs = Job::create($data);
@@ -176,6 +186,7 @@ class HomeController extends Controller
     $validator = Validator::make($request->all(), [
         'title' => 'required',
         'slug' => 'required',
+        'contact' => 'required',
         'employment_type' => 'required',
         'description' => 'required',
         'price' => 'required',
@@ -187,6 +198,7 @@ class HomeController extends Controller
     $jobs = Job::find($id);
     
     $jobs->title = $request->input('title');
+    $jobs->contact = $request->input('contact');
     $jobs->slug = $request->input('slug');
     $jobs->employment_type = $request->input('employment_type');
     $jobs->description = $request->input('description');
@@ -221,11 +233,75 @@ class HomeController extends Controller
         ->select('profession')
         ->get();
 
-        $jobs = Job::all();
+        $jobs = Job::paginate(10);
 
 
         return view('job',compact('jobs','skills','pas'));
     }
+    //list all jobs
+    public function week()
+    {
+        $this->authorize('index-vacancy');
+        $skills = DB::table('skills')
+        ->leftJoin('jobs', 'skills.id', '=', 'jobs.skill_id')
+        ->select('skill')
+        ->get();
+        $pas = DB::table('professions')
+        ->leftJoin('jobs', 'professions.id', '=', 'jobs.profession_id')
+        ->select('profession')
+        ->get();
+
+        $jobs = DB::table('jobs')->select("*")->whereBetween('created_at', [
+            Carbon\Carbon::now()->startOfWeek(),
+            Carbon\Carbon::now()->endOfWeek(),
+        ])->paginate(10);
+
+
+        return view('week',compact('jobs','skills','pas'));
+    }
+    //list all jobs
+    public function month()
+    {
+        $this->authorize('index-vacancy');
+        $skills = DB::table('skills')
+        ->leftJoin('jobs', 'skills.id', '=', 'jobs.skill_id')
+        ->select('skill')
+        ->get();
+        $pas = DB::table('professions')
+        ->leftJoin('jobs', 'professions.id', '=', 'jobs.profession_id')
+        ->select('profession')
+        ->get();
+
+        $jobs = DB::table('jobs')->select("*")->whereBetween('created_at', [
+            Carbon\Carbon::now()->startOfMonth(),
+            Carbon\Carbon::now()->endOfMonth(),
+        ])->paginate(10);
+
+
+        return view('month',compact('jobs','skills','pas'));
+    }
+    //list all jobs
+    public function day()
+    {
+        $this->authorize('index-vacancy');
+        $skills = DB::table('skills')
+        ->leftJoin('jobs', 'skills.id', '=', 'jobs.skill_id')
+        ->select('skill')
+        ->get();
+        $pas = DB::table('professions')
+        ->leftJoin('jobs', 'professions.id', '=', 'jobs.profession_id')
+        ->select('profession')
+        ->get();
+
+        $jobs = DB::table('jobs')->select("*")->whereBetween('created_at', [
+            Carbon\Carbon::now()->startOfDay(),
+            Carbon\Carbon::now()->endOf(),
+        ])->paginate(10);
+
+
+        return view('day',compact('jobs','skills','pas'));
+    }
+    
     //list all freelancers
     public function freelancer()
     {
@@ -238,8 +314,71 @@ class HomeController extends Controller
         ->leftJoin('jobs', 'professions.id', '=', 'jobs.profession_id')
         ->select('profession')
         ->get();
-        $candidates = Candidate::all();
+        $candidates = Candidate::paginate(10);
         return view('freelancer',compact('candidates','skills','pas'));
+    }
+    //list all jobs
+    public function weekFr()
+    {
+        $this->authorize('index-candidate');
+        $skills = DB::table('skills')
+        ->leftJoin('jobs', 'skills.id', '=', 'jobs.skill_id')
+        ->select('skill')
+        ->get();
+        $pas = DB::table('professions')
+        ->leftJoin('jobs', 'professions.id', '=', 'jobs.profession_id')
+        ->select('profession')
+        ->get();
+
+        $candidates = DB::table('candidates')->select("*")->whereBetween('created_at', [
+            Carbon\Carbon::now()->startOfWeek(),
+            Carbon\Carbon::now()->endOfWeek(),
+        ])->paginate(10);
+
+
+        return view('weekfreelancer',compact('candidates','skills','pas'));
+    }
+    //list all jobs
+    public function monthFr()
+    {
+        $this->authorize('index-candidate');
+        $skills = DB::table('skills')
+        ->leftJoin('jobs', 'skills.id', '=', 'jobs.skill_id')
+        ->select('skill')
+        ->get();
+        $pas = DB::table('professions')
+        ->leftJoin('jobs', 'professions.id', '=', 'jobs.profession_id')
+        ->select('profession')
+        ->get();
+
+        $candidates = DB::table('candidates')->select("*")->whereBetween('created_at', [
+            Carbon\Carbon::now()->startOfMonth(),
+            Carbon\Carbon::now()->endOfMonth(),
+        ])->paginate(10);
+
+
+        return view('monthfreelancer',compact('candidates','skills','pas'));
+    }
+    //list all jobs
+    public function dayFr()
+    {
+        $this->authorize('index-candidate');
+        $skills = DB::table('skills')
+        ->leftJoin('jobs', 'skills.id', '=', 'jobs.skill_id')
+        ->select('skill')
+        ->get();
+        $pas = DB::table('professions')
+        ->leftJoin('jobs', 'professions.id', '=', 'jobs.profession_id')
+        ->select('profession')
+        ->get();
+
+        $candidates = DB::table('candidates')->select("*")->whereBetween('created_at', [
+            Carbon\Carbon::now()->startOfDay(),
+            Carbon\Carbon::now()->endOfDay(),
+        ])->paginate(10);
+
+
+        return view('dayfreelancer',compact('candidates','skills','pas'));
     }
     //compare
     public function compare($id)
@@ -266,7 +405,92 @@ class HomeController extends Controller
         $candidates = Candidate::find($id);
         $jobs = Job::find($id);
         return view('compare',compact('candidates','jobs','skills','pas','procentaj'));
-    }
-   
 
+    }
+    public function contactCandidate($id)
+    {
+        $candidates = Candidate::find($id);
+     
+        return view('platform.cand_contact',compact('candidates'));
+    }
+    public function storeContactCandidate(Request $request, $id)
+    {
+        $this->validate($request,[
+            'name'=>'required',
+            'email'=>'required',
+            'subject'=>'required',
+            'message'=>'required',
+        ]);
+      
+       
+       $emails = DB::table('candidates')                 
+       ->select('contact')
+       ->where('id','=',$id)
+       ->get();  
+
+
+            foreach($emails as $email){
+            $contact = $email->contact;
+
+            }
+        $data = array(
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'bodyMessage' => $request->message,
+            'contact'=>$contact
+        );
+      
+        Mail::send('platform.email', $data, function($message) use ($data){
+            $message->from($data['email']);
+            $message->to($data['contact']);
+            $message->subject($data['subject']);
+        });
+        Session::flash('success', 'Your email was sent!');
+
+        return redirect()->route('home');
+    }
+    public function contactVacancy($id)
+    {
+        $jobs = Job::find($id); 
+       
+        return view('platform.vacancy_contact',compact('jobs'));
+    }
+    public function storeContactVacancy(Request $request, $id)
+    {
+        $this->validate($request,[
+            'name'=>'required',
+            'email'=>'required',
+            'subject'=>'required',
+            'message'=>'required',
+        ]);
+       
+        //    $user= $this->email();
+         $emails = DB::table('jobs')
+                        
+                        ->select('contact')
+                        ->where('id','=',$id)
+                        ->get();  
+                        foreach($emails as $email){
+                            $contact = $email->contact;
+                
+                            }
+            
+        $data = array(
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'bodyMessage' => $request->message,
+            'contact'=>$contact
+        );
+        
+   
+        Mail::send('platform.email', $data, function($message) use ($data){
+            $message->from($data['email']);
+            $message->to($data['contact']);
+            $message->subject($data['subject']);
+        });
+        Session::flash('success', 'Your email was sent!');
+
+        return redirect()->route('home');
+    }
+      
 }

@@ -56,6 +56,7 @@ class JobController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required',
+            'contact' => 'required',
             'slug' => 'required',
             'employment_type' => 'required',
             'description' => 'required',
@@ -67,6 +68,7 @@ class JobController extends Controller
 
             $jobs = new Job;
             $jobs->title = $request->title;
+            $jobs->contact = $request->contact;
             $jobs->slug = $request->slug;
             $jobs->employment_type = $request->employment_type;
             $jobs->description = $request->description;
@@ -110,6 +112,7 @@ class JobController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required',
+            'contact' => 'required',
             'slug' => 'required',
             'employment_type' => 'required',
             'description' => 'required',
@@ -122,6 +125,7 @@ class JobController extends Controller
         $jobs = Job::find($id);
         
         $jobs->title = $request->input('title');
+        $jobs->contact = $request->input('contact');
         $jobs->slug = $request->input('slug');
         $jobs->employment_type = $request->input('employment_type');
         $jobs->description = $request->input('description');

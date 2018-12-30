@@ -74,9 +74,9 @@
 										<p class="address"><span class="lnr lnr-database"></span> {{$candidate->price}}</p>
 									</div>
 							</div>
-									@endforeach			
+									@endforeach	
 									<div class="text-center" style="float: right;">{{ $candidates->links('vendor.pagination.bootstrap-4') }}</div>
-									
+																			
 						</div>
 						
 						

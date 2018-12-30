@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('platform.header')
+@include('menu')
 
 
 			<!-- start banner Area -->
@@ -12,9 +12,9 @@
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
-								Contact Us				
+								Contact to a vacancy			
 							</h1>	
-							<p class="text-white"><a href="{{route('website')}}">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="{{route('contact')}}"> Contact Us</a></p>
+							<p class="text-white"><a href="{{route('website')}}">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="{{route('contact')}}"> Contact Admin</a></p>
 						</div>											
 					</div>
 				</div>
@@ -25,12 +25,9 @@
 			<section class="contact-page-area section-gap">
 				<div class="container">
 					<div class="row">
-						<div class="col-lg-4 d-flex flex-column">
-							<a class="contact-btns" href="{{route('register')}}">Create account</a>
-							<a class="contact-btns" href="{{route('login')}}">Post new Job</a>
-						</div>
-						<div class="col-lg-8">
-							<form class="form-area "action="{{route('store_contact')}}" method="post" class="contact-form text-right">
+						
+						<div class="col-lg-12">
+							<form class="form-area "action="{{route('store_contact_vacancy',$jobs->id)}}" method="post" class="contact-form text-right">
 								{{ csrf_field()}}
 								<div class="row">	
 									<div class="col-lg-12 form-group">

@@ -21,7 +21,7 @@
 							
 							<p class="text-white"> <span>Search by tags:</span> Tecnology, Business, Consulting, IT Company, Design, Development and many other profession area. Navigate and see what we offer.</p>
 						
-												
+													
 					</div>		</div>
 				</div>
 			</section>
@@ -32,13 +32,13 @@
 					<div class="row justify-content-center d-flex">
 						<div class="col-lg-8 post-list">
 							
-
 						<ul class="cat-list">
 								<li><a href="{{route('freelancer_month')}}">31 days</a></li>
 								<li><a href="{{route('freelancer_week')}}">7 days</a></li>
 								<li><a href="{{route('freelancer_day')}}">1 days</a></li>
 								<li><a href="{{route('freelancer')}}">All candidates</a></li>
 							</ul>
+
 							@foreach ($candidates as $candidate)
                                            
                                            
@@ -74,9 +74,9 @@
 										<p class="address"><span class="lnr lnr-database"></span> {{$candidate->price}}</p>
 									</div>
 							</div>
-									@endforeach			
+									@endforeach		
 									<div class="text-center" style="float: right;">{{ $candidates->links('vendor.pagination.bootstrap-4') }}</div>
-									
+																		
 						</div>
 						
 						

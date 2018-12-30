@@ -57,6 +57,7 @@ class CandidateController extends Controller
         //+pa skill
         $validator = Validator::make($request->all(), [
             'name' => 'required',
+            'contact' => 'required',
             'slug' => 'required',
             'emplyment_type' => 'required',
             'description' => 'required',
@@ -66,6 +67,7 @@ class CandidateController extends Controller
             ]);
             $candidates = new Candidate;
             $candidates->name = $request->name;
+            $candidates->contact = $request->contact;
             $candidates->slug = $request->slug;
             $candidates->emplyment_type = $request->emplyment_type;
             $candidates->description = $request->description;
@@ -107,6 +109,7 @@ class CandidateController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
+            'contact' => 'required',
             'slug' => 'required',
             'emplyment_type' => 'required',
             'description' => 'required',
@@ -118,6 +121,7 @@ class CandidateController extends Controller
         $candidates = Candidate::find($id);
         
         $candidates->name = $request->input('name');
+        $candidates->contact = $request->input('contact');
         $candidates->slug = $request->input('slug');
         $candidates->emplyment_type = $request->input('emplyment_type');
         $candidates->description = $request->input('description');

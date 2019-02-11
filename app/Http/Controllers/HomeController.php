@@ -268,7 +268,7 @@ class HomeController extends Controller
                 ->select("*")
                 ->whereBetween('jobs.created_at', [
             Carbon\Carbon::now()->startOfDay(),
-            Carbon\Carbon::now()->endOf(),
+            Carbon\Carbon::now()->endOfDay(),
         ])->paginate(10);
 
 

@@ -70,9 +70,9 @@
 									</p>
 									<h5>Job Nature: {{$job->employment_type}}</h5>
 									<h5>Contact: {{$job->contact}}</h5>
-									<h5>@foreach ($pas as $p)
-                                                {{$p->profession}}
-                                                @endforeach</h5>
+									<h5>
+                                                {{$job->profession}}
+                                               </h5>
 									<p class="address"><span class="lnr lnr-map"></span> {{$job->name}}</p>
 									<p class="address"><span class="lnr lnr-database"></span> {{$job->price}}</p>
 								</div>

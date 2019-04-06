@@ -11,7 +11,7 @@
                                 Types of users
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" href="{{route('admin.dashboard')}}"><i class="fa fa-fw fa-user-circle"></i>Admin staff <span class="badge badge-success"></span></a>
+                                <a class="nav-link active" href="{{route('admin.dashboard', app()->getLocale())}}"><i class="fa fa-fw fa-user-circle"></i>Admin staff <span class="badge badge-success"></span></a>
                                 
                             </li>
                             <li class="nav-item">
@@ -19,10 +19,10 @@
                                 <div id="submenu-2" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{route('list_all_users')}}">List </a>
+                                            <a class="nav-link" href="{{route('list_all_users', app()->getLocale())}}">List </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{route('create_user')}}">Add</a>
+                                            <a class="nav-link" href="{{route('create_user', app()->getLocale())}}">Add</a>
                                         </li>
                                        
                                     </ul>
@@ -37,10 +37,10 @@
                                 <div id="submenu-3" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{route('list_all_jobs')}}">List</a>
+                                            <a class="nav-link" href="{{route('list_all_jobs', app()->getLocale())}}">List</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{route('create_job')}}">Add</a>
+                                            <a class="nav-link" href="{{route('create_job', app()->getLocale())}}">Add</a>
                                         </li>
                                        
                                     </ul>
@@ -51,10 +51,10 @@
                                 <div id="submenu-4" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{route('list_all_candidates')}}">List</a>
+                                            <a class="nav-link" href="{{route('list_all_candidates', app()->getLocale())}}">List</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{route('create_candidate')}}">Add</a>
+                                            <a class="nav-link" href="{{route('create_candidate', app()->getLocale())}}">Add</a>
                                         </li>
                                        
                                     </ul>
@@ -68,10 +68,10 @@
                                 <div id="submenu-5" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{route('list_all_professions')}}">List</a>
+                                            <a class="nav-link" href="{{route('list_all_professions', app()->getLocale())}}">List</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{route('create_profession')}}">Add</a>
+                                            <a class="nav-link" href="{{route('create_profession', app()->getLocale())}}">Add</a>
                                         </li>
                                        
                                     </ul>
@@ -82,10 +82,10 @@
                                 <div id="submenu-6" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{route('list_all_skills')}}">List</a>
+                                            <a class="nav-link" href="{{route('list_all_skills', app()->getLocale())}}">List</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{route('create_skill')}}">Add</a>
+                                            <a class="nav-link" href="{{route('create_skill', app()->getLocale())}}">Add</a>
                                         </li>
                                        
                                     </ul>

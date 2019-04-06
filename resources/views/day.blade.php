@@ -34,10 +34,10 @@
 					
 						<div class="col-lg-8 post-list">
 						<ul class="cat-list">
-						<li><a href="{{route('month')}}">31 days</a></li>
-								<li><a href="{{route('week')}}">7 days</a></li>
-								<li><a href="{{route('day')}}">1 days</a></li>
-								<li><a href="{{route('job')}}">All jobs</a></li>
+						<li><a href="{{route('month', app()->getLocale())}}">31 days</a></li>
+								<li><a href="{{route('week', app()->getLocale())}}">7 days</a></li>
+								<li><a href="{{route('day', app()->getLocale())}}">1 days</a></li>
+								<li><a href="{{route('job', app()->getLocale())}}">All jobs</a></li>
 							</ul>
 							@foreach ($jobs as $job)
                                            
@@ -60,8 +60,8 @@
 											<h6>{{$job->slug}}</h6>					
 										</div>
 										<ul class="btns">
-											<li><a href="{{route('contact_vacancy', $job->id)}}">Contact</a></li>
-											<li><a href="{{route('compare', $job->id)}}">See</a></li>
+											<li><a href="{{route('contact_vacancy', [$job->id, app()->getLocale()])}}">Contact</a></li>
+											<li><a href="{{route('compare', [$job->id, app()->getLocale()])}}">See</a></li>
 										</ul>
 									</div>
 									<p>

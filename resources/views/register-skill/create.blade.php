@@ -54,7 +54,7 @@
                             <div class="card">
                                 <h5 class="card-header">Basic Form</h5>
                                 <div class="card-body">
-                                    <form action="{{ route('store_skill') }}" method="POST" id="basicform" data-parsley-validate="">
+                                    <form action="{{ route('store_skill', app()->getLocale()) }}" method="POST" id="basicform" data-parsley-validate="">
                                     {{csrf_field()}}
                                         <div class="form-group">
                                             <label for="inputSkillName">User Name</label>

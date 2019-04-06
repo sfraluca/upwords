@@ -77,11 +77,11 @@ class HomeController extends Controller
 
         $candidates = Candidate::create($data);
 
-        return redirect()->route('profile_candidate', $candidates->id);
+        return redirect()->route('profile_candidate',[app()->getLocale() , $candidates->id]);
     }
     
     //show the profile of candidate
-    public function profileCandidate($id)
+    public function profileCandidate($locale,$id)
     {
         $this->authorize('show-candidate');
         $candidates =  DB::table('candidates')
@@ -96,7 +96,7 @@ class HomeController extends Controller
     }
   
     //edit candidate
-    public function editCandidate($id)
+    public function editCandidate($locale,$id)
     {
         $this->authorize('update-candidate');
         $pas = Profession::orderBy('profession')->pluck('profession','id');
@@ -105,7 +105,7 @@ class HomeController extends Controller
         return view('profile.edit_candidate',compact('candidates','skills','pas'));
     }
     //update candidate
-    public function updateCandidate(Request $request, $id)
+    public function updateCandidate($locale,Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
@@ -131,10 +131,10 @@ class HomeController extends Controller
 
         $candidates->save();
        
-        return redirect()->route('profile_candidate', $candidates->id);
+        return redirect()->route('profile_candidate', [app()->getLocale() ,$candidates->id]);
     }
     //delete profile
-    public function destroyCandidate($id)
+    public function destroyCandidate($locale,$id)
     {
         $this->authorize('delete-candidate');
         $candidates = Candidate::find($id);
@@ -153,7 +153,7 @@ class HomeController extends Controller
         return redirect()->route('profile_job', $jobs->id);
     }
     //show vacancy
-    public function profileJob($id)
+    public function profileJob($locale,$id)
     {
         $this->authorize('show-vacancy');
         $jobs =  DB::table('jobs')->join('skills', 'skills.id', '=', 'jobs.skill_id')
@@ -165,7 +165,7 @@ class HomeController extends Controller
         return view('profile.show_job',compact('jobs'));
     }
    //edit job
-   public function editJob($id)
+   public function editJob($locale,$id)
    {
     $this->authorize('update-vacancy');
        $pas = Profession::orderBy('profession')->pluck('profession','id');
@@ -174,7 +174,7 @@ class HomeController extends Controller
        return view('profile.edit_vacancy',compact('jobs','skills','pas'));
    }
    //update job
-   public function updateJob(Request $request, $id)
+   public function updateJob($locale,Request $request, $id)
    {
     $validator = Validator::make($request->all(), [
         'title' => 'required',
@@ -202,10 +202,10 @@ class HomeController extends Controller
 
     $jobs->save();
       
-       return redirect()->route('profile_job', $jobs->id);
+       return redirect()->route('profile_job', [app()->getLocale() ,$jobs->id]);
    }
    //delete profile
-   public function destroyJob($id)
+   public function destroyJob($locale,$id)
    {
     $this->authorize('delete-vacancy');
        $jobs = Job::find($id);
@@ -329,7 +329,7 @@ class HomeController extends Controller
         return view('dayfreelancer',compact('candidates'));
     }
     //compare
-    public function compare($id)
+    public function compare($locale,$id)
     {
        
         $candidates =  DB::table('candidates')
@@ -376,13 +376,13 @@ class HomeController extends Controller
         return view('compare',compact('cand','vacancy','procentaj'));
 
     }
-    public function contactCandidate($id)
+    public function contactCandidate($locale,$id)
     {
         $candidates = Candidate::find($id);
      
         return view('platform.cand_contact',compact('candidates'));
     }
-    public function storeContactCandidate(Request $request, $id)
+    public function storeContactCandidate($locale,Request $request, $id)
     {
         $this->validate($request,[
             'name'=>'required',
@@ -418,13 +418,13 @@ class HomeController extends Controller
 
         return redirect()->route('home');
     }
-    public function contactVacancy($id)
+    public function contactVacancy($locale,$id)
     {
         $jobs = Job::find($id); 
        
         return view('platform.vacancy_contact',compact('jobs'));
     }
-    public function storeContactVacancy(Request $request, $id)
+    public function storeContactVacancy($locale,Request $request, $id)
     {
         $this->validate($request,[
             'name'=>'required',

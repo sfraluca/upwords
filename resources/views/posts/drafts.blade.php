@@ -18,15 +18,15 @@
                     <div class="col-sm-6 col-md-4">
                         <div class="thumbnail">
                         <div class="caption">
-                            <h3><a href="{{route('show_post',['id'=>$post->id])}}">{{$post->title}}</a></h3>
+                            <h3><a href="{{route('show_post',['id'=>$post->id, app()->getLocale()])}}">{{$post->title}}</a></h3>
                             <p>{{str_limit($post->body, 50)}}</p>
                             <p>
                             @can('publish-post')
                            
-                            <a href="{{route('publish_post',['id'=>$post->id])}}" class="btn btn-sm btn-default" role="button">Publish</a>
+                            <a href="{{route('publish_post',['id'=>$post->id, app()->getLocale()])}}" class="btn btn-sm btn-default" role="button">Publish</a>
                           
                             @endcan
-                            <a href="{{route('edit_post',['id'=>$post->id])}}" class="btn btn-sm btn-default" role="button">Edit</a>
+                            <a href="{{route('edit_post',['id'=>$post->id, app()->getLocale()])}}" class="btn btn-sm btn-default" role="button">Edit</a>
                         </p>
                         </div>
                         </div>

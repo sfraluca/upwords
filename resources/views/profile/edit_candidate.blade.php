@@ -28,7 +28,7 @@
 									<div class="container ">
 									<div class="row justify-content-center">
 									<div class="col-lg-8">
-									<form class="form-area " action="{{ route('update_candidate', $candidates->id) }}" method="post" class="contact-form text-right">
+									<form class="form-area " action="{{ route('update_candidate', [$candidates->id, app()->getLocale()]) }}" method="post" class="contact-form text-right">
 									{{csrf_field()}}
 									<div class="row">	
 									<div class="col-lg-12 form-group">

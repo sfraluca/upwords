@@ -30,7 +30,7 @@
 									<div class="row justify-content-center">
 									<div class="col-lg-8">
 									<h1>Complete the form to continue</h1><br>
-									<form class="form-area " action="{{ route('store_freelancer') }}" method="post" class="contact-form text-right">
+									<form class="form-area " action="{{ route('store_freelancer', app()->getLocale()) }}" method="post" class="contact-form text-right">
 									{{csrf_field()}}
 									<div class="row">	
 									<div class="col-lg-12 form-group">

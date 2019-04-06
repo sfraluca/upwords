@@ -28,7 +28,11 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/profile/choose';
+    public function redirectTo()
+    {
+        return app()->getLocale() . '/profile/choose';
+    }
+   
 
     /**
      * Create a new controller instance.

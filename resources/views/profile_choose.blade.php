@@ -46,8 +46,8 @@
 						<div class="menu-content col-lg-9">
 							<div class="title text-center">
 								<h1 class="mb-10 text-white"> Choose the role you want to create:</h1>
-								<a class="primary-btn" href="{{route('registration_candidate')}}">Search for job</a>
-								<a class="primary-btn" href="{{route('registration_job')}}">Search for freelancer</a>
+								<a class="primary-btn" href="{{route('registration_candidate', app()->getLocale())}}">Search for job</a>
+								<a class="primary-btn" href="{{route('registration_job', app()->getLocale())}}">Search for freelancer</a>
 							</div>
 						</div>
 					</div>	

@@ -18,7 +18,7 @@ class PostController extends Controller
     {
         return view('posts.create');
     }
-    public function show($id)
+    public function show($locale,$id)
     {
         $post = Post::where('published',true)->findOrFails($id);
         return view('posts.show',compact('posts'));
@@ -31,7 +31,7 @@ class PostController extends Controller
         $data['user_id'] = auth()->user()->id;
         $post = Post::create($data);
 
-        return redirect()->route('edit_post',['id'=>$post->id]);
+        return redirect()->route('edit_post',[app()->getLocale() ,'id'=>$post->id]);
     }
 
     public function edit(Post $post)

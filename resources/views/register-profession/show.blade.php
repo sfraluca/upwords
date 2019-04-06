@@ -69,14 +69,14 @@
                                                 <td>{{$professions->id}}</td>
                                                 <td>{{$professions->profession}}</td>
                                                 <td>
-                                                    <form action ="{{ route('edit_profession', $professions->id)}}">
+                                                    <form action ="{{ route('edit_profession', [$professions->id, app()->getLocale()])}}">
                                                         <input type="hidden"/>
                                                         <button type="submit" class="btn btn-gradient-dark btn-icon-text btn-sm">Edit</button>
                                                     </form>
                                                     
                                                 </td>
                                                 <td>
-                                                    <form method="POST" class="delete_form" action ="{{ route('delete_profession', $professions->id)}}">
+                                                    <form method="POST" class="delete_form" action ="{{ route('delete_profession', [$professions->id, app()->getLocale()])}}">
                                                         {{csrf_field()}}
                                                         <input type="hidden" name="_method" value="DELETE"/>
                                                         <button type="submit" class="btn btn-gradient-danger btn-icon-text btn-sm">Delete</button>

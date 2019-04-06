@@ -4,7 +4,7 @@
 <div class="limiter">
 		<div class="container-login100" style="background-image: url('css/images/bg-01.jpg');">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" role="form" method="POST" action="{{  route('register') }}">
+				<form class="login100-form validate-form" role="form" method="POST" action="{{  route('register', app()->getLocale()) }}">
 					{{ csrf_field() }}
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
@@ -59,7 +59,7 @@
 					</div>
 
 					<div class="text-center p-t-90">
-						<a class="txt1" href="{{ url('/login') }}">
+						<a class="txt1" href="{{ route('login', app()->getLocale()) }}">
 							Have an account?
 						</a>
 					</div>

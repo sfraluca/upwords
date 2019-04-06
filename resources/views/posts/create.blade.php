@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="panel-body">
-<form class="form-horizontal" role="form" method="POST" action="{{route('store_post')}}">
+<form class="form-horizontal" role="form" method="POST" action="{{route('store_post', app()->getLocale())}}">
 {{csrf_field()}}
 <div class="form-group{{ $errors->has('title') ? 'has-error':''}}">
 <label for="title" class="col-md-4 control-label">Title</label>

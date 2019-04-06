@@ -46,11 +46,11 @@ class ProfessionController extends Controller
             ]);
         $professions = $this->professions->register($request->all());
             
-        return redirect()->route('show_profession', $professions->id);
+        return redirect()->route('show_profession', [app()->getLocale() ,$professions->id]);
     }
 
 
-    public function show($id)
+    public function show($locale,$id)
     {
         $professions = Profession::find($id);
         return view('register-profession.show',compact('professions'));
@@ -58,14 +58,14 @@ class ProfessionController extends Controller
 
  
 
-    public function edit($id)
+    public function edit($locale,$id)
     {
         $professions = Profession::find($id);
 
         return view('register-profession.edit', compact('professions'));   
     }
 
-    public function update(Request $request, $id)
+    public function update($locale,Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
             'profession' => 'required',
@@ -80,7 +80,7 @@ class ProfessionController extends Controller
         return redirect()->route('show_profession', $professions->id);
     }
 
-    public function destroy($id)
+    public function destroy($locale,$id)
     {
 
         $professions = Profession::find($id);

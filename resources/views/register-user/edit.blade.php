@@ -54,7 +54,7 @@
                             <div class="card">
                                 <h5 class="card-header">Basic Form</h5>
                                 <div class="card-body">
-                                    <form action="{{ route('update_user', $users->id) }}" method="POST" id="basicform" data-parsley-validate="">
+                                    <form action="{{ route('update_user', [$user->id, app()->getLocale()]) }}" method="POST" id="basicform" data-parsley-validate="">
                                     {{csrf_field()}}
                                         <div class="form-group">
                                             <label for="inputUserName">User Name</label>

@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('admin.password.request') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('admin.password.request', app()->getLocale()) }}">
                         {{ csrf_field() }}
 
                         <input type="hidden" name="token" value="{{ $token }}">

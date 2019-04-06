@@ -71,11 +71,11 @@ class CandidateController extends Controller
             $candidates->profession_id = $request->profession_id;
             $candidates->save();
             
-        return redirect()->route('show_candidate', $candidates->id);
+        return redirect()->route('show_candidate', [app()->getLocale(),$candidates->id]);
     }
 
 
-    public function show($id)
+    public function show($locale,$id)
     {
         $candidates =  DB::table('candidates')
         ->join('skills', 'skills.id', '=', 'candidates.skill_id')
@@ -90,7 +90,7 @@ class CandidateController extends Controller
 
  
 
-    public function edit($id)
+    public function edit($locale,$id)
     {
         $pas = Profession::orderBy('profession')->pluck('profession','id');
         $skills = Skill::orderBy('skill')->pluck('skill','id');
@@ -99,7 +99,7 @@ class CandidateController extends Controller
         return view('register-candidate.edit', compact('candidates','skills','pas'));   
     }
 
-    public function update(Request $request, $id)
+    public function update($locale,Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
@@ -125,7 +125,7 @@ class CandidateController extends Controller
 
         $candidates->save();
 
-        return redirect()->route('show_candidate', $candidates->id);
+        return redirect()->route('show_candidate', [app()->getLocale(),$candidates->id]);
     }
 
     public function destroy($id)

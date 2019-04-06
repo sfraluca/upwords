@@ -34,10 +34,10 @@
 							
 
 						<ul class="cat-list">
-								<li><a href="{{route('freelancer_month')}}">31 days</a></li>
-								<li><a href="{{route('freelancer_week')}}">7 days</a></li>
-								<li><a href="{{route('freelancer_day')}}">1 days</a></li>
-								<li><a href="{{route('freelancer')}}">All candidates</a></li>
+								<li><a href="{{route('freelancer_month', app()->getLocale())}}">31 days</a></li>
+								<li><a href="{{route('freelancer_week', app()->getLocale())}}">7 days</a></li>
+								<li><a href="{{route('freelancer_day', app()->getLocale())}}">1 days</a></li>
+								<li><a href="{{route('freelancer', app()->getLocale())}}">All candidates</a></li>
 							</ul>
 							@foreach ($candidates as $candidate)
                                            
@@ -62,8 +62,8 @@
 												<h6>{{$candidate->slug}}</h6>					
 											</div>
 											<ul class="btns">
-												<li><a href="{{route('contact_candidate', $candidate->id)}}">Contact</a></li>
-												<li><a href="{{route('compare', $candidate->id)}}">See</a></li>
+												<li><a href="{{route('contact_candidate', [$candidate->id, app()->getLocale()])}}">Contact</a></li>
+												<li><a href="{{route('compare', p$candidate->id, app()->getLocale()])}}">See</a></li>
 											</ul>
 										</div>
 										

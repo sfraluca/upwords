@@ -48,11 +48,11 @@ class SkillController extends Controller
 
         $skills = $this->skills->register($request->all());
             
-        return redirect()->route('show_skill', $skills->id);
+        return redirect()->route('show_skill', [app()->getLocale() ,$skills->id]);
     }
 
 
-    public function show($id)
+    public function show($locale,$id)
     {
         $skills = Skill::find($id);
         return view('register-skill.show',compact('skills'));
@@ -60,14 +60,14 @@ class SkillController extends Controller
 
  
 
-    public function edit($id)
+    public function edit($ocale,$id)
     {
         $skills = Skill::find($id);
 
         return view('register-skill.edit', compact('skills'));   
     }
 
-    public function update(Request $request, $id)
+    public function update($locale,Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
@@ -82,7 +82,7 @@ class SkillController extends Controller
         return redirect()->route('show_skill', $skills->id);
     }
 
-    public function destroy($id)
+    public function destroy($locale,$id)
     {
 
         $skill = Skill::find($id);

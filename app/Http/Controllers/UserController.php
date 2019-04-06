@@ -53,11 +53,11 @@ class UserController extends Controller
             ]);
             $user = $this->users->register($request->all());
             
-        return redirect()->route('show_user', $user->id);
+        return redirect()->route('show_user', [app()->getLocale() ,$user->id]);
     }
 
 
-    public function show($id)
+    public function show($locale,$id)
     {
         $user = User::find($id);
         return view('register-user.show',compact('user'));
@@ -65,7 +65,7 @@ class UserController extends Controller
 
  
 
-    public function edit($id)
+    public function edit($locale,$id)
     {
 
         $roles = Role::orderBy('name')->pluck('name','id');
@@ -74,7 +74,7 @@ class UserController extends Controller
         return view('register-user.edit', compact('users', 'roles'));   
     }
 
-    public function update(Request $request, $id)
+    public function update($locale,Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
@@ -94,7 +94,7 @@ class UserController extends Controller
         return redirect()->route('show_user', $user->id);
     }
 
-    public function destroy($id)
+    public function destroy($locale,$id)
     {
 
         $user = User::find($id);

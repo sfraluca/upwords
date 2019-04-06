@@ -126,7 +126,7 @@
                                             </tr>
                                            @endforeach
                                                     <tr>
-                                                        <td colspan="9"><a href="{{route('list_all_candidates')}}" class="btn btn-outline-primary float-right">View Details</a></td>
+                                                        <td colspan="9"><a href="{{route('list_all_candidates', app()->getLocale())}}" class="btn btn-outline-primary float-right">View Details</a></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -166,7 +166,7 @@
                                            @endforeach
                                                     <tr>
                                                         <td colspan="3">
-                                                            <a href="{{route('list_all_users')}}" class="btn btn-outline-primary float-right">Details</a>
+                                                            <a href="{{route('list_all_users', app()->getLocale())}}" class="btn btn-outline-primary float-right">Details</a>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -208,8 +208,8 @@
 											<h6>{{$job->slug}}</h6>					
 										</div>
 										<ul class="btns">
-											<li><a href="{{route('contact_vacancy', $job->id)}}">Contact</a></li>
-											<li><a href="{{route('compare', $job->id)}}">See</a></li>
+											<li><a href="{{route('contact_vacancy', [$job->id, app()->getLocale()])}}">Contact</a></li>
+											<li><a href="{{route('compare', [$job->id, app()->getLocale()])}}">See</a></li>
 										</ul>
 									</div>
 									<p>

@@ -82,7 +82,7 @@
 									<p>
 									Price: {{$candidate->price}}$/h</p>
 								
-									<a class=" text-uppercase text-right" href="{{route('login')}}">View freelancer</a>
+									<a class=" text-uppercase text-right" href="{{route('login', app()->getLocale())}}">View freelancer</a>
 								</div>
 							</div>	
 							@endforeach
@@ -199,7 +199,7 @@
 							</div>
 							@endforeach													
 							
-							<a class="text-uppercase loadmore-btn mx-auto d-block" href="{{route('login')}}">View more freelancers</a>
+							<a class="text-uppercase loadmore-btn mx-auto d-block" href="{{route('login', app()->getLocale())}}">View more freelancers</a>
                            
 						</div>
 						 <p><span>If you are for the first time here, you have to register to see all candidates available.</span></p>
@@ -217,8 +217,8 @@
 							<div class="title text-center">
 								<h1 class="mb-10 text-white">Join us today without any hesitation</h1>
 								<p class="text-white">If you want to post a job to find a freelancer you have to login as a job, but if you are a freelancer and you want to find a job you have to lgin as freelancer. These have different roles and you have to pay attention to what you want.</p>
-								<a class="primary-btn" href="{{route('register')}}">Search for job</a>
-								<a class="primary-btn" href="{{route('register')}}">Search for freelancer</a>
+								<a class="primary-btn" href="{{route('register', app()->getLocale())}}">Search for job</a>
+								<a class="primary-btn" href="{{route('register', app()->getLocale())}}">Search for freelancer</a>
 							</div>
 						</div>
 					</div>	

@@ -14,7 +14,7 @@
 							<h1 class="text-white">
 								Contact a freelancer			
 							</h1>	
-							<p class="text-white"><a href="{{route('website')}}">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="{{route('contact')}}"> Contact Admin</a></p>
+							<p class="text-white"><a href="{{route('website', app()->getLocale())}}">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="{{route('contact')}}"> Contact Admin</a></p>
 						</div>											
 					</div>
 				</div>
@@ -27,7 +27,7 @@
 					<div class="row">
 						
 						<div class="col-lg-12">
-							<form class="form-area "action="{{route('store_contact_candidate',$candidates->id)}}" method="post" class="contact-form text-right">
+							<form class="form-area "action="{{route('store_contact_candidate',[$candidates->id, app()->getLocale()])}}" method="post" class="contact-form text-right">
 								{{ csrf_field()}}
 								<div class="row">	
 									<div class="col-lg-12 form-group">

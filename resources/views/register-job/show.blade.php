@@ -86,14 +86,14 @@
                                                 <td>{{$data->name}}</td>
                                                
                                                 <td>
-                                                    <form action ="{{ route('edit_job', $data->id)}}">
+                                                    <form action ="{{ route('edit_job', [$data->id, app()->getLocale()])}}">
                                                         <input type="hidden"/>
                                                         <button type="submit" class="btn btn-gradient-dark btn-icon-text btn-sm">Edit</button>
                                                     </form>
                                                     
                                                 </td>
                                                 <td>
-                                                    <form method="POST" class="delete_form" action ="{{ route('delete_job', $data->id)}}">
+                                                    <form method="POST" class="delete_form" action ="{{ route('delete_job', [$data->id, app()->getLocale()])}}">
                                                         {{csrf_field()}}
                                                         <input type="hidden" name="_method" value="DELETE"/>
                                                         <button type="submit" class="btn btn-gradient-danger btn-icon-text btn-sm">Delete</button>

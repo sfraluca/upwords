@@ -13,7 +13,7 @@
 							<h1 class="text-white">
 								Your job				
 							</h1>	
-							<p class="text-white link-nav"><a href="{{route('home')}}">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="{{route('freelancer')}}"> Go to Freelancers</a></p>
+							<p class="text-white link-nav"><a href="{{route('home', app()->getLocale())}}">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="{{route('freelancer')}}"> Go to Freelancers</a></p>
 						</div>											
 					</div>
 				</div>
@@ -27,14 +27,14 @@
 							<ul>
                            
                             @can('delete-vacancy') 
-								<li><form method="POST" class="delete_form" action ="{{ route('delete_vacancy', $jobs->id)}}">
+								<li><form method="POST" class="delete_form" action ="{{ route('delete_vacancy', [$jobs->id, app()->getLocale()])}}">
                                
 									{{csrf_field()}}
 									<input type="hidden" name="_method" value="DELETE"/>
 									<button type="submit" style="float: right;" class="genric-btn danger ">Delete profile</button>
 								</form></li> @endcan
                                  @can('update-vacancy') 
-							<li><a class="genric-btn primary" style="float: right;" href="{{route('edit_vacancy', $jobs->id)}}">Edit profile</a></li>
+							<li><a class="genric-btn primary" style="float: right;" href="{{route('edit_vacancy', [$jobs->id, app()->getLocale()])}}">Edit profile</a></li>
                             @endcan
 							</ul>
 <br><br><br>

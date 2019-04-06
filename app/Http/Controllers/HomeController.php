@@ -361,7 +361,9 @@ class HomeController extends Controller
         ->join('professions', 'professions.id', '=', 'jobs.skill_id')
         ->select('profession')->where('jobs.id','=',$id)->get();
 
-        require('C:\Damaris\FACULTATE\Anul IV\licenta\upwords/vendor/paralleldots/apis/autoload.php');
+        // require('C:\Damaris\FACULTATE\Anul IV\licenta\upwords/vendor/paralleldots/apis/autoload.php');
+        require('C:\Users\Sferle Raluca\Documents\work\myprojects\upwords/vendor/paralleldots/apis/autoload.php');
+
         $sim = similarity($skill_cand, $skill_vacant);
         $responseArray = json_decode($sim, true);
         $responseResultArray = $responseArray["actual_score"];

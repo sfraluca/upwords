@@ -70,20 +70,20 @@
                                                 <td>{{$profession->id}}</td>
                                                 <td>{{$profession->profession}}</td>
                                                 <td>
-                                                    <form action ="{{ route('show_profession', $profession->id)}}">
+                                                    <form action ="{{ route('show_profession', [app()->getLocale(),$profession->id])}}">
                                                         <input type="hidden"/>
                                                         <button type="submit" class="btn btn-gradient-primary btn-icon-text btn-sm">Show</button>
                                                     </form>
                                                 </td>
                                                 <td>
-                                                    <form action ="{{ route('edit_profession', $profession->id)}}">
+                                                    <form action ="{{ route('edit_profession', [app()->getLocale(),$profession->id])}}">
                                                         <input type="hidden"/>
                                                         <button type="submit" class="btn btn-gradient-dark btn-icon-text btn-sm">Edit</button>
                                                     </form>
                                                     
                                                 </td>
                                                 <td>
-                                                    <form method="POST" class="delete_form" action ="{{ route('delete_profession', $profession->id)}}">
+                                                    <form method="POST" class="delete_form" action ="{{ route('delete_profession', [ app()->getLocale(),$profession->id])}}">
                                                         {{csrf_field()}}
                                                         <input type="hidden" name="_method" value="DELETE"/>
                                                         <button type="submit" class="btn btn-gradient-danger btn-icon-text btn-sm">Delete</button>

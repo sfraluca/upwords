@@ -12,15 +12,15 @@
     <!-- Styles
     <link href="/css/app.css" rel="stylesheet"> -->
  
-     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
-    <link href="{{ asset('assets/vendor/fonts/circular-std/style.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('assets/libs/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/fontawesome/css/fontawesome-all.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/charts/chartist-bundle/chartist.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/charts/morris-bundle/morris.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/charts/c3charts/c3.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/flag-icon-css/flag-icon.min.css') }}">
+     <link rel="stylesheet" href="{{ asset('/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link href="{{ asset('/assets/vendor/fonts/circular-std/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('/assets/libs/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/vendor/fonts/fontawesome/css/fontawesome-all.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/vendor/charts/chartist-bundle/chartist.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/vendor/charts/morris-bundle/morris.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/vendor/charts/c3charts/c3.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/vendor/fonts/flag-icon-css/flag-icon.min.css') }}">
 
 
 
@@ -44,14 +44,14 @@ $(document).ready(function() {
 } );
 
 	</script>
-    	<link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
-			<link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-			<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-			<link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
-			<link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">					
-			<link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
-			<link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
-			<link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    	<link rel="stylesheet" href="{{ asset('/css/linearicons.css') }}">
+			<link rel="stylesheet" href="{{ asset('/css/font-awesome.min.css') }}">
+			<link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}">
+			<link rel="stylesheet" href="{{ asset('/css/magnific-popup.css') }}">
+			<link rel="stylesheet" href="{{ asset('/css/nice-select.css') }}">					
+			<link rel="stylesheet" href="{{ asset('/css/animate.min.css') }}">
+			<link rel="stylesheet" href="{{ asset('/css/owl.carousel.css') }}">
+			<link rel="stylesheet" href="{{ asset('/css/main.css') }}">
 
 </head>
 <body>

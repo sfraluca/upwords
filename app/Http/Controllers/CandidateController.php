@@ -76,7 +76,7 @@ class CandidateController extends Controller
 
 
     public function show($locale,$id)
-    {
+    {dd($locale);
         $candidates =  DB::table('candidates')
         ->join('skills', 'skills.id', '=', 'candidates.skill_id')
         ->join('professions', 'professions.id', '=', 'candidates.profession_id')
@@ -128,7 +128,7 @@ class CandidateController extends Controller
         return redirect()->route('show_candidate', [app()->getLocale(),$candidates->id]);
     }
 
-    public function destroy($id)
+    public function destroy($locale,$id)
     {
         $candidates = Candidate::find($id);
         $candidates->delete();

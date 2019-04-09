@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="limiter">
-		<div class="container-login100" style="background-image: url('css/images/bg-01.jpg');">
+		<div class="container-login100" style="background-image: url('/css/images/bg-01.jpg');">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" role="form" method="POST" action="{{  route('login', app()->getLocale()) }}">
 					 {{ csrf_field() }}

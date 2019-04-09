@@ -61,7 +61,6 @@
                                                 <th>#</th>
                                                 <th>Name</th>
                                                 <th>Email</th>
-                                                <th>Show</th>    
                                                <th>Edit</th>     
                                                <th>Delete</th>    
                                             </tr>
@@ -71,12 +70,6 @@
                                                 <td>{{$user->id}}</td>
                                                 <td>{{$user->name}}</td>
                                                 <td>{{$user->email}}</td>
-                                                <td>
-                                                    <form action ="{{ route('show_user', [$user->id, app()->getLocale()])}}">
-                                                        <input type="hidden"/>
-                                                        <button type="submit" class="btn btn-gradient-primary btn-icon-text btn-sm">Show</button>
-                                                    </form>
-                                                </td>
                                                 <td>
                                                     <form action ="{{ route('edit_user', [$user->id, app()->getLocale()])}}">
                                                         <input type="hidden"/>
@@ -99,7 +92,6 @@
                                             <th>#</th>
                                                 <th>Name</th>
                                                 <th>Email</th>
-                                                <th>Show</th>    
                                                <th>Edit</th>     
                                                <th>Delete</th>   
                                             </tr>

@@ -54,7 +54,7 @@
                                     Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('admin.password.request') }}">
+                                <a class="btn btn-link" href="{{ route('admin.password.request', app()->getLocale()) }}">
                                     Forgot Your Password?
                                 </a>
                             </div>

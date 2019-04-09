@@ -48,7 +48,7 @@ class LoginController extends Controller
         //for just one logout
         // $redirect->session()->flush();
         // $redirect->session()->regenerate();
-        return redirect('/');
+        return redirect()->route('login', app()->getLocale());
 
     }
 }

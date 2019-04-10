@@ -7,26 +7,25 @@
 				      </div>
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
-				          <li class="menu-active"><a href="{{ route('website', app()->getLocale()) }}">Home</a></li>
-				          <li><a href="{{ route('about', app()->getLocale()) }}">About Us</a></li>
-				          <li><a href="{{ route('contact', app()->getLocale()) }}">Contact</a></li>
+				          <li class="menu-active"><a href="{{ route('website', app()->getLocale()) }}">@lang('header.home')</a></li>
+				          <li><a href="{{ route('about', app()->getLocale()) }}">@lang('header.about')</a></li>
+				          <li><a href="{{ route('contact', app()->getLocale()) }}">@lang('header.contact')</a></li>
 
 
 
                            @if (Auth::guest())
-				          <li><a class="ticker-btn" href="{{ route('register', app()->getLocale()) }}">Signup</a></li>
-				          <li><a class="ticker-btn" href="{{ route('login', app()->getLocale()) }}">Login</a></li>		
+				          <li><a class="ticker-btn" href="{{ route('register', app()->getLocale()) }}">@lang('header.register')</a></li>
+				          <li><a class="ticker-btn" href="{{ route('login', app()->getLocale()) }}">@lang('header.login')</a></li>		
                             @else
 														<li><a  href="{{ route('home', app()->getLocale()) }}">
-                                    Home
+                                   @lang('header.home') 
                                 </a>
                                 
                                </li>
                                 <li><a  class="ticker-btn" href="{{ route('logout', app()->getLocale()) }}"
                                     onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
+                                   @lang('header.logout') </a>
                                 
                                 <form id="logout-form" action="{{  route('logout', app()->getLocale() )}}" method="POST" style="display: none;">
                                     {{ csrf_field() }}

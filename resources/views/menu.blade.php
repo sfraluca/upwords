@@ -15,29 +15,29 @@
 										</li>
 								@endforeach
 								<li><a  href="{{ route('website', app()->getLocale()) }}">
-                                    Website
+                                   @lang('header.dashboard') Website
                                 </a>
-				          <li class="menu-active"><a href="{{ route('home', app()->getLocale()) }}">Home</a></li>
+				          <li class="menu-active"><a href="{{ route('home', app()->getLocale()) }}">@lang('header.home')</a></li>
 									@can('create-vacancy') 
-									<li class="menu-active"><a href="{{ route('registration_job', app()->getLocale()) }}">Post a job</a></li>
+									<li class="menu-active"><a href="{{ route('registration_job', app()->getLocale()) }}">@lang('header.post_job')</a></li>
 									@endcan
 									@can('index-vacancy') 
-				          <li><a href="{{ route('job', app()->getLocale()) }}">jobs</a></li>
+				          <li><a href="{{ route('job', app()->getLocale()) }}">@lang('header.jobs')</a></li>
 									@endcan
 									@can('index-candidate') 
-                          <li><a href="{{ route('freelancer', app()->getLocale()) }}">Freelancers</a></li>
+                          <li><a href="{{ route('freelancer', app()->getLocale()) }}">@lang('header.freelancers')</a></li>
 													@endcan
 
 
 
                            @if (Auth::guest())
-				          <li><a class="ticker-btn" href="{{ route('register', app()->getLocale()) }}">Signup</a></li>
-				          <li><a class="ticker-btn" href="{{ route('login', app()->getLocale()) }}">Login</a></li>		
+				          <li><a class="ticker-btn" href="{{ route('register', app()->getLocale()) }}">@lang('header.register')</a></li>
+				          <li><a class="ticker-btn" href="{{ route('login', app()->getLocale()) }}">@lang('header.login')</a></li>		
                             @else
                                 <li><a  class="ticker-btn" href="{{ route('logout', app()->getLocale()) }}"
                                     onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
-                                    Logout
+                                    @lang('header.logout')
                                 </a>
                                 
                                 <form id="logout-form" action="{{ route('logout', app()->getLocale()) }}" method="POST" style="display: none;">

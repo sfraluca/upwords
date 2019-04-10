@@ -8,7 +8,7 @@
 					<div class="row footer-bottom d-flex justify-content-between">
 						<p class="col-lg-8 col-sm-12 footer-text m-0 text-white">
 							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-<script>document.write(new Date().getFullYear());</script> You are now on Upwords best candidate match application
+<script>document.write(new Date().getFullYear());</script> @lang('header.footer')
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 						</p>
 						

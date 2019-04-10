@@ -30,12 +30,12 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h2 class="pageheader-title">Create new skill</h2>
+                                <h2 class="pageheader-title">@lang('header.new_skill')</h2>
                                  <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Skill</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Add</li>
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">@lang('header.skills')</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">@lang('header.add')</li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -52,12 +52,12 @@
                         <!-- ============================================================== -->
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="card">
-                                <h5 class="card-header">Basic Form</h5>
+                                <h5 class="card-header">@lang('header.form')</h5>
                                 <div class="card-body">
                                     <form action="{{ route('store_skill', app()->getLocale()) }}" method="POST" id="basicform" data-parsley-validate="">
                                     {{csrf_field()}}
                                         <div class="form-group">
-                                            <label for="inputSkillName">User Name</label>
+                                            <label for="inputSkillName">@lang('header.skills'</label>
                                             <input id="inputSkillName" type="text" name="skill" data-parsley-trigger="change" required="" placeholder="Enter skill name" autocomplete="off" class="form-control">
                                             @if ($errors->has('name'))
                                                 <span class="invalid-feedback" role="alert">
@@ -70,8 +70,8 @@
                                             
                                             <div class="col-sm-6 pl-0">
                                                 <p class="text-right">
-                                                    <button type="submit" class="btn btn-space btn-primary">Submit</button>
-                                                    <button class="btn btn-space btn-secondary">Cancel</button>
+                                                    <button type="submit" class="btn btn-space btn-primary">@lang('header.submit')</button>
+                                                    <button class="btn btn-space btn-secondary">@lang('header.cancel')</button>
                                                 </p>
                                             </div>
                                         </div>

@@ -12,9 +12,9 @@
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
-								Contact a vacancy			
+								@lang('header.contact_vacant')			
 							</h1>	
-							<p class="text-white"><a href="{{route('website', app()->getLocale())}}">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="{{route('contact')}}"> Contact Admin</a></p>
+							<p class="text-white"><a href="{{route('website', app()->getLocale())}}">@lang('header.home') </a>  <span class="lnr lnr-arrow-right"></span>  <a href="{{route('contact')}}">@lang('header.contact_admin')</a></p>
 						</div>											
 					</div>
 				</div>
@@ -46,7 +46,7 @@
 										<textarea class="common-textarea mt-10 form-control" name="message" 
 										placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" 
 										required=""></textarea>
-										<button type="submit" class="primary-btn mt-20 text-white" style="float: right;">Send Message</button>
+										<button type="submit" class="primary-btn mt-20 text-white" style="float: right;">@lang('header.send_message')</button>
 										<div class="mt-20 alert-msg" style="text-align: left;"></div>
 									</div>
 								</div>

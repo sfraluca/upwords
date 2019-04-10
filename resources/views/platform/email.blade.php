@@ -1,5 +1,5 @@
-<h3>You have a new message</h3>
+<h3>@lang('header.emailmessage')</h3>
 <div>
 {{$bodyMessage}}
 </div>
-<p>Send via {{$email}}</p>
+<p>@lang('header.send_via') {{$email}}</p>

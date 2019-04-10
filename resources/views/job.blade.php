@@ -16,10 +16,10 @@
                         <br>
                         
 							<h1 class="text-white">
-								Search for a job				
+								@lang('header.search_job')				
 							</h1>	
 							
-							<p class="text-white"> <span>Search by tags:</span> Tecnology, Business, Consulting, IT Company, Design, Development and many other profession area. Navigate and see what we offer.</p>
+							<p class="text-white"> <span>@lang('header.dashboard')Search by tags:</span> @lang('header.dashboard')Tecnology, Business, Consulting, IT Company, Design, Development and many other profession area. Navigate and see what we offer.</p>
 						
 														
 					</div>		</div>
@@ -34,10 +34,10 @@
 					
 						<div class="col-lg-8 post-list">
 						<ul class="cat-list">
-								<li><a href="{{route('month', app()->getLocale())}}">31 days</a></li>
-								<li><a href="{{route('week', app()->getLocale())}}">7 days</a></li>
-								<li><a href="{{route('day', app()->getLocale())}}">1 days</a></li>
-								<li><a href="{{route('job', app()->getLocale())}}">All jobs</a></li>
+								<li><a href="{{route('month', app()->getLocale())}}">31 @lang('header.days')</a></li>
+								<li><a href="{{route('week', app()->getLocale())}}">7 @lang('header.days')</a></li>
+								<li><a href="{{route('day', app()->getLocale())}}">1 @lang('header.days')</a></li>
+								<li><a href="{{route('job', app()->getLocale())}}">@lang('header.all_job')</a></li>
 							</ul>
 							@foreach ($jobs as $job)
                                            
@@ -61,15 +61,15 @@
 											<h6>{{$job->slug}}</h6>					
 										</div>
 										<ul class="btns">
-											<li><a href="{{route('contact_vacancy', [$job->id, app()->getLocale()])}}">Contact</a></li>
-											<li><a href="{{route('compare', [$job->id, app()->getLocale()])}}">See</a></li>
+											<li><a href="{{route('contact_vacancy', [$job->id, app()->getLocale()])}}">@lang('header.contact')Contact</a></li>
+											<li><a href="{{route('compare', [$job->id, app()->getLocale()])}}">@lang('header.see')</a></li>
 										</ul>
 									</div>
 									<p>
 									{{$job->description}}
 									</p>
-									<h5>Job Nature: {{$job->employment_type}}</h5>
-									<h5>Contact: {{$job->contact}}</h5>
+									<h5>@lang('header.employment_type'): {{$job->employment_type}}</h5>
+									<h5>@lang('header.contact'): {{$job->contact}}</h5>
 									<h5>
                                                 {{$job->profession}}
                                                </h5>

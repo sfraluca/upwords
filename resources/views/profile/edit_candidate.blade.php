@@ -15,7 +15,7 @@
                         <br>
                         
 							<h1 class="text-white">
-								Edit your profile
+								@lang('header.edit_profile')
 							</h1>	
 							
 								
@@ -32,35 +32,35 @@
 									{{csrf_field()}}
 									<div class="row">	
 									<div class="col-lg-12 form-group">
-									<label for="Name">Name</label>
+									<label for="Name">@lang('header.name')</label>
 									<input value="{{ $candidates->name }}" name="name" placeholder="Enter your name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" class="common-input mb-20 form-control" required="" type="text">
 									@if ($errors->has('name'))
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $errors->first('name') }}</strong>
 										</span>
 									@endif    
-									<label for="Job">Job to do</label> 
+									<label for="Job">@lang('header.Job_to_do')</label> 
 									<input value="{{ $candidates->slug }}" name="slug" placeholder="Enter title job" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter title job'" class="common-input mb-20 form-control" required="" type="text">
 									@if ($errors->has('slug'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('slug') }}</strong>
                                                 </span>
                                             @endif    
-											<label for="Employment">Employment type</label> 
+											<label for="Employment">@lang('header.employment_type')</label> 
 											<input value="{{ $candidates->emplyment_type }}" name="emplyment_type" placeholder="Enter employment type" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter employment type'" class="common-input mb-20 form-control" required="" type="text">
 											@if ($errors->has('emplyment_type'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('emplyment_type') }}</strong>
                                                 </span>
                                             @endif  
-											<label for="Contact">Contact email</label> 
+											<label for="Contact">@lang('header.email')</label> 
                                             <input  value="{{ $candidates->contact }}" name="contact" placeholder="Enter contact" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter contact'" class="common-input mb-20 form-control" required="" type="text">
 									@if ($errors->has('contact'))
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $errors->first('contact') }}</strong>
 										</span>
 									@endif    
-											<label for="Description">Description</label>
+											<label for="Description">@lang('header.description')</label>
 											<textarea  class="common-textarea mt-10 form-control" name="description" 
 												placeholder="Description" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter description'" 
 												required="">{{ $candidates->description }}</textarea>	@if ($errors->has('description'))
@@ -68,7 +68,7 @@
                                                     <strong>{{ $errors->first('description') }}</strong>
                                                 </span>
                                             @endif  
-											<label for="price">Price</label>
+											<label for="price">@lang('header.price')</label>
 											<input value="{{ $candidates->price }}" name="price" placeholder="Enter price" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter price'" class="common-input mb-20 form-control" required="" type="text">
 											@if ($errors->has('price'))
                                                 <span class="invalid-feedback" role="alert">
@@ -76,7 +76,7 @@
                                                 </span>
                                             @endif     
 											<div class="form-group">
-                                        <label for="selectSkill">Skill</label>
+                                        <label for="selectSkill">@lang('header.skills')</label>
                                             
                                         <select value="{{ $candidates->skill_id }}" name="skill_id" class="form-control">
                                         @foreach($skills as $id=>$skill)
@@ -86,7 +86,7 @@
                                         </select>
                                         </div>
                                         <div class="form-group">
-                                        <label for="selectProfession">Profession</label>
+                                        <label for="selectProfession">@lang('header.profession')</label>
                                             
                                         <select value="{{ $candidates->profession_id }}" name="profession_id" class="form-control">
                                         @foreach($pas as $id=>$profession)
@@ -95,7 +95,7 @@
                                         @endforeach
                                         </select>
                                         </div>
-										<button type="submit" class="primary-btn mt-20 text-white" style="float: right;">save</button><div class="mt-20 alert-msg" style="text-align: left;"></div>
+										<button type="submit" class="primary-btn mt-20 text-white" style="float: right;">@lang('header.submit')</button><div class="mt-20 alert-msg" style="text-align: left;"></div>
 								</div>
 								</div>
 </form>	

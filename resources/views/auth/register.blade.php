@@ -11,7 +11,7 @@
 					</span>
 
 					<span class="login100-form-title p-b-34 p-t-27">
-						Register
+						@lang('header.dashboard')Register
 					</span>
                         
 
@@ -37,7 +37,7 @@
                        
 					</div>
 					<div class="form-group">
-                            <label for="exampleSelectGender" class='text-white'>User type</label>
+                            <label for="exampleSelectGender" class='text-white'>@lang('header.user_type')</label>
                                 <select class="form-control" id="exampleSelectGender" name="role" value="{{ old('role') }}">
                                 @foreach($roles as $id=>$role)
                                 <option value="{{$id}}">{{$role}}</option>
@@ -54,13 +54,13 @@
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" type="submit">
-							Register
+							@lang('header.register')
 						</button>
 					</div>
 
 					<div class="text-center p-t-90">
 						<a class="txt1" href="{{ route('login', app()->getLocale()) }}">
-							Have an account?
+							@lang('header.haveandaccount')
 						</a>
 					</div>
 				</form>

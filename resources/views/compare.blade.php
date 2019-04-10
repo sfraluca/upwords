@@ -13,9 +13,9 @@
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
-								Job Details				
+								@lang('header.job_details')				
 							</h1>	
-							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="single.html"> Job Details</a></p>
+							<p class="text-white link-nav"><a href="index.html">@lang('header.home') </a>  <span class="lnr lnr-arrow-right"></span>  <a href="single.html"> @lang('header.job_details')</a></p>
 						</div>											
 					</div>
 				</div>
@@ -40,14 +40,14 @@
 												
 											</div>
 											
-											<h5>Job Nature: {{$cand->emplyment_type}}</h5>
-											<h5>Contact: {{$cand->contact}}</h5>
+											<h5>@lang('header.employment_type'): {{$cand->emplyment_type}}</h5>
+											<h5>@lang('header.contact'): {{$cand->contact}}</h5>
 											<p class="address"><span class="lnr lnr-database"></span> {{$cand->price}}</p>
 										</div>
 
 										<div class="thumb">
 											<img src="img/post.png" alt="">
-											Skill
+											@lang('header.skills')
 											<ul class="tags">
 													<li>
 														<a href="#">
@@ -56,7 +56,7 @@
 													</li> 
 													
 												</ul>
-												Profession
+												@lang('header.profession')
 												<ul class="tags">
 													<li>
 														<a href="#">
@@ -69,7 +69,7 @@
 								</div>		
 								
 							<div class="single-post job-details">
-								<h4 class="single-title">Description</h4>	<p>{{$cand->description}}</p>
+								<h4 class="single-title">@lang('header.description')</h4>	<p>{{$cand->description}}</p>
 							</div>
 							</div>
 								<div class="col-lg-6 post-list">
@@ -85,14 +85,14 @@
 										
 									</div>
 									
-									<h5>Job Nature: {{$vacancy->employment_type}}</h5>
+									<h5>@lang('header.employment_type'): {{$vacancy->employment_type}}</h5>
 									<p class="address"><span class="lnr lnr-map"></span> {{$vacancy->name}}</p>
 									<p class="address"><span class="lnr lnr-map"></span> {{$vacancy->contact}}</p>
 									<p class="address"><span class="lnr lnr-database"></span> {{$vacancy->price}}</p>
 								</div>	
 								<div class="thumb">
 									<img src="img/post.png" alt="">
-									Skill
+									@lang('header.skills')
 									<ul class="tags">
 											<li>
 												<a href="#">
@@ -101,7 +101,7 @@
 											</li> 
 											
 										</ul>
-										Profession
+										@lang('header.profession')
 										<ul class="tags">
 											<li>
 												<a href="#">
@@ -113,7 +113,7 @@
 								</div></div>
 
 							<div class="single-post job-details">
-								<h4 class="single-title">Description</h4>
+								<h4 class="single-title">@lang('header.description')</h4>
 								<p>
 								{{$vacancy->description}}</p>
 								

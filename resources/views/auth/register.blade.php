@@ -4,14 +4,14 @@
 <div class="limiter">
 		<div class="container-login100" style="background-image: url('css/images/bg-01.jpg');">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" role="form" method="POST" action="{{  route('register') }}">
+				<form class="login100-form validate-form" role="form" method="POST" action="{{  route('register', app()->getLocale()) }}">
 					{{ csrf_field() }}
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>
 
 					<span class="login100-form-title p-b-34 p-t-27">
-						Register
+						@lang('header.register')
 					</span>
                         
 
@@ -37,7 +37,7 @@
                        
 					</div>
 					<div class="form-group">
-                            <label for="exampleSelectGender" class='text-white'>User type</label>
+                            <label for="exampleSelectGender" class='text-white'>@lang('header.user_type')</label>
                                 <select class="form-control" id="exampleSelectGender" name="role" value="{{ old('role') }}">
                                 @foreach($roles as $id=>$role)
                                 <option value="{{$id}}">{{$role}}</option>
@@ -54,13 +54,13 @@
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" type="submit">
-							Register
+							@lang('header.register')
 						</button>
 					</div>
 
 					<div class="text-center p-t-90">
-						<a class="txt1" href="{{ url('/login') }}">
-							Have an account?
+						<a class="txt1" href="{{ route('login', app()->getLocale()) }}">
+							@lang('header.haveandaccount')
 						</a>
 					</div>
 				</form>

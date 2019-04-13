@@ -5,8 +5,28 @@
         <!-- ============================================================== -->
         <!-- navbar -->
         <!-- ============================================================== -->
-        
-        @include('layouts.navbar')
+        <div class="dashboard-header">
+            <nav class="navbar navbar-expand-lg bg-navbar fixed-top">
+                <a class="navbar-brand" href="index.html">JOB LISTING</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class=" navbar-toggler-icon">Menu</span>
+                </button><h4 >{{ Auth::user()->name }}</h4> 
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-right-top">
+                        
+                        @foreach (config('app.available_locales') as $locale)
+                            <li >
+                        <a class="nav-link"
+                                href="{{ route(\Illuminate\Support\Facades\Route::currentRouteName(),[app()->getLocale(), $candidates->id ]) }}"
+                                @if (app()->getLocale() == $locale) style="font-weight: bold; text-decoration: underline" @endif>{{ strtoupper($locale) }}</a>
+                            </li>
+						@endforeach
+                                 <li ><a class="nav-link" href="{{ route('admin.logout', app()->getLocale())}}"><i class="fas fa-power-off mr-2"></i>@lang('header.logout')</a>
+                            </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
       
         <!-- ============================================================== -->
         <!-- end navbar -->
@@ -30,12 +50,12 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h2 class="pageheader-title">Edit candidate</h2>
+                                <h2 class="pageheader-title">@lang('header.edit')</h2>
                                  <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Candidate</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Add</li>
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">@lang('header.candidates')</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">@lang('header.add')</li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -52,12 +72,12 @@
                         <!-- ============================================================== -->
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="card">
-                                <h5 class="card-header">Basic Form</h5>
+                                <h5 class="card-header">@lang('header.form')</h5>
                                 <div class="card-body">
-                                    <form action="{{ route('update_candidate', $candidates->id) }}" method="POST" id="basicform" data-parsley-validate="">
+                                    <form action="{{ route('update_candidate', [app()->getLocale(), $candidates->id ]) }}" method="POST" id="basicform" data-parsley-validate="">
                                     {{csrf_field()}}
                                         <div class="form-group">
-                                            <label for="inputCandidateName">Candidates Name</label>
+                                            <label for="inputCandidateName">@lang('header.name')</label>
                                             <input value="{{ $candidates->name }}"  id="inputCandidateName" type="text" name="name" data-parsley-trigger="change" required="" placeholder="Enter user name" autocomplete="off" class="form-control">
                                             @if ($errors->has('name'))
                                                 <span class="invalid-feedback" role="alert">
@@ -65,7 +85,7 @@
                                                 </span>
                                             @endif    
                                         </div>
-                                        <label for="Contact">Contact email</label> 
+                                        <label for="Contact">@lang('header.contact_email')</label> 
                                             <input  value="{{ $candidates->contact }}" name="contact" placeholder="Enter contact" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter contact'" class="common-input mb-20 form-control" required="" type="text">
 									@if ($errors->has('contact'))
 										<span class="invalid-feedback" role="alert">
@@ -74,7 +94,7 @@
 									@endif    
                                        
                                         <div class="form-group">
-                                            <label for="inputSlug">Title for job wanted</label>
+                                            <label for="inputSlug">@lang('header.title')</label>
                                             <input value="{{ $candidates->slug }}" id="inputSlug" type="text" name="slug" data-parsley-trigger="change" required="" placeholder="Enter user name" autocomplete="off" class="form-control">
                                             @if ($errors->has('slug'))
                                                 <span class="invalid-feedback" role="alert">
@@ -83,7 +103,7 @@
                                             @endif    
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmply">Employ type</label>
+                                            <label for="inputEmply">@lang('header.employment_type')</label>
                                             <input value="{{ $candidates->emplyment_type }}" id="inputEmply" type="text" name="emplyment_type" data-parsley-trigger="change" required="" placeholder="Enter user name" autocomplete="off" class="form-control">
                                             @if ($errors->has('emplyment_type'))
                                                 <span class="invalid-feedback" role="alert">
@@ -92,7 +112,7 @@
                                             @endif    
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputDdesc">Description</label>
+                                            <label for="inputDdesc">@lang('header.description')</label>
                                             <input value="{{ $candidates->description }}" id="inputDesc" type="text" name="description" data-parsley-trigger="change" required="" placeholder="Enter user name" autocomplete="off" class="form-control">
                                             @if ($errors->has('description'))
                                                 <span class="invalid-feedback" role="alert">
@@ -101,7 +121,7 @@
                                             @endif    
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputPrice">Price</label>
+                                            <label for="inputPrice">@lang('header.price')</label>
                                             <input value="{{ $candidates->price }}" id="inputPrice" type="text" name="price" data-parsley-trigger="change" required="" placeholder="Enter user name" autocomplete="off" class="form-control">
                                             @if ($errors->has('price'))
                                                 <span class="invalid-feedback" role="alert">
@@ -111,7 +131,7 @@
                                         </div>
                                        
                                         <div class="form-group">
-                                        <label for="selectSkill">Skill</label>
+                                        <label for="selectSkill">@lang('header.skills')</label>
                                             
                                         <select value="{{ $candidates->skill_id }}" name="skill_id" class="form-control">
                                         @foreach($skills as $id=>$skill)
@@ -121,7 +141,7 @@
                                         </select>
                                         </div>
                                         <div class="form-group">
-                                        <label for="selectProfession">Profession</label>
+                                        <label for="selectProfession">@lang('header.profession')</label>
                                             
                                         <select value="{{ $candidates->profession_id }}" name="profession_id" class="form-control">
                                         @foreach($pas as $id=>$profession)
@@ -134,8 +154,8 @@
                                             
                                             <div class="col-sm-6 pl-0">
                                                 <p class="text-right">
-                                                    <button type="submit" class="btn btn-space btn-primary">Submit</button>
-                                                    <button class="btn btn-space btn-secondary">Cancel</button>
+                                                    <button type="submit" class="btn btn-space btn-primary">@lang('header.submit')</button>
+                                                    <button class="btn btn-space btn-secondary">@lang('header.cancel')</button>
                                                 </p>
                                             </div>
                                         </div>
@@ -147,12 +167,12 @@
                       <!-- end -->
                 </div>
             </div>
-            @include('layouts.navbar')
+           
         </div>
         <!-- ============================================================== -->
         <!-- end wrapper  -->
         <!-- ============================================================== -->
     </div>
 
-
+ @include('layouts.footer')
 @endsection

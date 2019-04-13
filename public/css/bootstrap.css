@@ -5507,6 +5507,9 @@ button.bg-primary:focus {
 .bg-secondary {
   background-color: #6c757d !important;
 }
+.bg-navbar {
+  background-color: #e1e7ec !important;
+}
 
 a.bg-secondary:hover, a.bg-secondary:focus,
 button.bg-secondary:hover,

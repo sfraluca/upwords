@@ -28,7 +28,10 @@ class AdminResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    public function redirectTo()
+    {
+        return app()->getLocale() . '/admin';
+    }
 
     /**
      * Create a new controller instance.

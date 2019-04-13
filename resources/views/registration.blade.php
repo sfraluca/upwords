@@ -15,11 +15,11 @@
                         <br>
                         
 							<h1 class="text-white">
-								<span>Welcome!</span> Complete your CV
+								@lang('header.complete_title')
 							</h1>	
 							
 								
-							<p class="text-white"> <span>You can't go further before you create a profile!</span> </p>
+							<p class="text-white"> <span>@lang('header.complete_sub')</span> </p>
 						</div>											
 					</div>
 				</div>
@@ -29,40 +29,40 @@
 									<div class="container ">
 									<div class="row justify-content-center">
 									<div class="col-lg-8">
-									<h1>Complete the form to continue</h1><br>
-									<form class="form-area " action="{{ route('store_freelancer') }}" method="post" class="contact-form text-right">
+									<h1>@lang('header.complete_form')</h1><br>
+									<form class="form-area " action="{{ route('store_freelancer', app()->getLocale()) }}" method="post" class="contact-form text-right">
 									{{csrf_field()}}
 									<div class="row">	
 									<div class="col-lg-12 form-group">
-									<label for="Name">Name</label>
+									<label for="Name">@lang('header.name')</label>
 									<input name="name" placeholder="Enter your name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" class="common-input mb-20 form-control" required="" type="text">
 									@if ($errors->has('name'))
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $errors->first('name') }}</strong>
 										</span>
 									@endif   
-									<label for="Job">Job to do</label> 
+									<label for="Job">@lang('header.Job_to_do')</label> 
 									<input name="slug" placeholder="Enter title job" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter title job'" class="common-input mb-20 form-control" required="" type="text">
 									@if ($errors->has('slug'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('slug') }}</strong>
                                                 </span>
                                             @endif   
-											<label for="Employment">Employment type</label> 
+											<label for="Employment">@lang('header.employment_type')</label> 
 											<input name="emplyment_type" placeholder="Enter employment type" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter employment type'" class="common-input mb-20 form-control" required="" type="text">
 											@if ($errors->has('emplyment_type'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('emplyment_type') }}</strong>
                                                 </span>
                                             @endif  
-											<label for="Contact">Contact email</label> 
+											<label for="Contact">@lang('header.contact_email')</label> 
                                             <input  name="contact" placeholder="Enter contact" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter contact'" class="common-input mb-20 form-control" required="" type="text">
                                                 @if ($errors->has('contact'))
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $errors->first('contact') }}</strong>
                                                     </span>
                                                 @endif    
-											<label for="Description">Description</label>
+											<label for="Description">@lang('header.description')</label>
 											<textarea class="common-textarea mt-10 form-control" name="description" 
 												placeholder="Description" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter description'" 
 												required=""></textarea>
@@ -71,7 +71,7 @@
                                                     <strong>{{ $errors->first('description') }}</strong>
                                                 </span>
                                             @endif  
-											<label for="price">Price</label>
+											<label for="price">@lang('header.price')</label>
 											<input name="price" placeholder="Enter price" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter price'" class="common-input mb-20 form-control" required="" type="text">
 											@if ($errors->has('price'))
                                                 <span class="invalid-feedback" role="alert">
@@ -79,7 +79,7 @@
                                                 </span>
                                             @endif     
 											<div class="form-group">
-                                        <label for="selectSkill">Skill</label>
+                                        <label for="selectSkill">@lang('header.skills')</label>
                                             
                                         <select name="skill_id" class="form-control">
                                         @foreach($skills as $id=>$skill)
@@ -89,7 +89,7 @@
                                         </select>
                                         </div>
                                         <div class="form-group">
-                                        <label for="selectProfession">Profession</label>
+                                        <label for="selectProfession">@lang('header.profession')Profession</label>
                                             
                                         <select name="profession_id" class="form-control">
                                         @foreach($pas as $id=>$profession)
@@ -98,7 +98,7 @@
                                         @endforeach
                                         </select>
                                         </div>
-										<button type="submit" class="primary-btn mt-20 text-white" style="float: right;">Create</button><div class="mt-20 alert-msg" style="text-align: left;"></div>
+										<button type="submit" class="primary-btn mt-20 text-white" style="float: right;">@lang('header.create')</button><div class="mt-20 alert-msg" style="text-align: left;"></div>
 								</div>
 								</div>
 </form>	

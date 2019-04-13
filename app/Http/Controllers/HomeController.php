@@ -77,11 +77,11 @@ class HomeController extends Controller
 
         $candidates = Candidate::create($data);
 
-        return redirect()->route('profile_candidate', $candidates->id);
+        return redirect()->route('profile_candidate',[app()->getLocale() , $candidates->id]);
     }
     
     //show the profile of candidate
-    public function profileCandidate($id)
+    public function profileCandidate($locale,$id)
     {
         $this->authorize('show-candidate');
         $candidates =  DB::table('candidates')
@@ -92,11 +92,11 @@ class HomeController extends Controller
         {
             $data = $candidate;
         }
-        return view('profile.show_candidate',compact('candidates'));
+        return view('profile.show_candidate',compact('data'));
     }
   
     //edit candidate
-    public function editCandidate($id)
+    public function editCandidate($locale,$id)
     {
         $this->authorize('update-candidate');
         $pas = Profession::orderBy('profession')->pluck('profession','id');
@@ -105,7 +105,7 @@ class HomeController extends Controller
         return view('profile.edit_candidate',compact('candidates','skills','pas'));
     }
     //update candidate
-    public function updateCandidate(Request $request, $id)
+    public function updateCandidate($locale,Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
@@ -131,16 +131,16 @@ class HomeController extends Controller
 
         $candidates->save();
        
-        return redirect()->route('profile_candidate', $candidates->id);
+        return redirect()->route('profile_candidate', [app()->getLocale() ,$candidates->id]);
     }
     //delete profile
-    public function destroyCandidate($id)
+    public function destroyCandidate($locale,$id)
     {
         $this->authorize('delete-candidate');
         $candidates = Candidate::find($id);
         $candidates->delete();
 
-        return redirect()->route('registration');
+        return redirect()->route('registration',app()->getLocale());
     }
     //save the data for job
     public function storeJob(Request $request)
@@ -150,10 +150,10 @@ class HomeController extends Controller
 
         $jobs = Job::create($data);
 
-        return redirect()->route('profile_job', $jobs->id);
+        return redirect()->route('profile_job', [app()->getLocale() ,$jobs->id]);
     }
     //show vacancy
-    public function profileJob($id)
+    public function profileJob($locale,$id)
     {
         $this->authorize('show-vacancy');
         $jobs =  DB::table('jobs')->join('skills', 'skills.id', '=', 'jobs.skill_id')
@@ -162,10 +162,10 @@ class HomeController extends Controller
         {
             $data = $job;
         }
-        return view('profile.show_job',compact('jobs'));
+        return view('profile.show_job',compact('data'));
     }
    //edit job
-   public function editJob($id)
+   public function editJob($locale,$id)
    {
     $this->authorize('update-vacancy');
        $pas = Profession::orderBy('profession')->pluck('profession','id');
@@ -174,7 +174,7 @@ class HomeController extends Controller
        return view('profile.edit_vacancy',compact('jobs','skills','pas'));
    }
    //update job
-   public function updateJob(Request $request, $id)
+   public function updateJob($locale,Request $request, $id)
    {
     $validator = Validator::make($request->all(), [
         'title' => 'required',
@@ -202,16 +202,16 @@ class HomeController extends Controller
 
     $jobs->save();
       
-       return redirect()->route('profile_job', $jobs->id);
+       return redirect()->route('profile_job', [app()->getLocale() ,$jobs->id]);
    }
    //delete profile
-   public function destroyJob($id)
+   public function destroyJob($locale,$id)
    {
     $this->authorize('delete-vacancy');
        $jobs = Job::find($id);
        $jobs->delete();
 
-       return redirect()->route('home');
+       return redirect()->route('home',app()->getLocale());
    }
   //list all jobs
     public function job()
@@ -282,6 +282,7 @@ class HomeController extends Controller
         $candidates = DB::table('candidates')
         ->join('skills', 'skills.id', '=', 'candidates.skill_id')
         ->join('professions', 'professions.id', '=', 'candidates.profession_id')->paginate(10);
+        
         return view('freelancer',compact('candidates'));
     }
     //list all jobs
@@ -329,7 +330,7 @@ class HomeController extends Controller
         return view('dayfreelancer',compact('candidates'));
     }
     //compare
-    public function compare($id)
+    public function compare($locale,$id)
     {
        
         $candidates =  DB::table('candidates')
@@ -376,13 +377,13 @@ class HomeController extends Controller
         return view('compare',compact('cand','vacancy','procentaj'));
 
     }
-    public function contactCandidate($id)
+    public function contactCandidate($locale,$id)
     {
         $candidates = Candidate::find($id);
      
         return view('platform.cand_contact',compact('candidates'));
     }
-    public function storeContactCandidate(Request $request, $id)
+    public function storeContactCandidate($locale,Request $request, $id)
     {
         $this->validate($request,[
             'name'=>'required',
@@ -416,15 +417,15 @@ class HomeController extends Controller
         });
         Session::flash('success', 'Your email was sent!');
 
-        return redirect()->route('home');
+        return redirect()->route('home',app()->getLocale());
     }
-    public function contactVacancy($id)
+    public function contactVacancy($locale,$id)
     {
         $jobs = Job::find($id); 
        
         return view('platform.vacancy_contact',compact('jobs'));
     }
-    public function storeContactVacancy(Request $request, $id)
+    public function storeContactVacancy($locale,Request $request, $id)
     {
         $this->validate($request,[
             'name'=>'required',
@@ -459,7 +460,7 @@ class HomeController extends Controller
         });
         Session::flash('success', 'Your email was sent!');
 
-        return redirect()->route('home');
+        return redirect()->route('home',app()->getLocale());
     }
       
 }

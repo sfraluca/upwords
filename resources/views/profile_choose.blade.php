@@ -15,13 +15,11 @@
                         <br>
                         
 							<h1 class="text-white">
-								<span>Welcome!</span> Complete your 
-                                <!-- can				 -->
-                                CV or post a job
+								@lang('header.complete_cv')
 							</h1>	
 							
 								
-							<p class="text-white"> <span>You can't go further before you create a profile!</span> </p>
+							<p class="text-white"> <span>@lang('header.complete_sub')</span> </p>
 </div>											
 					</div>
 				</div>
@@ -32,7 +30,7 @@
 					<div class="row d-flex justify-content-center">
 						<div class="menu-content col-lg-9">
 							<div class="title text-center">
-                          <h1>Create a profile for your cv to find ohters faster!</h1> 
+                          <h1>@lang('header.midle_create')</h1> 
 						  	</div>
 						</div>
 					</div>	
@@ -45,9 +43,13 @@
 					<div class="row d-flex justify-content-center">
 						<div class="menu-content col-lg-9">
 							<div class="title text-center">
-								<h1 class="mb-10 text-white"> Choose the role you want to create:</h1>
-								<a class="primary-btn" href="{{route('registration_candidate')}}">Search for job</a>
-								<a class="primary-btn" href="{{route('registration_job')}}">Search for freelancer</a>
+								<h1 class="mb-10 text-white"> @lang('header.create')</h1>
+								@can('create-candidate')
+								<a class="primary-btn" href="{{route('registration_candidate', app()->getLocale())}}">@lang('header.search_job')</a>
+								@endcan
+								@can('create-vacancy')
+								<a class="primary-btn" href="{{route('registration_job', app()->getLocale())}}">@lang('header.search_freelancer')</a>
+								@endcan
 							</div>
 						</div>
 					</div>	

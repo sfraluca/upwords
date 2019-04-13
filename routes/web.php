@@ -10,7 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/', function () {
+    return redirect(app()->getLocale());
+});
+Route::group(['prefix' => '{locale}', 
+  'where' => ['locale' => '[a-zA-Z]{2}'],'middleware' => 'setlocale'], function() {
 
 
 Auth::routes();
@@ -228,4 +232,5 @@ Route::group(['prefix'=>'posts'], function(){
         ->name('publish_post')
         ->middleware('can:publish-post');
 
+});
 });

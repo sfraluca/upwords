@@ -2,18 +2,64 @@
 
 @section('content')
 
+<header id="header" id="home">
+			    <div class="container">
+			    	<div class="row align-items-center justify-content-between d-flex">
+				      <div id="logo">
+				        <a href="{{ route('website', app()->getLocale()) }}"><img src="/img/logo.png" alt="" title="" /></a>
+				      </div><h4 class="text-white">{{ Auth::user()->name }}</h4>
+				      <nav id="nav-menu-container">
+				        <ul class="nav-menu">
+									@foreach (config('app.available_locales') as $locale)
+										<li class="nav-item">
+												<a class="nav-link"
+											href="{{ route(\Illuminate\Support\Facades\Route::currentRouteName() , [app()->getLocale(), $data->id]) }}"
+											@if (app()->getLocale() == $locale) style="font-weight: bold; text-decoration: underline" @endif>{{ strtoupper($locale) }}</a>
+										</li>
+								@endforeach
+				          <li class="menu-active"><a href="{{ route('home', app()->getLocale()) }}">@lang('header.home')</a></li>
+									@can('create-vacancy') 
+									<li class="menu-active"><a href="{{ route('registration_job', app()->getLocale()) }}">@lang('header.post_job')</a></li>
+									@endcan
+									@can('index-vacancy') 
+				          <li><a href="{{ route('job', app()->getLocale()) }}">@lang('header.jobs')</a></li>
+									@endcan
+									@can('index-candidate') 
+                          <li><a href="{{ route('freelancer', app()->getLocale()) }}">@lang('header.freelancers')</a></li>
+													@endcan
 
 
-@include('menu')
+
+                           @if (Auth::guest())
+				          <li><a href="{{ route('register', app()->getLocale()) }}">@lang('header.register')</a></li>
+				          <li><a href="{{ route('login', app()->getLocale()) }}">@lang('header.login')</a></li>		
+                            @else
+                                <li><a  href="{{ route('logout', app()->getLocale()) }}"
+                                    onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                    @lang('header.logout')
+                                </a>
+                                
+                                <form id="logout-form" action="{{ route('logout', app()->getLocale()) }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form></li>
+
+                                @endif
+
+				        </ul>
+				      </nav><!-- #nav-menu-container -->		    		
+			    	</div>
+			    </div>
+			  </header><!-- #header -->
 <section class="banner-area relative" id="home">	
 				<div class="overlay overlay-bg"></div>
 				<div class="container">
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
-								Your CV				
+								@lang('header.cv')				
 							</h1>	
-							<p class="text-white link-nav"><a href="{{route('home')}}">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="{{route('job')}}"> Go to Jobs</a></p>
+							<p class="text-white link-nav"><a href="{{route('home', app()->getLocale())}}">@lang('header.home') </a>  <span class="lnr lnr-arrow-right"></span>  <a href="{{route('job', app()->getLocale())}}">@lang('header.go_to') </a></p>
 						</div>											
 					</div>
 				</div>
@@ -27,14 +73,14 @@
 							<ul> 
 							
 							@can('delete-candidate')
-								<li><form method="POST" class="delete_form" action ="{{ route('deletecandidate', $candidates->id)}}">
+								<li><form method="POST" class="delete_form" action ="{{ route('deletecandidate', [app()->getLocale(), $data->id])}}">
 								 
 									{{csrf_field()}}
 									<input type="hidden" name="_method" value="DELETE"/>
-									<button type="submit" style="float: right;" class="genric-btn danger">Delete profile</button>
+									<button type="submit" style="float: right;" class="genric-btn danger">@lang('header.delete')</button>
 								</form></li>@endcan
 								@can('update-candidate') 
-								<li><a class="genric-btn primary" style="float: right;" href="{{route('edit_candidate', $candidates->id)}}">Edit profile</a></li>
+								<li><a class="genric-btn primary" style="float: right;" href="{{route('edit_candidate', [app()->getLocale(), $data->id])}}">@lang('header.edit')</a></li>
 								@endcan 
 							</ul>
 
@@ -44,21 +90,20 @@
 
                             <div class="single-post d-flex flex-row">
                                 <div class="thumb">
-                                    <img src="img/post.png" alt=""> 
-									Skill
+									@lang('header.skills')
 										<ul class="tags">
 											<li>
 												<a href="#">
-													{{$candidates->skill}}
+													{{$data->skill}}
 												</a>
 											</li>
 											
 										</ul>
-										Profession
+										@lang('header.profession')
                                         <ul class="tags">
                                             <li>
                                                 <a href="#">
-                                                    {{$candidates->profession}}
+                                                    {{$data->profession}}
                                                 </a>
                                             </li>
                                             
@@ -68,26 +113,26 @@
 									<div class="details">
 										<div class="title d-flex flex-row justify-content-between">
 											<div class="titles">
-												<h4>{{$candidates->name}}</h4>
-												<h6>{{$candidates->slug}}</h6>					
+												<h4>{{$data->name}}</h4>
+												<h6>{{$data->slug}}</h6>					
 											</div>
 											
 										</div>
 										<p>
                                         _____________________________________________________________
                                     </p>
-										<h5>Job Nature: {{$candidates->emplyment_type}}</h5>
-										<h5>Contact: {{$candidates->contact}}</h5>
-										<p class="address"><span class="lnr lnr-database"></span> {{$candidates->price}}</p>
+										<h5>@lang('header.employment_type'): {{$data->emplyment_type}}</h5>
+										<h5>@lang('header.contact'): {{$data->contact}}</h5>
+										<p class="address"><span class="lnr lnr-database"></span> {{$data->price}}</p>
 									</div>
 
 									
 							
 									</div>
 				</div>	<div class="single-post job-details">
-                                <h4 class="single-title">Description</h4>
+                                <h4 class="single-title">@lang('header.description')</h4>
                                 <p>
-                                {{$candidates->description}}</p>
+                                {{$data->description}}</p>
                                 
                                 </div>	
 			</section>

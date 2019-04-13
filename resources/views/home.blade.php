@@ -15,7 +15,7 @@
                         <br>
                         
 							<h1 class="text-white">
-								<span>Welcome to your application</span> 
+								<span>@lang('header.welcome_to_app')</span> {{ Auth::user()->name }}
 							</h1>	
 
 			</section>
@@ -25,33 +25,33 @@
 					<div class="row">
 						<div class="col-lg-3 col-md-6">
 							<div class="single-feature">
-								<h4>Searching</h4>
+								<h4>@lang('header.search')</h4>
 								<p>
-									You can find many types of freelancers and jobs. With search bar you can fnd them very quickly.
+									@lang('header.search_prez')
 								</p>
 							</div>
 						</div>
 						<div class="col-lg-3 col-md-6">
 							<div class="single-feature">
-								<h4>Profession</h4>
+								<h4>@lang('header.profession')</h4>
 								<p>
-									There are many profession area where you can choose from as you want.
+									@lang('header.profession_prez')
 								</p>
 							</div>
 						</div>
 						<div class="col-lg-3 col-md-6">
 							<div class="single-feature">
-								<h4>Skills</h4>
+								<h4>@lang('header.skills')</h4>
 								<p>
-									You know a freelancer or a job is good by his skills.
+									@lang('header.skill_prez')
 								</p>
 							</div>
 						</div>
 						<div class="col-lg-3 col-md-6">
 							<div class="single-feature">
-								<h4>Contact</h4>
+								<h4>@lang('header.contact')</h4>
 								<p>
-									After you choose a freelancer or a job you can contact them.
+									@lang('header.contact_prez')
 								</p>
 							</div>
 						</div>																		
@@ -65,8 +65,8 @@
 					<div class="row d-flex justify-content-center">
 						<div class="menu-content pb-60 col-lg-10">
 							<div class="title text-center">
-								<h1 class="mb-10"><h1 class="mb-10">All Profession Area</h1>
-								<p>By your profession is smarter and faster to find the best candidate.</p>
+								<h1 class="mb-10"><h1 class="mb-10">@lang('header.all_are')</h1>
+								<p>@lang('header.are_prez')</p>
 							</div>
 						</div>
 					</div>						
@@ -91,14 +91,13 @@
 					<div class="row justify-content-center d-flex">
 						<div class="col-lg-8 post-list">
 							<ul class="cat-list">
-								<li><a href="#">Recent</a></li>
+								<li><a href="#">@lang('header.recent')</a></li>
 							</ul>
 							@foreach ($jobs_recent as $job)
                                            
                                            
 							<div class="single-post d-flex flex-row">
 								<div class="thumb">
-									<img src="img/post.png" alt="">
 									<ul class="tags">
 										<li>
 											<a href="#">
@@ -115,15 +114,19 @@
 											<h6>{{$job->slug}}</h6>					
 										</div>
 										<ul class="btns">
-											<li><a href="{{route('contact_vacancy', $job->id)}}">Contact</a></li>
-											<li><a href="{{route('compare', $job->id)}}">See</a></li>
+											<li><a href="{{route('contact_vacancy', [app()->getLocale(),$job->id])}}">@lang('header.contact')</a></li>
+											@can('show-vacancy')
+											<li><a href="{{route('profile_job', [app()->getLocale(), $job->id])}}">@lang('header.see')</a></li>
+											@endcan()
+											<li><a href="{{route('compare', [app()->getLocale(), $job->id])}}">@lang('header.compare')</a></li>
+											
 										</ul>
 									</div>
 									<p>
 									{{$job->description}}
 									</p>
-									<h5>Job Nature: {{$job->employment_type}}</h5>
-									<h5>Contact: {{$job->contact}}</h5>
+									<h5>@lang('header.employment_type'): {{$job->employment_type}}</h5>
+									<h5>@lang('header.contact'): {{$job->contact}}</h5>
 									<h5>
                                                 {{$job->profession}}
                                                </h5>

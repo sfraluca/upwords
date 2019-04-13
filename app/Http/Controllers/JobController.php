@@ -80,11 +80,11 @@ class JobController extends Controller
             $jobs->profession_id = $request->profession_id;
             $jobs->save();
             
-        return redirect()->route('show_job', $jobs->id);
+        return redirect()->route('show_job', [app()->getLocale() ,$jobs->id]);
     }
 
 
-    public function show($id)
+    public function show($locale,$id)
     {
         $jobs =  DB::table('jobs')->join('skills', 'skills.id', '=', 'jobs.skill_id')
         ->join('professions', 'professions.id', '=', 'jobs.profession_id')->select('*')->where('jobs.id','=',$id)->get();
@@ -97,7 +97,7 @@ class JobController extends Controller
 
  
 
-    public function edit($id)
+    public function edit($locale,$id)
     {
         $pas = Profession::orderBy('profession')->pluck('profession','id');
         $skills = Skill::orderBy('skill')->pluck('skill','id');
@@ -107,7 +107,7 @@ class JobController extends Controller
         return view('register-job.edit', compact('jobs','skills','pas'));   
     }
 
-    public function update(Request $request, $id)
+    public function update($locale,Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required',
@@ -135,15 +135,15 @@ class JobController extends Controller
 
         $jobs->save();
 
-        return redirect()->route('show_job', $jobs->id);
+        return redirect()->route('show_job', [app()->getLocale() ,$jobs->id]);
     }
 
-    public function destroy($id)
+    public function destroy($locale,$id)
     {
         $jobs = Job::find($id);
         $jobs->delete();
 
-        return redirect()->route('list_all_jobs');
+        return redirect()->route('list_all_jobs',app()->getLocale());
     }
 
 }

@@ -51,11 +51,14 @@ class AdminController extends Controller
         ->select('profession')
         ->get();
         $profession = Profession::all();
-        $jobs_recent = DB::table('jobs')->select("*")->whereBetween('created_at', [
-            Carbon\Carbon::now()->startOfWeek(),
-            Carbon\Carbon::now()->endOfWeek(),
-        ])->paginate(6);
-
-        return view('admin.admin',compact('candCount','jobCount','usersCount','users','candidates','skills','pas','jobs_recent'));
+        $jobs_recent = DB::table('jobs')
+                ->join('skills', 'skills.id', '=', 'jobs.skill_id')
+                ->join('professions', 'professions.id', '=', 'jobs.profession_id')
+                ->select("*")
+                ->whereBetween('jobs.created_at', [
+                    Carbon\Carbon::now()->startOfWeek(),
+                    Carbon\Carbon::now()->endOfWeek(),
+                ])->paginate(6);
+        return view('admin.admin',compact('candCount','jobCount','usersCount','users','candidates','skills','pas','jobs_recent', 'profession'));
     }
 }

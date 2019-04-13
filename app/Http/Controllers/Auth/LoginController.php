@@ -27,7 +27,10 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    public function redirectTo()
+    {
+        return app()->getLocale() . '/home';
+    }
 
     /**
      * Create a new controller instance.
@@ -45,7 +48,7 @@ class LoginController extends Controller
         //for just one logout
         // $redirect->session()->flush();
         // $redirect->session()->regenerate();
-        return redirect('/');
+        return redirect()->route('login', app()->getLocale());
 
     }
 }

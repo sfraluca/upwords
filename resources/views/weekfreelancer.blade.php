@@ -16,10 +16,10 @@
                         <br>
                         
 							<h1 class="text-white">
-								Search for a job				
+								@lang('header.search_job')				
 							</h1>	
 							
-							<p class="text-white"> <span>Search by tags:</span> Tecnology, Business, Consulting, IT Company, Design, Development and many other profession area. Navigate and see what we offer.</p>
+							<p class="text-white"> <span>@lang('header.searching'):</span> @lang('header.subtitle')</p>
 						
 													
 					</div>		</div>
@@ -32,11 +32,11 @@
 					<div class="row justify-content-center d-flex">
 						<div class="col-lg-8 post-list">
 							
-						<ul class="cat-list">
-								<li><a href="{{route('freelancer_month')}}">31 days</a></li>
-								<li><a href="{{route('freelancer_week')}}">7 days</a></li>
-								<li><a href="{{route('freelancer_day')}}">1 days</a></li>
-								<li><a href="{{route('freelancer')}}">All candidates</a></li>
+						<ul class="cat-list"><li><a href="{{route('freelancer', app()->getLocale())}}">@lang('header.all_candidates')</a></li>
+								<li><a href="{{route('freelancer_month', app()->getLocale())}}">31 @lang('header.days')</a></li>
+								<li><a href="{{route('freelancer_week', app()->getLocale())}}">7 @lang('header.days')</a></li>
+								<li><a href="{{route('freelancer_day', app()->getLocale())}}">1 @lang('header.day')</a></li>
+								
 							</ul>
 
 							@foreach ($candidates as $candidate)
@@ -44,7 +44,6 @@
                                            
 							<div class="single-post d-flex flex-row">
 									<div class="thumb">
-										<img src="img/post.png" alt="">
 										<ul class="tags">
 											<li>
 												<a href="#">
@@ -62,14 +61,14 @@
 												<h6>{{$candidate->slug}}</h6>					
 											</div>
 											<ul class="btns">
-												<li><a href="{{route('contact_candidate', $candidate->id)}}">Contact</a></li>
-												<li><a href="{{route('compare', $candidate->id)}}">See</a></li>
+												<li><a href="{{route('contact_candidate', [app()->getLocale(), $candidate->id])}}">@lang('header.contact')</a></li>
+												<li><a href="{{route('compare', [app()->getLocale(), $candidate->id])}}">@lang('header.see')</a></li>
 											</ul>
 										</div>
 										
-										<h5>Job Nature: {{$candidate->emplyment_type}}</h5>
-										<h5>Contact: {{$candidate->contact}}</h5>
-										<h5>Profession: {{$candidate->profession}}</h5>
+										<h5>@lang('header.employment_type'): {{$candidate->emplyment_type}}</h5>
+										<h5>@lang('header.contact'): {{$candidate->contact}}</h5>
+										<h5>@lang('header.profession'): {{$candidate->profession}}</h5>
 										<p class="address"><span class="lnr lnr-database"></span> {{$candidate->price}}</p>
 									</div>
 							</div>

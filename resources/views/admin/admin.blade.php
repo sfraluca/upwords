@@ -30,13 +30,13 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h2 class="pageheader-title">E-commerce Dashboard Template </h2>
-                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                                <h2 class="pageheader-title"></h2>
+                                <p class="pageheader-text"></p>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">E-Commerce Dashboard Template</li>
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">@lang('header.dashboard')</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page"></li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -52,7 +52,7 @@
                             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="text-muted">Total vacancies</h5>
+                                        <h5 class="text-muted">@lang('header.total_vacancies')</h5>
                                         <div class="metric-value d-inline-block">
                                             <h1 class="mb-1">{{$jobCount}}</h1>
                                         </div>
@@ -64,7 +64,7 @@
                             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="text-muted">Total candidates</h5>
+                                        <h5 class="text-muted">@lang('header.total_candidates')</h5>
                                         <div class="metric-value d-inline-block">
                                             <h1 class="mb-1">{{$candCount}}</h1>
                                         </div>
@@ -76,7 +76,7 @@
                             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="text-muted">New users</h5>
+                                        <h5 class="text-muted">@lang('header.new_users')</h5>
                                         <div class="metric-value d-inline-block">
                                             <h1 class="mb-1">{{$usersCount}}</h1>
                                         </div>
@@ -96,19 +96,19 @@
                             <!-- ============================================================== -->
                             <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
                                 <div class="card">
-                                    <h5 class="card-header">Recent candidates</h5>
+                                    <h5 class="card-header">@lang('header.recent_candidates')</h5>
                                     <div class="card-body p-0">
                                         <div class="table-responsive">
                                             <table class="table">
                                                 <thead class="bg-light">
                                                     <tr class="border-0">
                                                     <th class="border-0">#</th>
-                                                <th class="border-0">Name</th>
-                                                <th class="border-0">Contact</th>
-                                                <th class="border-0">Slug</th>
-                                                <th class="border-0">Employment</th>
-                                                <th class="border-0">Description</th>
-                                                <th class="border-0">Price</th>
+                                                <th class="border-0">@lang('header.name')</th>
+                                                <th class="border-0">@lang('header.contact')</th>
+                                                <th class="border-0">@lang('header.slug')</th>
+                                                <th class="border-0">@lang('header.employment_type')</th>
+                                                <th class="border-0">@lang('header.description')</th>
+                                                <th class="border-0">@lang('header.price')</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -126,7 +126,7 @@
                                             </tr>
                                            @endforeach
                                                     <tr>
-                                                        <td colspan="9"><a href="{{route('list_all_candidates')}}" class="btn btn-outline-primary float-right">View Details</a></td>
+                                                        <td colspan="9"><a href="{{route('list_all_candidates', app()->getLocale())}}" class="btn btn-outline-primary float-right">@lang('header.details')</a></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -144,15 +144,15 @@
                             <!-- ============================================================== -->
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="card">
-                                    <h5 class="card-header">Top Performing Campaigns</h5>
+                                    <h5 class="card-header">@lang('header.users')</h5>
                                     <div class="card-body p-0">
                                         <div class="table-responsive">
                                             <table class="table no-wrap p-table">
                                                 <thead class="bg-light">
                                                     <tr class="border-0">
                                                     <th class="border-0">#</th>
-                                                        <th class="border-0">Name</th>
-                                                        <th class="border-0">Email</th>
+                                                        <th class="border-0">@lang('header.name')</th>
+                                                        <th class="border-0">@lang('header.contact_email')</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -166,7 +166,7 @@
                                            @endforeach
                                                     <tr>
                                                         <td colspan="3">
-                                                            <a href="{{route('list_all_users')}}" class="btn btn-outline-primary float-right">Details</a>
+                                                            <a href="{{route('list_all_users', app()->getLocale())}}" class="btn btn-outline-primary float-right">@lang('header.details')</a>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -191,13 +191,12 @@
                                            
 							<div class="single-post d-flex flex-row">
 								<div class="thumb">
-									<img src="img/post.png" alt="">
-									<ul class="tags">@foreach ($skills as $s)
+									<ul class="tags">
 										<li>
 											<a href="#">
-                                                {{$s->skill}}
+                                                {{$job->skill}}
                                                </a>
-										</li> @endforeach
+										</li> 
 										
 									</ul>
 								</div>
@@ -208,18 +207,18 @@
 											<h6>{{$job->slug}}</h6>					
 										</div>
 										<ul class="btns">
-											<li><a href="{{route('contact_vacancy', $job->id)}}">Contact</a></li>
-											<li><a href="{{route('compare', $job->id)}}">See</a></li>
+											<li><a href="{{route('contact_vacancy', [app()->getLocale(), $job->id])}}">@lang('header.contact')</a></li>
+											<li><a href="{{route('compare', [app()->getLocale(),$job->id])}}">@lang('header.see')</a></li>
 										</ul>
 									</div>
 									<p>
 									{{$job->description}}
 									</p>
-									<h5>Job Nature: {{$job->employment_type}}</h5>
-									<h5>Contact: {{$job->contact}}</h5>
-									<h5>@foreach ($pas as $p)
-                                                {{$p->profession}}
-                                                @endforeach</h5>
+									<h5>@lang('header.employment_type'): {{$job->employment_type}}</h5>
+									<h5>@lang('header.contact'): {{$job->contact}}</h5>
+									<h5>
+                                                {{$job->profession}}
+                                                </h5>
 									<p class="address"><span class="lnr lnr-map"></span> {{$job->name}}</p>
 									<p class="address"><span class="lnr lnr-database"></span> {{$job->price}}</p>
 								</div>
@@ -242,12 +241,12 @@
                     </div>
                 </div>
             </div>
-            @include('layouts.navbar')
+         
         </div>
         <!-- ============================================================== -->
         <!-- end wrapper  -->
         <!-- ============================================================== -->
     </div>
-
+ @include('layouts.footer')
 
 @endsection

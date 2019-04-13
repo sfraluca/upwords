@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.register-app')
 
 @section('content')
 <div class="limiter">

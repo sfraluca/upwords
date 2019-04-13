@@ -66,7 +66,7 @@
                                             @endif    
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail">@lang('header.email')</label>
+                                            <label for="inputEmail">@lang('header.contact_email')</label>
                                             <input id="inputEmail" type="email" name="email" data-parsley-trigger="change" required="" placeholder="Enter email" autocomplete="off" class="form-control">
                                             @if ($errors->has('email'))
                                                 <span class="invalid-feedback" role="alert">
@@ -114,12 +114,12 @@
                       <!-- end -->
                 </div>
             </div>
-            @include('layouts.navbar')
+           
         </div>
         <!-- ============================================================== -->
         <!-- end wrapper  -->
         <!-- ============================================================== -->
     </div>
-
+ @include('layouts.footer')
 
 @endsection

@@ -15,7 +15,7 @@
                         <br>
                         
 							<h1 class="text-white">
-								<span>@lang('header.welcome_to_app')</span> 
+								<span>@lang('header.welcome_to_app')</span> {{ Auth::user()->name }}
 							</h1>	
 
 			</section>
@@ -98,7 +98,6 @@
                                            
 							<div class="single-post d-flex flex-row">
 								<div class="thumb">
-									<img src="img/post.png" alt="">
 									<ul class="tags">
 										<li>
 											<a href="#">
@@ -115,8 +114,12 @@
 											<h6>{{$job->slug}}</h6>					
 										</div>
 										<ul class="btns">
-											<li><a href="{{route('contact_vacancy', [$job->id, app()->getLocale()])}}">@lang('header.contact')</a></li>
-											<li><a href="{{route('compare', [$job->id, app()->getLocale()])}}">@lang('header.see')</a></li>
+											<li><a href="{{route('contact_vacancy', [app()->getLocale(),$job->id])}}">@lang('header.contact')</a></li>
+											@can('show-vacancy')
+											<li><a href="{{route('profile_job', [app()->getLocale(), $job->id])}}">@lang('header.see')</a></li>
+											@endcan()
+											<li><a href="{{route('compare', [app()->getLocale(), $job->id])}}">@lang('header.compare')</a></li>
+											
 										</ul>
 									</div>
 									<p>

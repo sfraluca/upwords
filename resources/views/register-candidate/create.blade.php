@@ -65,7 +65,7 @@
                                                 </span>
                                             @endif    
                                         </div>
-                                        <label for="Contact">@lang('header.email')</label> 
+                                        <label for="Contact">@lang('header.contact_email')</label> 
                                             <input  name="contact" placeholder="Enter contact" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter contact'" class="common-input mb-20 form-control" required="" type="text">
 									@if ($errors->has('contact'))
 										<span class="invalid-feedback" role="alert">
@@ -146,12 +146,12 @@
                       <!-- end -->
                 </div>
             </div>
-            @include('layouts.navbar')
+           
         </div>
         <!-- ============================================================== -->
         <!-- end wrapper  -->
         <!-- ============================================================== -->
     </div>
-
+ @include('layouts.footer')
 
 @endsection

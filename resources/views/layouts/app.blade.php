@@ -7,7 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-   <title>{{ config('app.name', 'Upwords') }}</title>
+   <title>{{ config('app.name', 'Job Listing') }}</title>
 <script src="/js/app.js"></script>
     <!-- Styles
     <link href="/css/app.css" rel="stylesheet"> -->
@@ -26,17 +26,17 @@
 
 <!-- Datatable -->
 
-<link rel="stylesheet" type="text/css" href="{{ asset('media/css/dataTables.bootstrap4.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('resources/syntax/shCore.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('resources/demo.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('/media/css/dataTables.bootstrap4.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('/resources/syntax/shCore.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('/resources/demo.css') }}">
 	<style type="text/css" class="init">
 	
 	</style>
 	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-	<script type="text/javascript" language="javascript" src="{{ asset('media/js/jquery.dataTables.js') }}"></script>
-	<script type="text/javascript" language="javascript" src="{{ asset('media/js/dataTables.bootstrap4.js') }}"></script>
-	<script type="text/javascript" language="javascript" src="{{ asset('resources/syntax/shCore.js') }}"></script>
-	<script type="text/javascript" language="javascript" src="{{ asset('resources/demo.js') }}"></script>
+	<script type="text/javascript" language="javascript" src="{{ asset('/media/js/jquery.dataTables.js') }}"></script>
+	<script type="text/javascript" language="javascript" src="{{ asset('/media/js/dataTables.bootstrap4.js') }}"></script>
+	<script type="text/javascript" language="javascript" src="{{ asset('/resources/syntax/shCore.js') }}"></script>
+	<script type="text/javascript" language="javascript" src="{{ asset('/resources/demo.js') }}"></script>
 	<script type="text/javascript" language="javascript" class="init">
 	
 $(document).ready(function() {

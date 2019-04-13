@@ -6,7 +6,28 @@
         <!-- navbar -->
         <!-- ============================================================== -->
         
-        @include('layouts.navbar')
+       <div class="dashboard-header">
+            <nav class="navbar navbar-expand-lg bg-navbar fixed-top">
+                <a class="navbar-brand" href="index.html">JOB LISTING</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class=" navbar-toggler-icon">Menu</span>
+                </button><h4 >{{ Auth::user()->name }}</h4> 
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-right-top">
+                        
+                        @foreach (config('app.available_locales') as $locale)
+                            <li >
+                        <a class="nav-link"
+                                href="{{ route(\Illuminate\Support\Facades\Route::currentRouteName(), [app()->getLocale(),$user->id ]) }}"
+                                @if (app()->getLocale() == $locale) style="font-weight: bold; text-decoration: underline" @endif>{{ strtoupper($locale) }}</a>
+                            </li>
+						@endforeach
+                                 <li ><a class="nav-link" href="{{ route('admin.logout', app()->getLocale())}}"><i class="fas fa-power-off mr-2"></i>@lang('header.logout')</a>
+                            </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
       
         <!-- ============================================================== -->
         <!-- end navbar -->
@@ -60,7 +81,7 @@
                                             <tr>
                                                 <th>#</th>
                                                <th>@lang('header.name')</th>
-                                                <th>@lang('header.email')</th>
+                                                <th>@lang('header.contact_email')</th>
                                                <th>@lang('header.edit')</th>     
                                                <th>@lang('header.delete')</th>     
                                             </tr>
@@ -71,14 +92,14 @@
                                                 <td>{{$user->name}}</td>
                                                 <td>{{$user->email}}</td>
                                                 <td>
-                                                    <form action ="{{ route('edit_user', [$user->id, app()->getLocale()])}}">
+                                                    <form action ="{{ route('edit_user', [app()->getLocale(),$user->id ])}}">
                                                         <input type="hidden"/>
                                                         <button type="submit" class="btn btn-gradient-dark btn-icon-text btn-sm">@lang('header.edit')</button>
                                                     </form>
                                                     
                                                 </td>
                                                 <td>
-                                                    <form method="POST" class="delete_form" action ="{{ route('delete_user',  [$user->id, app()->getLocale()])}}">
+                                                    <form method="POST" class="delete_form" action ="{{ route('delete_user',  [app()->getLocale(),$user->id])}}">
                                                         {{csrf_field()}}
                                                         <input type="hidden" name="_method" value="DELETE"/>
                                                         <button type="submit" class="btn btn-gradient-danger btn-icon-text btn-sm">@lang('header.delete')</button>
@@ -91,7 +112,7 @@
                                             <tr>
                                             <th>#</th>
                                               <th>@lang('header.name')</th>
-                                                <th>@lang('header.email')</th>  
+                                                <th>@lang('header.contact_email')</th>  
                                                <th>@lang('header.edit')</th>     
                                                <th>@lang('header.delete')</th>     
                                             </tr>
@@ -103,12 +124,12 @@
                     </div>
                 </div>
             </div>
-            @include('layouts.navbar')
+           
         </div>
         <!-- ============================================================== -->
         <!-- end wrapper  -->
         <!-- ============================================================== -->
     </div>
 
-
+ @include('layouts.footer')
 @endsection

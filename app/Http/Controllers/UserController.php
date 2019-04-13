@@ -91,7 +91,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('show_user', $user->id);
+        return redirect()->route('show_user', [app()->getLocale() ,$user->id]);
     }
 
     public function destroy($locale,$id)
@@ -100,7 +100,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        return redirect()->route('list_all_users');
+        return redirect()->route('list_all_users',app()->getLocale() );
     }
 
 }

@@ -17,7 +17,7 @@
 								<span>{{$freelancers}}+</span> @lang('header.freelancers')				
 							</h1>	
 							
-							<p class="text-white"> <span>@lang('header.dashboard')Search by tags:</span> @lang('header.subtitle')</p>
+							<p class="text-white"> <span>@lang('header.searching'):</span> @lang('header.subtitle')</p>
 						</div>											
 					</div>
 				</div>
@@ -169,7 +169,6 @@
 							@foreach ($jobs as $job)
 							<div class="single-post d-flex flex-row">
 								<div class="thumb">
-									<img src="img/post.png" alt="">
 									<ul class="tags">
 										<li>
 											<a href="#">
@@ -185,7 +184,7 @@
 											<h6>{{$job->slug}}</h6>					
 										</div>
 										<ul class="btns">
-											<li><a href="{{route('login')}}">See</a></li>
+											<li><a href="{{route('login', app()->getLocale())}}">See</a></li>
 										</ul>
 									</div>
 									<h5>@lang('header.employment_type'): {{$job->employment_type}}</h5>
@@ -217,8 +216,7 @@
 							<div class="title text-center">
 								<h1 class="mb-10 text-white">@lang('header.join')</h1>
 								<p class="text-white">@lang('header.join_prez')</p>
-								<a class="primary-btn" href="{{route('register', app()->getLocale())}}">@lang('header.search_job')</a>
-								<a class="primary-btn" href="{{route('register', app()->getLocale())}}">@lang('header.search_freelancer')</a>
+								<a class="primary-btn" href="{{route('register', app()->getLocale())}}">@lang('header.register')</a>
 							</div>
 						</div>
 					</div>	

@@ -66,7 +66,7 @@
                                                 <th>@lang('header.profession')</th>
                                                 <th>@lang('header.ddescription')</th>
                                                 <th>@lang('header.price')</th>
-                                                <th>@lang('header.named')</th>    
+                                                <th>@lang('header.name')</th>    
                                                 <th>@lang('header.show')</th>    
                                                <th>@lang('header.edit')</th>     
                                                <th>@lang('header.delete')</th>     
@@ -88,13 +88,13 @@
                                                 <td>
                                                     <form action ="{{ route('show_job', [app()->getLocale(),$job->id])}}">
                                                         <input type="hidden"/>
-                                                        <button type="submit" class="btn btn-gradient-primary btn-icon-text btn-sm">@lang('header.show')</button>
+                                                        <button type="submit" class="btn btn-success btn-icon-text btn-sm">@lang('header.show')</button>
                                                     </form>
                                                 </td>
                                                 <td>
                                                     <form action ="{{ route('edit_job', [app()->getLocale(),$job->id])}}">
                                                         <input type="hidden"/>
-                                                        <button type="submit" class="btn btn-gradient-dark btn-icon-text btn-sm">@lang('header.edit')</button>
+                                                        <button type="submit" class="btn btn-primary btn-icon-text btn-sm">@lang('header.edit')</button>
                                                     </form>
                                                     
                                                 </td>
@@ -102,7 +102,7 @@
                                                     <form method="POST" class="delete_form" action ="{{ route('delete_job', [app()->getLocale(),$job->id])}}">
                                                         {{csrf_field()}}
                                                         <input type="hidden" name="_method" value="DELETE"/>
-                                                        <button type="submit" class="btn btn-gradient-danger btn-icon-text btn-sm">@lang('header.delete')</button>
+                                                        <button type="submit" class="btn btn-danger btn-icon-text btn-sm">@lang('header.delete')</button>
                                                     </form> 
                                                    
                                                 </td>
@@ -120,7 +120,7 @@
                                                 <th>@lang('header.profession')</th>
                                                 <th>@lang('header.ddescription')</th>
                                                 <th>@lang('header.price')</th>
-                                                <th>@lang('header.named')</th>    
+                                                <th>@lang('header.name')</th>    
                                                 <th>@lang('header.show')</th>    
                                                <th>@lang('header.edit')</th>     
                                                <th>@lang('header.delete')</th>  
@@ -133,12 +133,12 @@
                     </div>
                 </div>
             </div>
-            @include('layouts.navbar')
+           
         </div>
         <!-- ============================================================== -->
         <!-- end wrapper  -->
         <!-- ============================================================== -->
     </div>
-
+ @include('layouts.footer')
 
 @endsection

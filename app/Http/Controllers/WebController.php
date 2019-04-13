@@ -65,6 +65,6 @@ class WebController extends Controller
         });
         Session::flash('success', 'Your email was sent!');
 
-        return redirect()->route('website');
+        return redirect()->route('website',app()->getLocale());
     }
 }

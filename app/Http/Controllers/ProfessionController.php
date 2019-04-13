@@ -77,7 +77,7 @@ class ProfessionController extends Controller
 
         $professions->save();
 
-        return redirect()->route('show_profession', $professions->id);
+        return redirect()->route('show_profession', [app()->getLocale() ,$professions->id]);
     }
 
     public function destroy($locale,$id)
@@ -86,7 +86,7 @@ class ProfessionController extends Controller
         $professions = Profession::find($id);
         $professions->delete();
 
-        return redirect()->route('list_all_professions');
+        return redirect()->route('list_all_professions',app()->getLocale());
     }
 
 }

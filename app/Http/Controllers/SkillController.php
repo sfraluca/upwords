@@ -79,7 +79,7 @@ class SkillController extends Controller
 
         $skills->save();
 
-        return redirect()->route('show_skill', $skills->id);
+        return redirect()->route('show_skill', [app()->getLocale() ,$skills->id]);
     }
 
     public function destroy($locale,$id)
@@ -88,6 +88,6 @@ class SkillController extends Controller
         $skill = Skill::find($id);
         $skill->delete();
 
-        return redirect()->route('list_all_skills');
+        return redirect()->route('list_all_skills',app()->getLocale());
     }
 }

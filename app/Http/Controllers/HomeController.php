@@ -92,7 +92,7 @@ class HomeController extends Controller
         {
             $data = $candidate;
         }
-        return view('profile.show_candidate',compact('candidates'));
+        return view('profile.show_candidate',compact('data'));
     }
   
     //edit candidate
@@ -140,7 +140,7 @@ class HomeController extends Controller
         $candidates = Candidate::find($id);
         $candidates->delete();
 
-        return redirect()->route('registration');
+        return redirect()->route('registration',app()->getLocale());
     }
     //save the data for job
     public function storeJob(Request $request)
@@ -150,7 +150,7 @@ class HomeController extends Controller
 
         $jobs = Job::create($data);
 
-        return redirect()->route('profile_job', $jobs->id);
+        return redirect()->route('profile_job', [app()->getLocale() ,$jobs->id]);
     }
     //show vacancy
     public function profileJob($locale,$id)
@@ -162,7 +162,7 @@ class HomeController extends Controller
         {
             $data = $job;
         }
-        return view('profile.show_job',compact('jobs'));
+        return view('profile.show_job',compact('data'));
     }
    //edit job
    public function editJob($locale,$id)
@@ -211,7 +211,7 @@ class HomeController extends Controller
        $jobs = Job::find($id);
        $jobs->delete();
 
-       return redirect()->route('home');
+       return redirect()->route('home',app()->getLocale());
    }
   //list all jobs
     public function job()
@@ -282,6 +282,7 @@ class HomeController extends Controller
         $candidates = DB::table('candidates')
         ->join('skills', 'skills.id', '=', 'candidates.skill_id')
         ->join('professions', 'professions.id', '=', 'candidates.profession_id')->paginate(10);
+        
         return view('freelancer',compact('candidates'));
     }
     //list all jobs
@@ -416,7 +417,7 @@ class HomeController extends Controller
         });
         Session::flash('success', 'Your email was sent!');
 
-        return redirect()->route('home');
+        return redirect()->route('home',app()->getLocale());
     }
     public function contactVacancy($locale,$id)
     {
@@ -459,7 +460,7 @@ class HomeController extends Controller
         });
         Session::flash('success', 'Your email was sent!');
 
-        return redirect()->route('home');
+        return redirect()->route('home',app()->getLocale());
     }
       
 }

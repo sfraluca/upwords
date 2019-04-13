@@ -44,8 +44,12 @@
 						<div class="menu-content col-lg-9">
 							<div class="title text-center">
 								<h1 class="mb-10 text-white"> @lang('header.create')</h1>
+								@can('create-candidate')
 								<a class="primary-btn" href="{{route('registration_candidate', app()->getLocale())}}">@lang('header.search_job')</a>
+								@endcan
+								@can('create-vacancy')
 								<a class="primary-btn" href="{{route('registration_job', app()->getLocale())}}">@lang('header.search_freelancer')</a>
+								@endcan
 							</div>
 						</div>
 					</div>	

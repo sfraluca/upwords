@@ -143,7 +143,7 @@ class JobController extends Controller
         $jobs = Job::find($id);
         $jobs->delete();
 
-        return redirect()->route('list_all_jobs');
+        return redirect()->route('list_all_jobs',app()->getLocale());
     }
 
 }

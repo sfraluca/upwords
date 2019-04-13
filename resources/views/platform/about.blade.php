@@ -14,7 +14,7 @@
 							<h1 class="text-white">
 								@lang('header.about')		
 							</h1>	
-							<p class="text-white link-nav"><a href="{{route('website', app()->getLocale())}}">@lang('header.home') </a>  <span class="lnr lnr-arrow-right"></span>  <a href="{{route('about')}}">@lang('header.about')</a></p>
+							<p class="text-white link-nav"><a href="{{route('website', app()->getLocale())}}">@lang('header.home') </a>  <span class="lnr lnr-arrow-right"></span>  <a href="{{route('about', app()->getLocale())}}">@lang('header.about')</a></p>
 						</div>											
 					</div>
 				</div>
@@ -35,49 +35,49 @@
 					<div class="row">
 						<div class="col-lg-4 col-md-6">
 							<div class="single-service">
-								<h4><span class="lnr lnr-user"></span>@lang('header.dashboard')Expert Technicians</h4>
+								<h4><span class="lnr lnr-user"></span>@lang('header.expert')</h4>
 								<p>
-									@lang('header.dashboard')Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+									@lang('header.expert_prez')
 								</p>
 							</div>
 						</div>
 						<div class="col-lg-4 col-md-6">
 							<div class="single-service">
-								<h4><span class="lnr lnr-license"></span>@lang('header.dashboard')Professional Service</h4>
+								<h4><span class="lnr lnr-license"></span>@lang('header.service')</h4>
 								<p>
-									@lang('header.dashboard')Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+									@lang('header.service_prez')
 								</p>								
 							</div>
 						</div>
 						<div class="col-lg-4 col-md-6">
 							<div class="single-service">
-								<h4><span class="lnr lnr-phone"></span>@lang('header.dashboard')Great Support</h4>
+								<h4><span class="lnr lnr-phone"></span>@lang('header.support')</h4>
 								<p>
-									@lang('header.dashboard')Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+									@lang('header.support_prez')
 								</p>								
 							</div>
 						</div>
 						<div class="col-lg-4 col-md-6">
 							<div class="single-service">
-								<h4><span class="lnr lnr-rocket"></span>@lang('header.dashboard')Technical Skills</h4>
+								<h4><span class="lnr lnr-rocket"></span>@lang('header.technical_skill')</h4>
 								<p>
-									@lang('header.dashboard')Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+									@lang('header.technical_prez')
 								</p>				
 							</div>
 						</div>
 						<div class="col-lg-4 col-md-6">
 							<div class="single-service">
-								<h4><span class="lnr lnr-diamond"></span>@lang('header.dashboard')Highly Recomended</h4>
+								<h4><span class="lnr lnr-diamond"></span>@lang('header.recomended')</h4>
 								<p>
-									@lang('header.dashboard')Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+									@lang('header.recom_prez')
 								</p>								
 							</div>
 						</div>
 						<div class="col-lg-4 col-md-6">
 							<div class="single-service">
-								<h4><span class="lnr lnr-bubble"></span>@lang('header.dashboard')Positive Reviews</h4>
+								<h4><span class="lnr lnr-bubble"></span>@lang('header.reviews')</h4>
 								<p>
-									@lang('header.dashboard')Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+									@lang('header.reviews_prez')
 								</p>									
 							</div>
 						</div>						
@@ -91,23 +91,23 @@
 				<div class="container-fluid">
 					<div class="row justify-content-center align-items-center">
 						<div class="col-lg-3 feat-img no-padding">
-							<img class="img-fluid" src="img/pages/f1.jpg" alt="">
+							<img class="img-fluid" src="/img/pages/f1.jpg" alt="">
 						</div>
 						<div class="col-lg-3 no-padding feat-txt">
-							<h6 class="text-uppercase text-white">@lang('header.dashboard')Basic & Common Repairs</h6>
-							<h1>@lang('header.dashboard')Who we are</h1>
+							<h6 class="text-uppercase text-white">@lang('header.steps')</h6>
+							<h1>@lang('header.steps_know')</h1>
 							<p>
-								@lang('header.dashboard')Computer users and programmers have become so accustomed to using Windows, even for the changing capabilities and the appearances of the graphical.
+								@lang('header.steps_prez')
 							</p>
 						</div>
 						<div class="col-lg-3 feat-img no-padding">
-							<img class="img-fluid" src="img/pages/f2.jpg" alt="">							
+							<img class="img-fluid" src="/img/pages/f2.jpg" alt="">							
 						</div>
 						<div class="col-lg-3 no-padding feat-txt">
-							<h6 class="text-uppercase text-white">@lang('header.dashboard')Basic & Common Repairs</h6>
-							<h1>@lang('header.dashboard')What we do</h1>
+							<h6 class="text-uppercase text-white">@lang('header.compare_style')</h6>
+							<h1>@lang('header.compare_know')</h1>
 							<p>
-								@lang('header.dashboard')Computer users and programmers have become so accustomed to using Windows, even for the changing capabilities and the appearances of the graphical.
+								@lang('header.compare_prez')
 							</p>
 						</div>
 					</div>
@@ -124,8 +124,7 @@
 							<div class="title text-center">
 							<h1 class="mb-10 text-white">@lang('header.join')</h1>
 								<p class="text-white">@lang('header.join_prez')</p>
-								<a class="primary-btn" href="#">@lang('header.search_job')</a>
-								<a class="primary-btn" href="#">@lang('header.search_freelancer')</a>
+								<a class="primary-btn" href="#">@lang('header.register')</a>
 							</div>
 						</div>
 					</div>	

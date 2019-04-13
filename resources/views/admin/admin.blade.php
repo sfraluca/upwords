@@ -152,7 +152,7 @@
                                                     <tr class="border-0">
                                                     <th class="border-0">#</th>
                                                         <th class="border-0">@lang('header.name')</th>
-                                                        <th class="border-0">@lang('header.email')</th>
+                                                        <th class="border-0">@lang('header.contact_email')</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -191,13 +191,12 @@
                                            
 							<div class="single-post d-flex flex-row">
 								<div class="thumb">
-									<img src="img/post.png" alt="">
-									<ul class="tags">@foreach ($skills as $s)
+									<ul class="tags">
 										<li>
 											<a href="#">
-                                                {{$s->skill}}
+                                                {{$job->skill}}
                                                </a>
-										</li> @endforeach
+										</li> 
 										
 									</ul>
 								</div>
@@ -208,8 +207,8 @@
 											<h6>{{$job->slug}}</h6>					
 										</div>
 										<ul class="btns">
-											<li><a href="{{route('contact_vacancy', [$job->id, app()->getLocale()])}}">@lang('header.contact')</a></li>
-											<li><a href="{{route('compare', [$job->id, app()->getLocale()])}}">@lang('header.see')</a></li>
+											<li><a href="{{route('contact_vacancy', [app()->getLocale(), $job->id])}}">@lang('header.contact')</a></li>
+											<li><a href="{{route('compare', [app()->getLocale(),$job->id])}}">@lang('header.see')</a></li>
 										</ul>
 									</div>
 									<p>
@@ -217,9 +216,9 @@
 									</p>
 									<h5>@lang('header.employment_type'): {{$job->employment_type}}</h5>
 									<h5>@lang('header.contact'): {{$job->contact}}</h5>
-									<h5>@foreach ($pas as $p)
-                                                {{$p->profession}}
-                                                @endforeach</h5>
+									<h5>
+                                                {{$job->profession}}
+                                                </h5>
 									<p class="address"><span class="lnr lnr-map"></span> {{$job->name}}</p>
 									<p class="address"><span class="lnr lnr-database"></span> {{$job->price}}</p>
 								</div>
@@ -242,12 +241,12 @@
                     </div>
                 </div>
             </div>
-            @include('layouts.navbar')
+         
         </div>
         <!-- ============================================================== -->
         <!-- end wrapper  -->
         <!-- ============================================================== -->
     </div>
-
+ @include('layouts.footer')
 
 @endsection

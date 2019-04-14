@@ -13,7 +13,6 @@
 														@if (app()->getLocale() == $locale) style="font-weight: bold; text-decoration: underline" @endif>{{ strtoupper($locale) }}</a>
 										</li>
 								@endforeach
-
                            @if (Auth::guest())
 				          <li><a href="{{ route('register', app()->getLocale()) }}">@lang('header.register')</a></li>
 				          <li><a href="{{ route('login', app()->getLocale()) }}">@lang('header.login')</a></li>		

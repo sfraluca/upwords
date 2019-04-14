@@ -79,7 +79,8 @@
                                                 <td>{{$candidate->contact}}</td>
                                                 <td>{{$candidate->slug}}</td>
                                                 <td>{{$candidate->emplyment_type}}</td>
-                                                <td>{{$candidate->description}}</td>
+                                                <!-- * -->
+                                                <td>{{ substr(strip_tags($candidate->description), 0,100)}}{{ strlen(strip_tags($candidate->description)) > 100 ? '...' : ""}}</td>
                                                 <td>{{$candidate->price}}</td>
                                                 <td>{{$candidate->skill}}</td>
                                                 <td>{{$candidate->profession}}</td>

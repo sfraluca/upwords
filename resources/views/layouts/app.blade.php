@@ -40,7 +40,14 @@
 	<script type="text/javascript" language="javascript" src="{{ asset('/media/js/dataTables.bootstrap4.js') }}"></script>
 	<script type="text/javascript" language="javascript" src="{{ asset('/resources/syntax/shCore.js') }}"></script>
 	<script type="text/javascript" language="javascript" src="{{ asset('/resources/demo.js') }}"></script>
-	<script type="text/javascript" language="javascript" class="init">
+				<script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=1b9wyzqg52shx6ixa4qvaij1xlyy3uectb5gvgt8cuc22tmz"></script>
+<script>
+tinymce.init({
+	selector:'textarea',
+	menubar:false,
+	
+});
+</script><script type="text/javascript" language="javascript" class="init">
 	
 $(document).ready(function() {
 	$('#example').DataTable();
@@ -48,7 +55,6 @@ $(document).ready(function() {
 
 	</script>
      <!-- jquery 3.3.1 js-->
-    <script src="{{ asset('/assets/vendor/jquery/jquery-3.3.1.min.js') }}"></script>
     <!-- bootstrap bundle js-->
     <script src="{{ asset('/assets/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
     <!-- slimscroll js-->

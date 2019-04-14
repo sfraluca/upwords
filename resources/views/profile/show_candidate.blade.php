@@ -132,7 +132,7 @@
 				</div>	<div class="single-post job-details">
                                 <h4 class="single-title">@lang('header.description')</h4>
                                 <p>
-                                {{$data->description}}</p>
+                                {!!$data->description!!}</p>
                                 
                                 </div>	
 			</section>

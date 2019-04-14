@@ -183,7 +183,8 @@
                                                 <td>{{$candidate->contact}}</td>
                                                 <td>{{$candidate->slug}}</td>
                                                 <td>{{$candidate->emplyment_type}}</td>
-                                                <td>{{$candidate->description}}</td>
+                                                <!-- * -->
+                                                <td>{{ substr(strip_tags($candidate->description), 0,250)}}{{ strlen(strip_tags($candidate->description)) > 250 ? '...' : ""}}</td>
                                                 <td>{{$candidate->price}}</td>
                                               
                                                
@@ -272,11 +273,11 @@
 										</div>
 										<ul class="btns">
 											<li><a href="{{route('contact_vacancy', [app()->getLocale(), $job->id])}}">@lang('header.contact')</a></li>
-											<li><a href="{{route('compare', [app()->getLocale(),$job->id])}}">@lang('header.see')</a></li>
+											<li><a href="{{route('show_job', [app()->getLocale(),$job->id])}}">@lang('header.see')</a></li>
 										</ul>
 									</div>
 									<p>
-									{{$job->description}}
+									{!!$job->description!!}
 									</p>
 									<h5>@lang('header.employment_type'): {{$job->employment_type}}</h5>
 									<h5>@lang('header.contact'): {{$job->contact}}</h5>

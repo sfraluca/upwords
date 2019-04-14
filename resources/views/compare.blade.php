@@ -6,12 +6,13 @@
 
 <header id="header" id="home">
 			    <div class="container">
+						
 			    	<div class="row align-items-center justify-content-between d-flex">
 				      <div id="logo">
 				        <a href="{{ route('website', app()->getLocale()) }}"><img src="/img/logo.png" alt="" title="" /></a>
 				      </div><h4 class="text-white">{{ Auth::user()->name }}</h4>
 				      <nav id="nav-menu-container">
-				        <ul class="nav-menu">
+				        <ul class="nav-menu">	@include('layouts.search-bar')
 									@foreach (config('app.available_locales') as $locale)
 										<li class="nav-item">
 												<a class="nav-link"
@@ -19,6 +20,7 @@
 														@if (app()->getLocale() == $locale) style="font-weight: bold; text-decoration: underline" @endif>{{ strtoupper($locale) }}</a>
 										</li>
 								@endforeach
+								
 				          <li class="menu-active"><a href="{{ route('home', app()->getLocale()) }}">@lang('header.home')</a></li>
 									@can('create-vacancy') 
 									<li class="menu-active"><a href="{{ route('registration_job', app()->getLocale()) }}">@lang('header.post_job')</a></li>
@@ -73,6 +75,20 @@
 			<!-- Start post Area -->
 			<section class="post-area section-gap">
 				<div class="container">
+					 @if(session()->has('success_message'))
+                    <div class="alert alert-success">
+                        {{ session()->get('success_message')}}
+                    </div>
+                    @endif
+                    @if(count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
                 <h1 class="text-center">- {{$procentaj}}%-</h1>
                 <br>
 					<div class="row justify-content-center d-flex">

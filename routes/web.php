@@ -167,6 +167,7 @@ Route::post('/contact','WebController@storeContact')->name('store_contact');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile/choose', 'HomeController@choose')->name('profile_choose');
 Route::get('/compare/{id}', 'HomeController@compare')->name('compare');
+Route::get('/search', 'HomeController@search')->name('search');
 
 
 //JOB

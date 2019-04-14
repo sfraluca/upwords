@@ -460,5 +460,35 @@ class HomeController extends Controller
 
         return redirect()->route('home',app()->getLocale());
     }
-      
+    public function search(Request $request)
+    {
+        $this->validate($request,[
+            'query'=>'required|min:3'
+        ]);
+       
+        $query = $request->input('query');
+        $jobs=DB::table('jobs')->join('skills', 'skills.id', '=', 'jobs.skill_id')
+        ->join('professions', 'professions.id', '=', 'jobs.profession_id')->select("*")->where('title','like', "%$query%")
+        ->orWhere('slug','like', "%$query%")
+        ->orWhere('employment_type','like', "%$query%")
+        ->orWhere('description','like', "%$query%")
+        ->orWhere('price','like', "%$query%")
+        ->orWhere('name','like', "%$query%")
+        ->orWhere('contact','like', "%$query%")
+        ->orWhere('skill','like', "%$query%")
+        ->orWhere('profession','like', "%$query%")
+        ->paginate(10);
+        $candidates =  DB::table('candidates')
+        ->join('skills', 'skills.id', '=', 'candidates.skill_id')
+        ->join('professions', 'professions.id', '=', 'candidates.profession_id')->select("*")->where('name','like', "%$query%")
+         ->orWhere('contact','like', "%$query%")
+        ->orWhere('slug','like', "%$query%")
+        ->orWhere('emplyment_type','like', "%$query%")
+        ->orWhere('description','like', "%$query%")
+        ->orWhere('price','like', "%$query%")
+        ->orWhere('skill','like', "%$query%")
+        ->orWhere('profession','like', "%$query%")
+        ->paginate(10);
+        return view('search-results', compact('jobs', 'candidates'));
+    }
 }

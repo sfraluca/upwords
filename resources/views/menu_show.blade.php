@@ -6,7 +6,7 @@
 				        <a href="{{ route('website', app()->getLocale()) }}"><img src="/img/logo.png" alt="" title="" /></a>
 				      </div>
 				      <nav id="nav-menu-container">
-				        <ul class="nav-menu">
+				        <ul class="nav-menu">	@include('layouts.search-bar')
 									@foreach (config('app.available_locales') as $locale)
 										<li class="nav-item">
 												<a class="nav-link"
@@ -14,6 +14,7 @@
 														@if (app()->getLocale() == $locale) style="font-weight: bold; text-decoration: underline" @endif>{{ strtoupper($locale) }}</a>
 										</li>
 								@endforeach
+							
 				          <li class="menu-active"><a href="{{ route('home', app()->getLocale()) }}">@lang('header.home')</a></li>
 									@can('create-vacancy') 
 									<li class="menu-active"><a href="{{ route('registration_job', app()->getLocale()) }}">@lang('header.post_job')</a></li>

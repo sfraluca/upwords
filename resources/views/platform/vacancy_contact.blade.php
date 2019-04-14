@@ -8,7 +8,7 @@
 				        <a href="{{ route('website', app()->getLocale()) }}"><img src="/img/logo.png" alt="" title="" /></a>
 				      </div><h4 class="text-white">{{ Auth::user()->name }}</h4>
 				      <nav id="nav-menu-container">
-				        <ul class="nav-menu">
+				        <ul class="nav-menu">				@include('layouts.search-bar')
 									@foreach (config('app.available_locales') as $locale)
 										<li class="nav-item">
 												<a class="nav-link"
@@ -16,6 +16,7 @@
 														@if (app()->getLocale() == $locale) style="font-weight: bold; text-decoration: underline" @endif>{{ strtoupper($locale) }}</a>
 										</li>
 								@endforeach
+			
 				          <li class="menu-active"><a href="{{ route('home', app()->getLocale()) }}">@lang('header.home')</a></li>
 									@can('create-vacancy') 
 									<li class="menu-active"><a href="{{ route('registration_job', app()->getLocale()) }}">@lang('header.post_job')</a></li>
@@ -57,6 +58,20 @@
 			<section class="banner-area relative" id="home">	
 				<div class="overlay overlay-bg"></div>
 				<div class="container">
+					 @if(session()->has('success_message'))
+                    <div class="alert alert-success">
+                        {{ session()->get('success_message')}}
+                    </div>
+                    @endif
+                    @if(count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">

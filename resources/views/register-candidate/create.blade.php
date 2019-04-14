@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -92,7 +93,9 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="inputDdesc">@lang('header.description')</label>
-                                            <input id="inputDesc" type="text" name="description" data-parsley-trigger="change" required="" placeholder="Enter user name" autocomplete="off" class="form-control">
+                                             <textarea value="{{ $jobs->description }}" class="common-textarea mt-10 form-control" name="description" 
+						placeholder="Description" ></textarea>
+                                          
                                             @if ($errors->has('description'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('description') }}</strong>

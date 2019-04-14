@@ -116,7 +116,7 @@
 								</div>		
 								
 							<div class="single-post job-details">
-								<h4 class="single-title">@lang('header.description')</h4>	<p>{{$cand->description}}</p>
+								<h4 class="single-title">@lang('header.description')</h4>	<p>{!!$cand->description!!}</p>
 							</div>
 							</div>
 								<div class="col-lg-6 post-list">
@@ -161,7 +161,7 @@
 							<div class="single-post job-details">
 								<h4 class="single-title">@lang('header.description')</h4>
 								<p>
-								{{$vacancy->description}}</p>
+								{!!$vacancy->description!!}</p>
 								
 							</div>
 							

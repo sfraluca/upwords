@@ -86,7 +86,7 @@
                                                 <th>@lang('header.employment_type')</th>
                                                 <th>@lang('header.skills')</th>
                                                 <th>@lang('header.profession')</th>
-                                                <th>@lang('header.ddescription')</th>
+                                                <th>@lang('header.description')</th>
                                                 <th>@lang('header.price')</th>
                                                 <th>@lang('header.name')</th>    
                                                <th>@lang('header.edit')</th>     
@@ -102,7 +102,7 @@
                                                 <td>{{$data->employment_type}}</td>
                                                 <td>{{$data->skill}}</td>
                                                 <td>{{$data->profession}}</td>
-                                                <td>{{$data->description}}</td>
+                                                <td>{{ substr(strip_tags($data->description), 0,100)}}{{ strlen(strip_tags($data->description)) > 100 ? '...' : ""}}</td>
                                                 <td>{{$data->price}}</td>
                                                 <td>{{$data->name}}</td>
                                                
@@ -132,7 +132,7 @@
                                                 <th>@lang('header.employment_type')</th>
                                                 <th>@lang('header.skills')</th>
                                                 <th>@lang('header.profession')</th>
-                                                <th>@lang('header.ddescription')</th>
+                                                <th>@lang('header.description')</th>
                                                 <th>@lang('header.price')</th>
                                                 <th>@lang('header.name')</th>    
                                                <th>@lang('header.edit')</th>     

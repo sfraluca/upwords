@@ -21,8 +21,11 @@
     <link rel="stylesheet" href="{{ asset('/assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/vendor/charts/c3charts/c3.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/vendor/fonts/flag-icon-css/flag-icon.min.css') }}">
-
-
+<!-- new -->
+    <link rel="stylesheet" href="{{ asset('/assets/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/libs/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/vendor/vector-map/jqvmap.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/vendor/jvectormap/jquery-jvectormap-2.0.2.css') }}">
 
 <!-- Datatable -->
 
@@ -37,13 +40,39 @@
 	<script type="text/javascript" language="javascript" src="{{ asset('/media/js/dataTables.bootstrap4.js') }}"></script>
 	<script type="text/javascript" language="javascript" src="{{ asset('/resources/syntax/shCore.js') }}"></script>
 	<script type="text/javascript" language="javascript" src="{{ asset('/resources/demo.js') }}"></script>
-	<script type="text/javascript" language="javascript" class="init">
+				<script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=1b9wyzqg52shx6ixa4qvaij1xlyy3uectb5gvgt8cuc22tmz"></script>
+<script>
+tinymce.init({
+	selector:'textarea',
+	menubar:false,
+	
+});
+</script><script type="text/javascript" language="javascript" class="init">
 	
 $(document).ready(function() {
 	$('#example').DataTable();
 } );
 
 	</script>
+     <!-- jquery 3.3.1 js-->
+    <!-- bootstrap bundle js-->
+    <script src="{{ asset('/assets/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
+    <!-- slimscroll js-->
+    <script src="{{ asset('/assets/vendor/slimscroll/jquery.slimscroll.js') }}"></script>
+    <!-- chartjs js-->
+    <script src="{{ asset('/assets/vendor/charts/charts-bundle/Chart.bundle.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/charts/charts-bundle/chartjs.js') }}"></script>
+   
+    <!-- main js-->
+    <script src="{{ asset('/assets/libs/js/main-js.js') }}"></script>
+    <!-- jvactormap js-->
+    <script src="{{ asset('/assets/vendor/jvectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+    <!-- sparkline js-->
+    <script src="{{ asset('/assets/vendor/charts/sparkline/jquery.sparkline.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/charts/sparkline/spark-js.js') }}"></script>
+     <!-- dashboard sales js-->
+    <script src="{{ asset('/assets/libs/js/dashboard-sales.js') }}"></script>
     	<link rel="stylesheet" href="{{ asset('/css/linearicons.css') }}">
 			<link rel="stylesheet" href="{{ asset('/css/font-awesome.min.css') }}">
 			<link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}">

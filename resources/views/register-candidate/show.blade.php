@@ -97,7 +97,8 @@
                                                 <td>{{$data->contact}}</td>
                                                 <td>{{$data->slug}}</td>
                                                 <td>{{$data->emplyment_type}}</td>
-                                                <td>{{$data->description}}</td>
+                                                
+                                                <td>{{ substr(strip_tags($data->description), 0,100)}}{{ strlen(strip_tags($data->description)) > 100 ? '...' : ""}}</td>
                                                 <td>{{$data->price}}</td>
                                                 <td>{{$data->skill}}</td>
                                                 <td>{{$data->profession}}</td>

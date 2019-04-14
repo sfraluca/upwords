@@ -61,7 +61,7 @@ class JobController extends Controller
             'contact' => 'required',
             'slug' => 'required',
             'employment_type' => 'required',
-            'description' => 'required',
+            
             'price' => 'required',
             'name' => 'required',
             'skill_id' => 'required',
@@ -103,7 +103,7 @@ class JobController extends Controller
         $skills = Skill::orderBy('skill')->pluck('skill','id');
         
         $jobs = Job::find($id);
-
+dd( $jobs);
         return view('register-job.edit', compact('jobs','skills','pas'));   
     }
 
@@ -114,7 +114,6 @@ class JobController extends Controller
             'contact' => 'required',
             'slug' => 'required',
             'employment_type' => 'required',
-            'description' => 'required',
             'price' => 'required',
             'name' => 'required',
             'skill_id' => 'required',

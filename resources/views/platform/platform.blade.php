@@ -47,7 +47,14 @@
 			<script src="{{ asset('/js/parallax.min.js') }}"></script>		
 			<script src="{{ asset('/js/mail-script.js') }}"></script>	
 			<script src="{{ asset('/js/main.js') }}"></script>	
-			
+			<script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=1b9wyzqg52shx6ixa4qvaij1xlyy3uectb5gvgt8cuc22tmz"></script>
+<script>
+tinymce.init({
+	selector:'textarea',
+	menubar:false,
+	
+});
+</script>
 		
 		
 </body>

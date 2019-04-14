@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -74,7 +75,7 @@
                             <div class="card">
                                 <h5 class="card-header">@lang('header.form')</h5>
                                 <div class="card-body">
-                                    <form action="{{ route('update_candidate', [app()->getLocale(), $candidates->id ]) }}" method="POST" id="basicform" data-parsley-validate="">
+                                    <form action="{{ route('update_candidates', [app()->getLocale(), $candidates->id ]) }}" method="POST" id="basicform" data-parsley-validate="">
                                     {{csrf_field()}}
                                         <div class="form-group">
                                             <label for="inputCandidateName">@lang('header.name')</label>
@@ -113,7 +114,9 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="inputDdesc">@lang('header.description')</label>
-                                            <input value="{{ $candidates->description }}" id="inputDesc" type="text" name="description" data-parsley-trigger="change" required="" placeholder="Enter user name" autocomplete="off" class="form-control">
+                                             <textarea value="{{ $candidates->description }}" class="common-textarea mt-10 form-control" name="description" 
+						placeholder="Description" ></textarea>
+                                            
                                             @if ($errors->has('description'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('description') }}</strong>

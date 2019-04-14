@@ -64,7 +64,7 @@
                                                 <th>@lang('header.employment_type')</th>
                                                 <th>@lang('header.skills')</th>
                                                 <th>@lang('header.profession')</th>
-                                                <th>@lang('header.ddescription')</th>
+                                                <th>@lang('header.description')</th>
                                                 <th>@lang('header.price')</th>
                                                 <th>@lang('header.name')</th>    
                                                 <th>@lang('header.show')</th>    
@@ -82,7 +82,8 @@
                                                 <td>{{$job->employment_type}}</td>
                                                 <td>{{$job->skill}}</td>
                                                 <td>{{$job->profession}}</td>
-                                                <td>{{$job->description}}</td>
+                                                <!-- * -->
+                                                <td>{{ substr(strip_tags($job->description), 0,100)}}{{ strlen(strip_tags($job->description)) > 100 ? '...' : ""}}</td>
                                                 <td>{{$job->price}}</td>
                                                 <td>{{$job->name}}</td>
                                                 <td>
@@ -118,7 +119,7 @@
                                                 <th>@lang('header.employment_type')</th>
                                                 <th>@lang('header.skills')</th>
                                                 <th>@lang('header.profession')</th>
-                                                <th>@lang('header.ddescription')</th>
+                                                <th>@lang('header.description')</th>
                                                 <th>@lang('header.price')</th>
                                                 <th>@lang('header.name')</th>    
                                                 <th>@lang('header.show')</th>    

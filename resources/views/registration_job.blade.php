@@ -1,3 +1,4 @@
+
 @extends('platform.platform')
 
 @section('content')
@@ -70,8 +71,7 @@
                                                 @endif    
 						<label for="Description">@lang('header.description')</label>
 						<textarea class="common-textarea mt-10 form-control" name="description" 
-						placeholder="Description" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter description'" 
-						required=""></textarea>
+						placeholder="Description" ></textarea>
 						@if ($errors->has('description'))
 						<span class="invalid-feedback" role="alert">
 						<strong>{{ $errors->first('description') }}</strong>

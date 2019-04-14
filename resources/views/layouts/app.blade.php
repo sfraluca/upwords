@@ -53,7 +53,9 @@ $(document).ready(function() {
 	$('#example').DataTable();
 } );
 
+
 	</script>
+    {!! Charts::assets() !!}
      <!-- jquery 3.3.1 js-->
     <!-- bootstrap bundle js-->
     <script src="{{ asset('/assets/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>

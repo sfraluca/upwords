@@ -8,6 +8,8 @@ use Carbon;
 use App\Job;
 use App\Skill;
 use App\Profession;
+use Charts;
+use App\Candidate;
 class AdminController extends Controller
 {
     /**
@@ -59,6 +61,31 @@ class AdminController extends Controller
                     Carbon\Carbon::now()->startOfWeek(),
                     Carbon\Carbon::now()->endOfWeek(),
                 ])->paginate(6);
-        return view('admin.admin',compact('candCount','jobCount','usersCount','users','candidates','skills','pas','jobs_recent', 'profession'));
+        $jobs = Job::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"),date('Y'))->get();
+        $cand = Candidate::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"),date('Y'))->get();
+        $charts = Charts::database($jobs, 'bar', 'highcharts')
+
+            ->title("Job count")
+
+            ->elementLabel("Total jobs")
+
+            ->dimensions(700, 350)
+
+            ->responsive(false)
+
+            ->groupByMonth(date('Y'), true);
+        $pie = Charts::database($cand, 'pie', 'highcharts')
+
+            ->title("Candidates count")
+
+            ->elementLabel("Total candidates")
+
+            ->dimensions(700, 350)
+
+            ->responsive(false)
+
+            ->groupByMonth(date('Y'), true);
+
+        return view('admin.admin',compact('candCount','jobCount','usersCount','users','candidates','skills','pas','jobs_recent', 'profession','charts','pie'));
     }
 }

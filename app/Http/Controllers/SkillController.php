@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Skill;
 use App\Entities\RegisterSkill;
 use Validator;
-
+use App\Job;
+use App\Candidate;
 class SkillController extends Controller
 {
     protected $skills;
@@ -43,7 +44,7 @@ class SkillController extends Controller
     {
         
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
+            'skill' => 'required',
             ]);
 
         $skills = $this->skills->register($request->all());
@@ -70,12 +71,12 @@ class SkillController extends Controller
     public function update($locale,Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
+            'skill' => 'required',
             ]); 
 
         $skills = Skill::find($id);
         
-        $skills->name = $request->input('name');
+        $skills->skill = $request->input('skill');
 
         $skills->save();
 
@@ -84,8 +85,12 @@ class SkillController extends Controller
 
     public function destroy($locale,$id)
     {
-
+        $jobs = Job::where('skill_id', $id);
+        $jobs->delete();
+        $candidates = Candidate::where('skill_id', $id);
+        $candidates->delete();
         $skill = Skill::find($id);
+
         $skill->delete();
 
         return redirect()->route('list_all_skills',app()->getLocale());

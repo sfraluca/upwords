@@ -34,7 +34,7 @@
                                  <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">@lang('header.user')</a></li>
+                                            <li class="breadcrumb-item"><a href="{{route('list_all_users', app()->getLocale())}}" class="breadcrumb-link">@lang('header.user')</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">@lang('header.add')</li>
                                         </ol>
                                     </nav>
@@ -58,7 +58,7 @@
                                     {{csrf_field()}}
                                         <div class="form-group">
                                             <label for="inputUserName">@lang('header.name')</label>
-                                            <input id="inputUserName" type="text" name="name" data-parsley-trigger="change" required="" placeholder="Enter user name" autocomplete="off" class="form-control">
+                                            <input id="inputUserName" type="text" name="name" data-parsley-trigger="change" required="" autocomplete="off" class="form-control">
                                             @if ($errors->has('name'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('name') }}</strong>
@@ -67,7 +67,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="inputEmail">@lang('header.contact_email')</label>
-                                            <input id="inputEmail" type="email" name="email" data-parsley-trigger="change" required="" placeholder="Enter email" autocomplete="off" class="form-control">
+                                            <input id="inputEmail" type="email" name="email" data-parsley-trigger="change" required=""autocomplete="off" class="form-control">
                                             @if ($errors->has('email'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('email') }}</strong>
@@ -76,7 +76,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="inputPassword">@lang('header.pass')</label>
-                                            <input id="inputPassword" type="password" name="password" placeholder="Password" required="" class="form-control">
+                                            <input id="inputPassword" type="password" name="password"  required="" class="form-control">
                                             @if ($errors->has('password'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('password') }}</strong>
@@ -85,7 +85,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="inputRepeatPassword">@lang('header.confirm')</label>
-                                            <input id="inputRepeatPassword" data-parsley-equalto="#inputPassword" type="password" required="" placeholder="Password" class="form-control">
+                                            <input id="inputRepeatPassword" data-parsley-equalto="#inputPassword" type="password" required="" class="form-control">
                                         </div>
                                         <div class="form-group">
                                         <label for="selectUser">@lang('header.select')</label>

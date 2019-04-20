@@ -132,6 +132,12 @@ return [
     'form' => "Formular",
     'cancel' => "Anulează",
     'index_d' => "Panoul control. Statistici",
+    
+    'index_u' => "Panoul control Utilizatori",
+    'index_c' => "Panoul control Candidați",
+    'index_j' => "Panoul control Proiecte",
+    'index_s' => "Panoul control Aptitudini",
+    'index_p' => "Panoul control Profesii",
     'index' => "Statistici",
     'new_job' => "Crează un nou proiect",
     'all_job' => "Toate locurile de muncă",

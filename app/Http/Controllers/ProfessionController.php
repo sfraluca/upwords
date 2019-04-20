@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Profession;
 use App\Entities\RegisterProfession;
 use Validator;
-
+use App\Job;
+use App\Candidate;
 class ProfessionController extends Controller
 {
     protected $professions;
@@ -82,7 +83,10 @@ class ProfessionController extends Controller
 
     public function destroy($locale,$id)
     {
-
+        $jobs = Job::where('profession_id', $id);
+        $jobs->delete();
+        $candidates = Candidate::where('profession_id', $id);
+        $candidates->delete();
         $professions = Profession::find($id);
         $professions->delete();
 

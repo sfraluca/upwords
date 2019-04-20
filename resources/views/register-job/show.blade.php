@@ -55,8 +55,8 @@
                                  <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">@lang('header.job')</a></li>
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">@lang('header.add')</a></li>
+                                            <li class="breadcrumb-item"><a href="{{route('list_all_jobs', app()->getLocale())}}" class="breadcrumb-link">@lang('header.job')</a></li>
+                                            <li class="breadcrumb-item"><a href="{{route('create_job', app()->getLocale())}}" class="breadcrumb-link">@lang('header.add')</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">S@lang('header.show')</li>
                                         </ol>
                                     </nav>
@@ -73,7 +73,7 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header">@lang('header.dashboard')Current job</h5>
+                            <h5 class="card-header">@lang('header.job')</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -102,7 +102,7 @@
                                                 <td>{{$data->employment_type}}</td>
                                                 <td>{{$data->skill}}</td>
                                                 <td>{{$data->profession}}</td>
-                                                <td>{{ substr(strip_tags($data->description), 0,100)}}{{ strlen(strip_tags($data->description)) > 100 ? '...' : ""}}</td>
+                                                <td>{{ substr(strip_tags($data->description), 0,80)}}{{ strlen(strip_tags($data->description)) > 80 ? '...' : ""}}</td>
                                                 <td>{{$data->price}}</td>
                                                 <td>{{$data->name}}</td>
                                                

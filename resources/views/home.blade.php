@@ -123,7 +123,7 @@
 										</ul>
 									</div>
 									<p>
-										{{ substr(s($job->description), 0,250)}}{{ strlen(strip_tags($job->description)) > 250 ? '...' : ""}}
+										{{ substr(strip_tags($job->description), 0,80)}}{{ strlen(strip_tags($job->description)) > 80 ? '...' : ""}}
 										<!-- * -->
 									</p>
 									<h5>@lang('header.employment_type'): {{$job->employment_type}}</h5>

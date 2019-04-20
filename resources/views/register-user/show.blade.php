@@ -51,13 +51,13 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h2 class="pageheader-title">@lang('header.dashboard')User Profile</h2>
+                                <h2 class="pageheader-title">@lang('header.user')</h2>
                                  <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">@lang('header.dashboard')User</a></li>
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">@lang('header.dashboard')Add</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">@lang('header.dashboard')Show</li>
+                                            <li class="breadcrumb-item"><a href="{{route('list_all_users', app()->getLocale())}}" class="breadcrumb-link">@lang('header.user')</a></li>
+                                            <li class="breadcrumb-item"><a href="{{route('create_user', app()->getLocale())}}" class="breadcrumb-link">@lang('header.add')</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">@lang('header.show')</li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -73,7 +73,7 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header">@lang('header.dashboard')Current user</h5>
+                            <h5 class="card-header">@lang('header.user')</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -94,7 +94,7 @@
                                                 <td>
                                                     <form action ="{{ route('edit_user', [app()->getLocale(),$user->id ])}}">
                                                         <input type="hidden"/>
-                                                        <button type="submit" class="btn btn-gradient-dark btn-icon-text btn-sm">@lang('header.edit')</button>
+                                                        <button type="submit" class="btn btn-primary btn-icon-text btn-sm">@lang('header.edit')</button>
                                                     </form>
                                                     
                                                 </td>
@@ -102,7 +102,7 @@
                                                     <form method="POST" class="delete_form" action ="{{ route('delete_user',  [app()->getLocale(),$user->id])}}">
                                                         {{csrf_field()}}
                                                         <input type="hidden" name="_method" value="DELETE"/>
-                                                        <button type="submit" class="btn btn-gradient-danger btn-icon-text btn-sm">@lang('header.delete')</button>
+                                                        <button type="submit" class="btn btn-danger btn-icon-text btn-sm">@lang('header.delete')</button>
                                                     </form> 
                                                    
                                                 </td>

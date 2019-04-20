@@ -9,7 +9,7 @@ use Validator;
 use App\Skill;
 use App\Profession;
 use DB;
-
+use App\User;
 class JobController extends Controller
 {
     protected $jobs;
@@ -24,13 +24,6 @@ class JobController extends Controller
         $this->jobs = $jobs;
     }
 
-    public function skill_pas()
-    {
-        
-      
-       
-            return  $skills;
-    }
     /**
      * Show the application dashboard.
      *
@@ -38,10 +31,13 @@ class JobController extends Controller
      */
     public function index()
     {
+        
         $jobs = DB::table('jobs')
-        ->join('skills', 'skills.id', '=', 'jobs.skill_id')
-        ->join('professions', 'professions.id', '=', 'jobs.profession_id')
+        ->join('skills', 'jobs.skill_id', '=', 'skills.id')
+        ->join('professions', 'jobs.profession_id','=', 'professions.id' )
+        ->select('jobs.*', 'skills.skill', 'professions.profession')
         ->get();
+        // dd($jobs);
         return view('register-job.index',compact('jobs'));
     }
 
@@ -50,8 +46,9 @@ class JobController extends Controller
     {
         $pas = Profession::orderBy('profession')->pluck('profession','id');
         $skills = Skill::orderBy('skill')->pluck('skill','id');
+        $users = User::orderBy('name')->pluck('name','id');
         
-        return view('register-job.create',compact('skills','pas'));
+        return view('register-job.create',compact('skills','pas','users'));
     }
     
     public function store(Request $request)
@@ -61,13 +58,14 @@ class JobController extends Controller
             'contact' => 'required',
             'slug' => 'required',
             'employment_type' => 'required',
-            
+            'description'=>'required',
             'price' => 'required',
             'name' => 'required',
             'skill_id' => 'required',
             'profession_id' => 'required',
+            'user_id' => 'required',
             ]);
-
+        
             $jobs = new Job;
             $jobs->title = $request->title;
             $jobs->contact = $request->contact;
@@ -78,20 +76,25 @@ class JobController extends Controller
             $jobs->name = $request->name;
             $jobs->skill_id = $request->skill_id;
             $jobs->profession_id = $request->profession_id;
+            $jobs->user_id = $request->user_id;
             $jobs->save();
             
-        return redirect()->route('show_job', [app()->getLocale() ,$jobs->id]);
+        return redirect()->route('show_job', [app()->getLocale(), $jobs->id]);
     }
 
 
     public function show($locale,$id)
-    {
-        $jobs =  DB::table('jobs')->join('skills', 'skills.id', '=', 'jobs.skill_id')
-        ->join('professions', 'professions.id', '=', 'jobs.profession_id')->select('*')->where('jobs.id','=',$id)->get();
+    { 
+        $jobs =  DB::table('jobs')
+        ->join('skills', 'skills.id', '=', 'jobs.skill_id')
+        ->join('professions', 'professions.id', '=', 'jobs.profession_id')
+        ->select('jobs.*', 'skills.skill', 'professions.profession')
+        ->where('jobs.id',$id)->get();
         foreach($jobs as $job)
         {
             $data = $job;
         }
+       
         return view('register-job.show',compact('data'));
     }
 
@@ -103,7 +106,6 @@ class JobController extends Controller
         $skills = Skill::orderBy('skill')->pluck('skill','id');
         
         $jobs = Job::find($id);
-dd( $jobs);
         return view('register-job.edit', compact('jobs','skills','pas'));   
     }
 

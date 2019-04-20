@@ -7,7 +7,7 @@ use App\Candidate;
 use App\Entities\RegisterCandidate;
 use Validator;
 use DB;
-
+use App\User;
 use App\Skill;
 use App\Profession;
 class CandidateController extends Controller
@@ -34,6 +34,7 @@ class CandidateController extends Controller
         $candidates = DB::table('candidates')
         ->join('skills', 'skills.id', '=', 'candidates.skill_id')
         ->join('professions', 'professions.id', '=', 'candidates.profession_id')
+        ->select('candidates.*', 'skills.skill', 'professions.profession')
         ->get();
         return view('register-candidate.index',compact('candidates'));
     }
@@ -43,8 +44,8 @@ class CandidateController extends Controller
     {
         $pas = Profession::orderBy('profession')->pluck('profession','id');
         $skills = Skill::orderBy('skill')->pluck('skill','id');
-
-        return view('register-candidate.create',compact('skills','pas'));
+        $users = User::orderBy('name')->pluck('name','id');
+        return view('register-candidate.create',compact('skills','pas','users'));
     }
     
     public function store(Request $request)
@@ -58,6 +59,7 @@ class CandidateController extends Controller
             'price' => 'required',
             'skill_id' => 'required',
             'profession_id' => 'required',
+            'user_id' => 'required',
             ]);
             $candidates = new Candidate;
             $candidates->name = $request->name;
@@ -68,6 +70,7 @@ class CandidateController extends Controller
             $candidates->price = $request->price;
             $candidates->skill_id = $request->skill_id;
             $candidates->profession_id = $request->profession_id;
+            $candidates->user_id = $request->user_id;
             $candidates->save();
             
         return redirect()->route('show_candidate', [app()->getLocale(),$candidates->id]);
@@ -79,7 +82,8 @@ class CandidateController extends Controller
         $candidates =  DB::table('candidates')
         ->join('skills', 'skills.id', '=', 'candidates.skill_id')
         ->join('professions', 'professions.id', '=', 'candidates.profession_id')
-        ->select('*')->where('candidates.id','=',$id)->get();
+        ->select('candidates.*', 'skills.skill', 'professions.profession')
+        ->where('candidates.id','=',$id)->get();
         foreach($candidates as $candidate)
         {
             $data = $candidate;

@@ -55,8 +55,8 @@
                                  <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">@lang('header.skill')</a></li>
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">@lang('header.add')</a></li>
+                                            <li class="breadcrumb-item"><a href="{{route('list_all_skills', app()->getLocale())}}" class="breadcrumb-link">@lang('header.skill')</a></li>
+                                            <li class="breadcrumb-item"><a href="{{route('create_skill', app()->getLocale())}}" class="breadcrumb-link">@lang('header.add')</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">@lang('header.show')</li>
                                         </ol>
                                     </nav>

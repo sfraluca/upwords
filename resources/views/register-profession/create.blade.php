@@ -34,7 +34,7 @@
                                  <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">@lang('header.profession')</a></li>
+                                            <li class="breadcrumb-item"><a href="{{route('list_all_professions', app()->getLocale())}}" class="breadcrumb-link">@lang('header.profession')</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">@lang('header.add')</li>
                                         </ol>
                                     </nav>
@@ -54,11 +54,11 @@
                             <div class="card">
                                 <h5 class="card-header">@lang('header.form')</h5>
                                 <div class="card-body">
-                                    <form action="{{ route('store_profession') }}" method="POST" id="basicform" data-parsley-validate="">
+                                    <form action="{{ route('store_profession', app()->getLocale()) }}" method="POST" id="basicform" data-parsley-validate="">
                                     {{csrf_field()}}
                                         <div class="form-group">
                                             <label for="inputProfession">@lang('header.profession')</label>
-                                            <input id="inputProfession" type="text" name="profession" data-parsley-trigger="change" required="" placeholder="Enter user name" autocomplete="off" class="form-control">
+                                            <input id="inputProfession" type="text" name="profession" data-parsley-trigger="change" required="" autocomplete="off" class="form-control">
                                             @if ($errors->has('profession'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('profession') }}</strong>

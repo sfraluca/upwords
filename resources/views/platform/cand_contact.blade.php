@@ -75,7 +75,6 @@
                     @endif
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
-							{{ Auth::user()->name }}
 							<h1 class="text-white">
 								@lang('header.contact_freelancer')		
 							</h1>	

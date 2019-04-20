@@ -55,7 +55,7 @@
                                  <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">@lang('header.candidates')</a></li>
+                                            <li class="breadcrumb-item"><a href="{{route('list_all_candidates', app()->getLocale())}}" class="breadcrumb-link">@lang('header.candidates')</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">@lang('header.add')</li>
                                         </ol>
                                     </nav>
@@ -114,8 +114,8 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="inputDdesc">@lang('header.description')</label>
-                                             <textarea value="{{ $candidates->description }}" class="common-textarea mt-10 form-control" name="description" 
-						placeholder="Description" ></textarea>
+                                             <textarea  class="common-textarea mt-10 form-control" name="description" 
+						placeholder="Description" >{{ $candidates->description }}</textarea>
                                             
                                             @if ($errors->has('description'))
                                                 <span class="invalid-feedback" role="alert">

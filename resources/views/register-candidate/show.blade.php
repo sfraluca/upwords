@@ -54,8 +54,8 @@
                                  <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">@lang('header.candidate')</a></li>
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">@lang('header.add')</a></li>
+                                            <li class="breadcrumb-item"><a href="{{route('list_all_candidates', app()->getLocale())}}" class="breadcrumb-link">@lang('header.candidate')</a></li>
+                                            <li class="breadcrumb-item"><a href="{{route('create_candidate', app()->getLocale())}}" class="breadcrumb-link">@lang('header.add')</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">@lang('header.show')</li>
                                         </ol>
                                     </nav>
@@ -98,7 +98,7 @@
                                                 <td>{{$data->slug}}</td>
                                                 <td>{{$data->emplyment_type}}</td>
                                                 
-                                                <td>{{ substr(strip_tags($data->description), 0,100)}}{{ strlen(strip_tags($data->description)) > 100 ? '...' : ""}}</td>
+                                                <td>{{ substr(strip_tags($data->description), 0,80)}}{{ strlen(strip_tags($data->description)) > 80 ? '...' : ""}}</td>
                                                 <td>{{$data->price}}</td>
                                                 <td>{{$data->skill}}</td>
                                                 <td>{{$data->profession}}</td>

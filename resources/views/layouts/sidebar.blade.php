@@ -82,7 +82,7 @@
                                 <div id="submenu-6" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{route('list_all_skills', app()->getLocale())}}">@lang('header.list')List</a>
+                                            <a class="nav-link" href="{{route('list_all_skills', app()->getLocale())}}">@lang('header.list')</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="{{route('create_skill', app()->getLocale())}}">@lang('header.add')</a>

@@ -30,11 +30,11 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h2 class="pageheader-title">@lang('header.index_d')</h2>
+                                <h2 class="pageheader-title">@lang('header.index_c')</h2>
                                  <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">@lang('header.candidates')</a></li>
+                                            <li class="breadcrumb-item"><a href="{{route('list_all_candidates', app()->getLocale())}}" class="breadcrumb-link">@lang('header.candidates')</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">@lang('header.index')</li>
                                         </ol>
                                     </nav>
@@ -80,7 +80,7 @@
                                                 <td>{{$candidate->slug}}</td>
                                                 <td>{{$candidate->emplyment_type}}</td>
                                                 <!-- * -->
-                                                <td>{{ substr(strip_tags($candidate->description), 0,100)}}{{ strlen(strip_tags($candidate->description)) > 100 ? '...' : ""}}</td>
+                                                <td>{{ substr(strip_tags($candidate->description), 0,80)}}{{ strlen(strip_tags($candidate->description)) > 80 ? '...' : ""}}</td>
                                                 <td>{{$candidate->price}}</td>
                                                 <td>{{$candidate->skill}}</td>
                                                 <td>{{$candidate->profession}}</td>

@@ -108,7 +108,7 @@
 										class="common-input mb-20 form-control" required="" type="text">
 										<textarea class="common-textarea mt-10 form-control" name="message" 
 										placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" 
-										required=""></textarea>
+										></textarea>
 										<button type="submit" class="primary-btn mt-20 text-white" style="float: right;">@lang('header.send_message')</button>
 										<div class="mt-20 alert-msg" style="text-align: left;"></div>
 									</div>

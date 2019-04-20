@@ -39,11 +39,12 @@ class HomeController extends Controller
         $jobs_recent = DB::table('jobs')
                 ->join('skills', 'skills.id', '=', 'jobs.skill_id')
                 ->join('professions', 'professions.id', '=', 'jobs.profession_id')
-                ->select("*")
+                ->select('jobs.*', 'skills.skill', 'professions.profession')
                 ->whereBetween('jobs.created_at', [
                     Carbon\Carbon::now()->startOfWeek(),
                     Carbon\Carbon::now()->endOfWeek(),
                 ])->paginate(6);
+        
         return view('home',compact('profession','jobs_recent'));
     }
     //choose 
@@ -87,7 +88,7 @@ class HomeController extends Controller
         $candidates =  DB::table('candidates')
         ->join('skills', 'skills.id', '=', 'candidates.skill_id')
         ->join('professions', 'professions.id', '=', 'candidates.profession_id')
-        ->select('*')->where('candidates.id','=',$id)->get();
+       ->select('candidates.*', 'skills.skill', 'professions.profession')->where('candidates.id','=',$id)->get();
         foreach($candidates as $candidate)
         {
             $data = $candidate;
@@ -156,7 +157,7 @@ class HomeController extends Controller
     {
         $this->authorize('show-vacancy');
         $jobs =  DB::table('jobs')->join('skills', 'skills.id', '=', 'jobs.skill_id')
-        ->join('professions', 'professions.id', '=', 'jobs.profession_id')->select('*')->where('jobs.id','=',$id)->get();
+        ->join('professions', 'professions.id', '=', 'jobs.profession_id')->select('jobs.*', 'skills.skill', 'professions.profession')->where('jobs.id','=',$id)->get();
         foreach($jobs as $job)
         {
             $data = $job;
@@ -218,6 +219,7 @@ class HomeController extends Controller
         $jobs = DB::table('jobs')
         ->join('skills', 'skills.id', '=', 'jobs.skill_id')
         ->join('professions', 'professions.id', '=', 'jobs.profession_id')
+        ->select('jobs.*', 'skills.skill', 'professions.profession')
         ->paginate(10);
 
         return view('job',compact('jobs'));
@@ -231,7 +233,7 @@ class HomeController extends Controller
         $jobs = DB::table('jobs')
                 ->join('skills', 'skills.id', '=', 'jobs.skill_id')
                 ->join('professions', 'professions.id', '=', 'jobs.profession_id')
-                ->select("*")
+                ->select('jobs.*', 'skills.skill', 'professions.profession')
                 ->whereBetween('jobs.created_at', [
             Carbon\Carbon::now()->startOfWeek(),
             Carbon\Carbon::now()->endOfWeek(),
@@ -247,7 +249,7 @@ class HomeController extends Controller
         $jobs = DB::table('jobs')
                 ->join('skills', 'skills.id', '=', 'jobs.skill_id')
                 ->join('professions', 'professions.id', '=', 'jobs.profession_id')
-                ->select("*")
+                ->select('jobs.*', 'skills.skill', 'professions.profession')
                 ->whereBetween('jobs.created_at', [
             Carbon\Carbon::now()->startOfMonth(),
             Carbon\Carbon::now()->endOfMonth(),
@@ -263,7 +265,7 @@ class HomeController extends Controller
         $jobs = DB::table('jobs')
                 ->join('skills', 'skills.id', '=', 'jobs.skill_id')
                 ->join('professions', 'professions.id', '=', 'jobs.profession_id')
-                ->select("*")
+                ->select('jobs.*', 'skills.skill', 'professions.profession')
                 ->whereBetween('jobs.created_at', [
             Carbon\Carbon::now()->startOfDay(),
             Carbon\Carbon::now()->endOfDay(),
@@ -279,7 +281,7 @@ class HomeController extends Controller
         $this->authorize('index-candidate');
         $candidates = DB::table('candidates')
         ->join('skills', 'skills.id', '=', 'candidates.skill_id')
-        ->join('professions', 'professions.id', '=', 'candidates.profession_id')->paginate(10);
+        ->join('professions', 'professions.id', '=', 'candidates.profession_id')->select('candidates.*', 'skills.skill', 'professions.profession')->paginate(10);
         
         return view('freelancer',compact('candidates'));
     }
@@ -291,7 +293,7 @@ class HomeController extends Controller
 
         $candidates = DB::table('candidates')
         ->join('skills', 'skills.id', '=', 'candidates.skill_id')
-        ->join('professions', 'professions.id', '=', 'candidates.profession_id')->select("*")->whereBetween('candidates.created_at', [
+        ->join('professions', 'professions.id', '=', 'candidates.profession_id')->select('candidates.*', 'skills.skill', 'professions.profession')->whereBetween('candidates.created_at', [
             Carbon\Carbon::now()->startOfWeek(),
             Carbon\Carbon::now()->endOfWeek(),
         ])->paginate(10);
@@ -305,7 +307,7 @@ class HomeController extends Controller
         $this->authorize('index-candidate');
         $candidates = DB::table('candidates')
         ->join('skills', 'skills.id', '=', 'candidates.skill_id')
-        ->join('professions', 'professions.id', '=', 'candidates.profession_id')->select("*")->whereBetween('candidates.created_at', [
+        ->join('professions', 'professions.id', '=', 'candidates.profession_id')->select('candidates.*', 'skills.skill', 'professions.profession')->whereBetween('candidates.created_at', [
             Carbon\Carbon::now()->startOfMonth(),
             Carbon\Carbon::now()->endOfMonth(),
         ])->paginate(10);
@@ -319,7 +321,7 @@ class HomeController extends Controller
         $this->authorize('index-candidate');
         $candidates = DB::table('candidates')
         ->join('skills', 'skills.id', '=', 'candidates.skill_id')
-        ->join('professions', 'professions.id', '=', 'candidates.profession_id')->select("*")->whereBetween('candidates.created_at', [
+        ->join('professions', 'professions.id', '=', 'candidates.profession_id')->select('candidates.*', 'skills.skill', 'professions.profession')->whereBetween('candidates.created_at', [
             Carbon\Carbon::now()->startOfDay(),
             Carbon\Carbon::now()->endOfDay(),
         ])->paginate(10);
@@ -334,31 +336,38 @@ class HomeController extends Controller
         $candidates =  DB::table('candidates')
         ->join('skills', 'skills.id', '=', 'candidates.skill_id')
         ->join('professions', 'professions.id', '=', 'candidates.profession_id')
-        ->select('*')->where('candidates.id','=',$id)->get();
+        ->select('candidates.*', 'skills.skill', 'professions.profession')->get();
         foreach($candidates as $candidate)
         {
             $cand = $candidate;
         }
-
         $jobs =  DB::table('jobs')->join('skills', 'skills.id', '=', 'jobs.skill_id')
         ->join('professions', 'professions.id', '=', 'jobs.profession_id')
-        ->select('*')->where('jobs.id','=',$id)->get();
+        ->select('jobs.*', 'skills.skill', 'professions.profession')->get();
         foreach($jobs as $job)
         {
             $vacancy = $job;
         }
         $skill_cand = DB::table('candidates')
         ->join('skills', 'skills.id', '=', 'candidates.skill_id')
-        ->select('skill')->where('candidates.id','=',$id)->get();
+        // ->select('skill')->where('candidates.id','=',$id)->get();
+        ->select('skill')->get();
+
         $skill_vacant = DB::table('jobs')
         ->join('skills', 'skills.id', '=', 'jobs.skill_id')
-        ->select('skill')->where('jobs.id','=',$id)->get();
+        // ->select('skill')->where('jobs.id','=',$id)->get();
+        ->select('skill')->get();
+
         $profession_cand = DB::table('candidates')
         ->join('professions', 'professions.id', '=', 'candidates.skill_id')
-        ->select('profession')->where('candidates.id','=',$id)->get();
+        // ->select('profession')->where('candidates.id','=',$id)->get();
+        ->select('profession')->get();
+
         $profession_vacant = DB::table('jobs')
         ->join('professions', 'professions.id', '=', 'jobs.skill_id')
-        ->select('profession')->where('jobs.id','=',$id)->get();
+        // ->select('profession')->where('jobs.id','=',$id)->get();
+        ->select('profession')->get();
+
 
         // require('C:\Damaris\FACULTATE\Anul IV\licenta\upwords/vendor/paralleldots/apis/autoload.php');
         require('C:\Users\Sferle Raluca\Documents\work\myprojects\upwords/vendor/paralleldots/apis/autoload.php');
@@ -468,7 +477,7 @@ class HomeController extends Controller
        
         $query = $request->input('query');
         $jobs=DB::table('jobs')->join('skills', 'skills.id', '=', 'jobs.skill_id')
-        ->join('professions', 'professions.id', '=', 'jobs.profession_id')->select("*")->where('title','like', "%$query%")
+        ->join('professions', 'professions.id', '=', 'jobs.profession_id')->select('jobs.*', 'skills.skill', 'professions.profession')->where('title','like', "%$query%")
         ->orWhere('slug','like', "%$query%")
         ->orWhere('employment_type','like', "%$query%")
         ->orWhere('description','like', "%$query%")
@@ -480,7 +489,7 @@ class HomeController extends Controller
         ->paginate(10);
         $candidates =  DB::table('candidates')
         ->join('skills', 'skills.id', '=', 'candidates.skill_id')
-        ->join('professions', 'professions.id', '=', 'candidates.profession_id')->select("*")->where('name','like', "%$query%")
+        ->join('professions', 'professions.id', '=', 'candidates.profession_id')->select('candidates.*', 'skills.skill', 'professions.profession')->where('name','like', "%$query%")
          ->orWhere('contact','like', "%$query%")
         ->orWhere('slug','like', "%$query%")
         ->orWhere('emplyment_type','like', "%$query%")

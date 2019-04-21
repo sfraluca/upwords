@@ -169,5 +169,8 @@ return [
     'compare_prez' => "După ce te-ai decis sau ai găsit ce ai căutat, poți vedea candidatul sau proiectul într-un mod de comparare. Zonele profesionale sau abilitățile sunt comparate pentru a găsi cea mai bună variantă de candidat la proiectul potrivit și vice-versa. Mai mult de 60% e un procentaj bun, între 30% și 60% este acceptabil, iar mai mic de 30% înseamnă că nu există nimic în comun. Ține minte, similaritatea nu întotdeauna poate fi ceea ce cauți în acel moment, dar poți căuta și alții dacă nu ești mulțumit.",
     'edit_profile' => "Editează profil",
      'compare' => "Compară",
+     'choose_job' =>'Alege din proiecte',
+     'choose_job_prez' =>'Alege din proiectele tale actuale pentru ca mai apoi să fie comparat cu candidatul ales.',
+     'delete_all'=>'Când ștergi o aptitudine sau o profesie, această acțiune va șterge orice candidat sau proiect care e relaționat de aptitudinea/profesia aleasă. Ești sigur că vrei să ștergi?'
 ]
 ?>

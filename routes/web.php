@@ -167,6 +167,9 @@ Route::post('/contact','WebController@storeContact')->name('store_contact');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile/choose', 'HomeController@choose')->name('profile_choose');
 Route::get('/compare/{id}', 'HomeController@compare')->name('compare');
+Route::get('/compare_vacancy/{id_vacancy}/{id_candidate}', 'HomeController@compare_vacancy')->name('compare_vacancy');
+Route::get('/choose_vacancy/{id_candidate}', 'HomeController@choose_vacancy')->name('choose_vacancy');
+
 Route::get('/search', 'HomeController@search')->name('search');
 
 

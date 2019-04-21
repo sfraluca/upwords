@@ -13,6 +13,7 @@ use Carbon;
 use Mail;
 use Session;
 use User;
+use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     /**
@@ -332,18 +333,101 @@ class HomeController extends Controller
     //compare
     public function compare($locale,$id)
     {
-       
-        $candidates =  DB::table('candidates')
+    //    $users = DB::table('users')
+    //         ->leftJoin('cars', 'users.id', '=', 'cars.user_id')
+    //         ->get();
+        // $candidates =  DB::table('candidates')
+        // ->join('skills', 'skills.id', '=', 'candidates.skill_id')
+        // ->join('professions', 'professions.id', '=', 'candidates.profession_id')
+        // ->rightJoin('users', 'users.id', '=', 'candidates.user_id')
+        // ->select('candidates.*', 'skills.skill', 'professions.profession')->get();
+        $user = Auth::user();
+          $candidates =  DB::table('candidates')
         ->join('skills', 'skills.id', '=', 'candidates.skill_id')
         ->join('professions', 'professions.id', '=', 'candidates.profession_id')
+        ->where('user_id', $user->id)
         ->select('candidates.*', 'skills.skill', 'professions.profession')->get();
+
         foreach($candidates as $candidate)
         {
             $cand = $candidate;
         }
+
         $jobs =  DB::table('jobs')->join('skills', 'skills.id', '=', 'jobs.skill_id')
         ->join('professions', 'professions.id', '=', 'jobs.profession_id')
-        ->select('jobs.*', 'skills.skill', 'professions.profession')->get();
+        ->select('jobs.*', 'skills.skill', 'professions.profession')->where('jobs.id','=',$id)->get();
+        foreach($jobs as $job)
+        {
+            $vacancy = $job;
+        }
+        $skill_cand = DB::table('candidates')
+        ->join('skills', 'skills.id', '=', 'candidates.skill_id')
+        ->where('user_id', $user->id)
+        // ->select('skill')->where('candidates.id','=',$id)->get();
+        ->select('skill')->get();
+        
+        $skill_vacant = DB::table('jobs')
+        ->join('skills', 'skills.id', '=', 'jobs.skill_id')
+        ->select('skill')->where('jobs.id','=',$id)->get();
+        // ->select('skill')->get();
+
+        $profession_cand = DB::table('candidates')
+        ->join('professions', 'professions.id', '=', 'candidates.profession_id')
+        ->where('user_id', $user->id)
+        // ->select('profession')->where('candidates.id','=',$id)->get();
+        ->select('profession')->get();
+
+        $profession_vacant = DB::table('jobs')
+        ->join('professions', 'professions.id', '=', 'jobs.profession_id')
+        ->select('profession')->where('jobs.id','=',$id)->get();
+        // ->select('profession')->get();
+
+        // require('C:\Damaris\FACULTATE\Anul IV\licenta\upwords/vendor/paralleldots/apis/autoload.php');
+        require('C:\Users\Sferle Raluca\Documents\work\myprojects\upwords/vendor/paralleldots/apis/autoload.php');
+
+        $sim = similarity($skill_cand, $skill_vacant);
+        $responseArray = json_decode($sim, true);
+        $responseResultArray = $responseArray["actual_score"];
+
+        $profession = similarity($profession_cand, $profession_vacant);
+        $pArray = json_decode($profession, true);
+        $pResultArray = $pArray["actual_score"];
+        $procentaj = ($responseResultArray+ $pResultArray)*100/2;
+
+        return view('compare',compact('cand','vacancy','procentaj'));
+
+    }
+    public function choose_vacancy($locale,$id_candidate)
+    {
+        $candidate_id = $id_candidate;
+        $user = Auth::user();
+        
+        // $jobs = Job::orderBy('title')->pluck('title','id');
+        $jobs =  DB::table('jobs')
+        ->select('jobs.*')->where('user_id','=',$user->id)->get();
+       
+        return view('choose_vacancy',compact('jobs','candidate_id'));
+    }
+    //compare
+    public function compare_vacancy($locale,$id_vacancy,$id_candidate)
+    {
+        $vacancy_id= $id_vacancy;
+        $candidate_id=$id_candidate;
+
+        $candidates =  DB::table('candidates')
+        ->join('skills', 'skills.id', '=', 'candidates.skill_id')
+        ->join('professions', 'professions.id', '=', 'candidates.profession_id')
+        ->select('candidates.*', 'skills.skill', 'professions.profession')
+        ->where('candidates.id',$candidate_id)
+        ->get();
+        foreach($candidates as $candidate)
+        {
+            $cand = $candidate;
+        }
+        
+        $jobs =  DB::table('jobs')->join('skills', 'skills.id', '=', 'jobs.skill_id')
+        ->join('professions', 'professions.id', '=', 'jobs.profession_id')
+        ->select('jobs.*', 'skills.skill', 'professions.profession')->where('jobs.id',$id_vacancy)->get();
         foreach($jobs as $job)
         {
             $vacancy = $job;
@@ -351,21 +435,25 @@ class HomeController extends Controller
         $skill_cand = DB::table('candidates')
         ->join('skills', 'skills.id', '=', 'candidates.skill_id')
         // ->select('skill')->where('candidates.id','=',$id)->get();
+        ->where('candidates.id',$candidate_id)
         ->select('skill')->get();
 
         $skill_vacant = DB::table('jobs')
         ->join('skills', 'skills.id', '=', 'jobs.skill_id')
         // ->select('skill')->where('jobs.id','=',$id)->get();
+        ->where('jobs.id',$id_vacancy)
         ->select('skill')->get();
 
         $profession_cand = DB::table('candidates')
-        ->join('professions', 'professions.id', '=', 'candidates.skill_id')
+        ->join('professions', 'professions.id', '=', 'candidates.profession_id')
         // ->select('profession')->where('candidates.id','=',$id)->get();
+       ->where('candidates.id',$candidate_id)
         ->select('profession')->get();
 
         $profession_vacant = DB::table('jobs')
-        ->join('professions', 'professions.id', '=', 'jobs.skill_id')
-        // ->select('profession')->where('jobs.id','=',$id)->get();
+        ->join('professions', 'professions.id', '=', 'jobs.profession_id')
+        // ->select('profession')->where('jobs.id','=',$id)->get(); 
+        ->where('jobs.id',$id_vacancy)
         ->select('profession')->get();
 
 
@@ -381,7 +469,7 @@ class HomeController extends Controller
         $pResultArray = $pArray["actual_score"];
         $procentaj = ($responseResultArray+ $pResultArray)*100/2;
 
-        return view('compare',compact('cand','vacancy','procentaj'));
+        return view('compare_vacancy',compact('cand','vacancy','procentaj','candidate_id','vacancy_id'));
 
     }
     public function contactCandidate($locale,$id)
@@ -426,6 +514,9 @@ class HomeController extends Controller
 
         return redirect()->route('home',app()->getLocale());
     }
+    
+    
+   
     public function contactVacancy($locale,$id)
     {
         $jobs = Job::find($id); 

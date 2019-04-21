@@ -62,7 +62,7 @@
 											</div>
 											<ul class="btns">
 												<li><a href="{{route('contact_candidate', [ app()->getLocale(), $candidate->id])}}">@lang('header.contact')</a></li>
-												<li><a href="{{route('compare', [ app()->getLocale(),$candidate->id])}}">@lang('header.see')</a></li>
+												<li><a href="{{route('choose_vacancy', [ app()->getLocale(),$candidate->id])}}">@lang('header.see')</a></li>
 											</ul>
 										</div>
 										

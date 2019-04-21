@@ -171,6 +171,9 @@ return [
     'compare_prez' => "After you have decided or found what you need, you can see the candidate or vacancy in compare style. Profession area and skills are compared to find the best candidate for the job and vice-versa. More than 60% is a good porcentage, between 30% and 60% is in the middle, and smaller than 30% there are nothing in common. Remember, the similarity can be not always what you need in that moment, but you cand search for others.",
     'edit_profile' => "Edit profile",
     'compare' => "Compare",
+    'choose_job' =>'Choose job',
+    'choose_job_prez' =>'Choose from you project for a comparation with a candidate.',
+    'delete_all'=>'When you delete an skill or profession, this action will delete any related candidate or project. Are you sure you want to delete?'
 ]
 
 ?>

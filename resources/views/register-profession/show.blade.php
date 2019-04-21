@@ -115,6 +115,11 @@
                                             </tr>
                                         </tfoot>
                                     </table>
+                                    <div>
+                                        <p class="text-danger">
+                                            @lang('header.delete_all')
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

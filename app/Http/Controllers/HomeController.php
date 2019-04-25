@@ -365,11 +365,17 @@ class HomeController extends Controller
         ->where('user_id', $user->id)
         // ->select('skill')->where('candidates.id','=',$id)->get();
         ->select('skill')->get();
+
+         $desc_cand = DB::table('candidates')
+        ->select('description')->get();
         
         $skill_vacant = DB::table('jobs')
         ->join('skills', 'skills.id', '=', 'jobs.skill_id')
         ->select('skill')->where('jobs.id','=',$id)->get();
         // ->select('skill')->get();
+
+        $desc_vacant = DB::table('jobs')
+        ->select('description')->get();
 
         $profession_cand = DB::table('candidates')
         ->join('professions', 'professions.id', '=', 'candidates.profession_id')
@@ -392,7 +398,12 @@ class HomeController extends Controller
         $profession = similarity($profession_cand, $profession_vacant);
         $pArray = json_decode($profession, true);
         $pResultArray = $pArray["actual_score"];
-        $procentaj = ($responseResultArray+ $pResultArray)*100/2;
+
+        $description = similarity($desc_cand, $desc_vacant);
+        $dArray = json_decode($description, true);
+        $dResultArray = $dArray["actual_score"];
+
+        $procentaj = ($responseResultArray+ $pResultArray+$dResultArray)*100/3;
 
         return view('compare',compact('cand','vacancy','procentaj'));
 
@@ -443,13 +454,15 @@ class HomeController extends Controller
         // ->select('skill')->where('jobs.id','=',$id)->get();
         ->where('jobs.id',$id_vacancy)
         ->select('skill')->get();
-
+        $desc_cand = DB::table('candidates')
+        ->select('description')->get();
         $profession_cand = DB::table('candidates')
         ->join('professions', 'professions.id', '=', 'candidates.profession_id')
         // ->select('profession')->where('candidates.id','=',$id)->get();
        ->where('candidates.id',$candidate_id)
         ->select('profession')->get();
-
+        $desc_vacant = DB::table('jobs')
+        ->select('description')->get();
         $profession_vacant = DB::table('jobs')
         ->join('professions', 'professions.id', '=', 'jobs.profession_id')
         // ->select('profession')->where('jobs.id','=',$id)->get(); 
@@ -467,8 +480,13 @@ class HomeController extends Controller
         $profession = similarity($profession_cand, $profession_vacant);
         $pArray = json_decode($profession, true);
         $pResultArray = $pArray["actual_score"];
-        $procentaj = ($responseResultArray+ $pResultArray)*100/2;
 
+        $description = similarity($desc_cand, $desc_vacant);
+        $dArray = json_decode($description, true);
+        $dResultArray = $dArray["actual_score"];
+
+        $procentaj = ($responseResultArray+ $pResultArray+$dResultArray)*100/3;
+     
         return view('compare_vacancy',compact('cand','vacancy','procentaj','candidate_id','vacancy_id'));
 
     }

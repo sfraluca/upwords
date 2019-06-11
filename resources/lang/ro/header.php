@@ -28,7 +28,7 @@ return [
     'join_prez' => "Dacă vrei să afișezi o postare pentru a găsi un candidat, trebuie să te înregistrezi ca și angajator, dar dacă ești un candidat și vrei să găsești un loc disponibil, trebuie să te înregistrezi ca și candidat. Amândouă au roluri diferite și trebuie să fii atent la ce dorești.",
     'search_job' => "Caută un proiect",
     'search_freelancer' => "Caută un candidat",
-    'footer' => 'Acum ești pe Upwords, aplicație de potrivirea a celor mai buni candidați pentru locurile de muncă.',
+    'footer' => 'Acum ești pe Job Listing, aplicație de potrivire a celor mai buni candidați pentru locurile de muncă.',
     'welcome_to_app' => 'Descoperă cele mai noi proiecte și candidați.',
     'search_prez' => 'Poți găsi multe tipuri de candidați și proiecte. Cu bara de căutare poți să îi găsești foarte repede.',
     'profession_prez'=>'Există multe zone profesionale din care poți să alegi din ceea ce dorești.',

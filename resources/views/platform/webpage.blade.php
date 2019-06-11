@@ -30,7 +30,7 @@
 					<div class="row">
 						<div class="col-lg-3 col-md-6">
 							<div class="single-feature">
-								<h4>@lang('header.search')</h4>
+								<h4>@lang('header.searching')</h4>
 								<p>
 									@lang('header.search_prez')
 								</p>

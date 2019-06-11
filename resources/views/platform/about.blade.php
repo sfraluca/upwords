@@ -124,7 +124,7 @@
 							<div class="title text-center">
 							<h1 class="mb-10 text-white">@lang('header.join')</h1>
 								<p class="text-white">@lang('header.join_prez')</p>
-								<a class="primary-btn" href="#">@lang('header.register')</a>
+								<a class="primary-btn" href="{{route('register', app()->getLocale())}}">@lang('header.register')</a>
 							</div>
 						</div>
 					</div>	

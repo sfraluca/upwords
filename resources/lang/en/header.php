@@ -167,7 +167,7 @@ return [
     'steps_know' => "What you need to know",
     'steps_prez' => "Register and choose your role. You can be an candidate or someone that have an project. You have to choose between Candidate and Vacancies.After that you have to create your profile with the main data about you and what you need or what you have. After this process you can find many other jobs and freelancers.",
     'compare_style' => "Compare process",
-    'compare_know' => "The main important component for application",
+    'compare_know' => "The main part for application",
     'compare_prez' => "After you have decided or found what you need, you can see the candidate or vacancy in compare style. Profession area and skills are compared to find the best candidate for the job and vice-versa. More than 60% is a good porcentage, between 30% and 60% is in the middle, and smaller than 30% there are nothing in common. Remember, the similarity can be not always what you need in that moment, but you cand search for others.",
     'edit_profile' => "Edit profile",
     'compare' => "Compare",

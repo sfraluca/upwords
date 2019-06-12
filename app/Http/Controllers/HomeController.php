@@ -404,8 +404,8 @@ class HomeController extends Controller
         $dResultArray = $dArray["actual_score"];
 
         $procentaj = ($responseResultArray+ $pResultArray+$dResultArray)*100/3;
-
-        return view('compare',compact('cand','vacancy','procentaj'));
+        $procent = number_format((float)$procentaj, 2, '.', '');
+        return view('compare',compact('cand','vacancy','procent'));
 
     }
     public function choose_vacancy($locale,$id_candidate)
@@ -486,8 +486,8 @@ class HomeController extends Controller
         $dResultArray = $dArray["actual_score"];
 
         $procentaj = ($responseResultArray+ $pResultArray+$dResultArray)*100/3;
-     
-        return view('compare_vacancy',compact('cand','vacancy','procentaj','candidate_id','vacancy_id'));
+        $procent= number_format((float)$procentaj, 2, '.', '');
+        return view('compare_vacancy',compact('cand','vacancy','procent','candidate_id','vacancy_id'));
 
     }
     public function contactCandidate($locale,$id)

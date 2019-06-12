@@ -89,7 +89,7 @@
                         </ul>
                     </div>
                     @endif
-                <h1 class="text-center">- {{$procentaj}}%-</h1>
+                <h1 class="text-center">- {{$procent}}%-</h1>
                 <br>
 					<div class="row justify-content-center d-flex">
 						<div class="col-lg-6 post-list">

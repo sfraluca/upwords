@@ -60,7 +60,7 @@
 												<a href="single.html"><h4>{{$candidate->name}}</h4></a>
 												<h6>{{$candidate->slug}}</h6>					
 											</div>
-											<ul class="btns">
+											<ul class="btns" style="float: right;">
 												<li><a href="{{route('contact_candidate', [ app()->getLocale(), $candidate->id])}}">@lang('header.contact')</a></li>
 												<li><a href="{{route('choose_vacancy', [ app()->getLocale(),$candidate->id])}}">@lang('header.see')</a></li>
 											</ul>

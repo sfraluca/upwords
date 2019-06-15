@@ -89,7 +89,7 @@
                         </ul>
                     </div>
                     @endif
-                <h1 class="text-center">- {{$procent}}%-</h1>
+                <h1 class="text-center">{{$procent}}%</h1>
                 <br>
 					<div class="row justify-content-center d-flex">
 						<div class="col-lg-6 post-list">
@@ -98,6 +98,8 @@
 										<div class="details col-lg-5">
 											<div class="title d-flex flex-row justify-content-between">
 												<div class="titles">
+													<h3>@lang('header.candidate')</h3>
+													<p>---------------------</p>
 													<a href="#"><h4>{{$cand->name}}</h4></a>
 													<h6>{{$cand->slug}}</h6>					
 												</div>
@@ -142,6 +144,8 @@
 								<div class="details col-lg-5">
 									<div class="title d-flex flex-row justify-content-between">
 										<div class="titles">
+											<h3>@lang('header.job')</h3>
+											<p>---------------------</p>
 											<a href="#"><h4>{{$vacancy->title}}</h4></a>
 											<h6>{{$vacancy->slug}}</h6>					
 										</div>

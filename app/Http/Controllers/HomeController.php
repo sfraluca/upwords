@@ -403,8 +403,14 @@ class HomeController extends Controller
         $dArray = json_decode($description, true);
         $dResultArray = $dArray["actual_score"];
 
-        $procentaj = ($responseResultArray+ $pResultArray+$dResultArray)*100/3;
-        $procent = number_format((float)$procentaj, 2, '.', '');
+       if($dResultArray < 0.81 || $responseResultArray < 0.7 || $pResultArray < 0.8) {
+            $procentaj = $dResultArray*100/2;
+            $procent= number_format((float)$procentaj, 2, '.', '');
+        }
+        else {
+            $procentaj = ($responseResultArray+ $pResultArray+$dResultArray)*100/3;
+            $procent= number_format((float)$procentaj, 2, '.', '');
+        }
         return view('compare',compact('cand','vacancy','procent'));
 
     }
@@ -484,9 +490,15 @@ class HomeController extends Controller
         $description = similarity($desc_cand, $desc_vacant);
         $dArray = json_decode($description, true);
         $dResultArray = $dArray["actual_score"];
-
-        $procentaj = ($responseResultArray+ $pResultArray+$dResultArray)*100/3;
-        $procent= number_format((float)$procentaj, 2, '.', '');
+        if($dResultArray < 0.81 || $responseResultArray < 0.7 || $pResultArray < 0.8) {
+            $procentaj = $dResultArray*100/2;
+            $procent= number_format((float)$procentaj, 2, '.', '');
+        }
+        else {
+            $procentaj = ($responseResultArray+ $pResultArray+$dResultArray)*100/3;
+            $procent= number_format((float)$procentaj, 2, '.', '');
+        }
+       
         return view('compare_vacancy',compact('cand','vacancy','procent','candidate_id','vacancy_id'));
 
     }

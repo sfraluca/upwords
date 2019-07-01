@@ -388,7 +388,7 @@ class HomeController extends Controller
         ->select('profession')->where('jobs.id','=',$id)->get();
         // ->select('profession')->get();
 
-        require('C:\Damaris\FACULTATE\Anul IV\licenta\upwords/vendor/paralleldots/apis/autoload.php');
+        require('../vendor/paralleldots/apis/autoload.php');
 
         $sim = similarity($skill_cand, $skill_vacant);
         $responseArray = json_decode($sim, true);
@@ -479,7 +479,7 @@ class HomeController extends Controller
         ->select('profession')->get();
 
 
-        require('C:\Damaris\FACULTATE\Anul IV\licenta\upwords/vendor/paralleldots/apis/autoload.php');
+        require('../vendor/paralleldots/apis/autoload.php');
 
         $sim = similarity($skill_cand, $skill_vacant);
         $responseArray = json_decode($sim, true);

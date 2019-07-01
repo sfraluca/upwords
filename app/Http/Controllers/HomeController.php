@@ -388,8 +388,7 @@ class HomeController extends Controller
         ->select('profession')->where('jobs.id','=',$id)->get();
         // ->select('profession')->get();
 
-        // require('C:\Damaris\FACULTATE\Anul IV\licenta\upwords/vendor/paralleldots/apis/autoload.php');
-        require('C:\Users\Sferle Raluca\Documents\work\myprojects\upwords/vendor/paralleldots/apis/autoload.php');
+        require('C:\Damaris\FACULTATE\Anul IV\licenta\upwords/vendor/paralleldots/apis/autoload.php');
 
         $sim = similarity($skill_cand, $skill_vacant);
         $responseArray = json_decode($sim, true);
@@ -402,12 +401,16 @@ class HomeController extends Controller
         $description = similarity($desc_cand, $desc_vacant);
         $dArray = json_decode($description, true);
         $dResultArray = $dArray["actual_score"];
-
-       if($dResultArray < 0.81 || $responseResultArray < 0.7 || $pResultArray < 0.8) {
-            $procentaj = $dResultArray*100/2;
+        
+        if($dResultArray < 0.82 || $responseResultArray < 0.75 || $pResultArray < 0.8) {
+            $procentaj = $dResultArray*100/2.8;
             $procent= number_format((float)$procentaj, 2, '.', '');
         }
-        else {
+        else if($responseResultArray > 0.75 && $responseResultArray < 0.87 && $pResultArray > 0.8 && $pResultArray < 0.93) {
+            $procentaj = ($responseResultArray+ $pResultArray+$dResultArray)*100/5;
+            $procent= number_format((float)$procentaj, 2, '.', '');
+        } else 
+        {
             $procentaj = ($responseResultArray+ $pResultArray+$dResultArray)*100/3;
             $procent= number_format((float)$procentaj, 2, '.', '');
         }
@@ -476,8 +479,7 @@ class HomeController extends Controller
         ->select('profession')->get();
 
 
-        // require('C:\Damaris\FACULTATE\Anul IV\licenta\upwords/vendor/paralleldots/apis/autoload.php');
-        require('C:\Users\Sferle Raluca\Documents\work\myprojects\upwords/vendor/paralleldots/apis/autoload.php');
+        require('C:\Damaris\FACULTATE\Anul IV\licenta\upwords/vendor/paralleldots/apis/autoload.php');
 
         $sim = similarity($skill_cand, $skill_vacant);
         $responseArray = json_decode($sim, true);
@@ -490,11 +492,15 @@ class HomeController extends Controller
         $description = similarity($desc_cand, $desc_vacant);
         $dArray = json_decode($description, true);
         $dResultArray = $dArray["actual_score"];
-        if($dResultArray < 0.81 || $responseResultArray < 0.7 || $pResultArray < 0.8) {
-            $procentaj = $dResultArray*100/2;
+         if($dResultArray < 0.81 || $responseResultArray < 0.75 || $pResultArray < 0.8) {
+            $procentaj = $dResultArray*100/2.8;
             $procent= number_format((float)$procentaj, 2, '.', '');
         }
-        else {
+        else if($dResultArray > 0.81 && $dResultArray > 0.85 || $responseResultArray > 0.75 && $responseResultArray < 0.89 || $pResultArray > 0.8 && $pResultArray < 0.89) {
+            $procentaj = ($responseResultArray+ $pResultArray+$dResultArray)*100/5;
+            $procent= number_format((float)$procentaj, 2, '.', '');
+        } else 
+        {
             $procentaj = ($responseResultArray+ $pResultArray+$dResultArray)*100/3;
             $procent= number_format((float)$procentaj, 2, '.', '');
         }
